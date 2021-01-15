@@ -4,7 +4,7 @@
  *
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
  */
 
@@ -121,8 +121,6 @@ class Auxin_Frontend_Assets {
         }
 
 
-        // Styles for third party plugins
-        wp_enqueue_style('auxin-third-party' , THEME_URL . 'css/other/third-party.css' , array(), $this->version );
 
         // Enqueue front-end custom styles /////////////////////////////////////
 

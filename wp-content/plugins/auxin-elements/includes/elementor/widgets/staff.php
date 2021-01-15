@@ -408,6 +408,38 @@ class Staff extends Widget_Base {
             )
         );
 
+        $this->add_control(
+            'social_dribbble',
+            array(
+                'label'         => __('Dribbble Address','auxin-elements' ),
+                'type'          => Controls_Manager::URL,
+                'placeholder'   => 'https://your-link.com',
+                'show_external' => false,
+                'condition'     => [
+                    'socials' => 'yes'
+                ],
+                'dynamic' => [
+					'active' => true
+				]
+            )
+        );
+
+        $this->add_control(
+            'social_linkedin',
+            array(
+                'label'         => __('LinkedIn Address','auxin-elements' ),
+                'type'          => Controls_Manager::URL,
+                'placeholder'   => 'https://your-link.com',
+                'show_external' => false,
+                'condition'     => [
+                    'socials' => 'yes'
+                ],
+                'dynamic' => [
+					'active' => true
+				]
+            )
+        );
+
         $this->end_controls_section();
 
         /*-----------------------------------------------------------------------------------*/
@@ -920,6 +952,8 @@ class Staff extends Widget_Base {
             'social_pinterest'   => $settings['social_pinterest']['url'],
             'social_github'      => $settings['social_github']['url'],
             'social_instagram'   => $settings['social_instagram']['url'],
+            'social_dribbble'    => $settings['social_dribbble']['url'],
+            'social_linkedin'    => $settings['social_linkedin']['url'],
 
             'icon_size'          => $settings['icon_size'],
             'icon_align'         => $settings['icon_align'],

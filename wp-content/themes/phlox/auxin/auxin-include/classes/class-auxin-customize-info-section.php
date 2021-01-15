@@ -3,7 +3,7 @@
  * A simple customizer section for displaying information
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
  */
 class Auxin_Customize_Info_Section extends Auxin_Customize_Section {

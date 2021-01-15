@@ -7,7 +7,7 @@
  * @license    LICENSE.txt
  * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2020 averta
+ * @copyright  (c) 2010-2021 averta
  */
 function auxin_get_tabs_master_array( $master_array ) {
 
@@ -197,10 +197,17 @@ function auxin_widget_tabs_callback( $atts, $shortcode_content = null ){
                 'role'           => 'tabpanel',
                 'aria-labelledby'=> 'aux-tab-' . $id_number,
             );
-            preg_match('/<p>(.*?)<\/p>/', $value['content'] , $matches);
+            
+            if ( ! empty( $value['__dynamic__' ] ) ) {
+                $content = $value['content'];
+            } else {
+                preg_match('/<p>(.*?)<\/p>/', $value['content'] , $matches);
+                $content = ! empty( $matches[0] ) ? $matches[0] : $value['content'];
+            }
+
             $tabs_content .= sprintf( '<li><div %s><p>%s</p></div></li>',
                 auxin_make_html_attributes( $content_attrs ),
-                $matches[0]
+                $content
             );
 
         }

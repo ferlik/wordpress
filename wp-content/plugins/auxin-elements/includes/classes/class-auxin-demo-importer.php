@@ -7,7 +7,7 @@
  * @license    LICENSE.txt
  * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2020 averta
+ * @copyright  (c) 2010-2021 averta
 */
 
 // no direct access allowed
@@ -295,6 +295,12 @@ class Auxin_Demo_Importer {
                         }
                     }
                 }
+
+                // Trash the default WordPress Post, "Hello World," which has an ID of '1'.
+                if ( get_post_type( 1 ) != 'elementor_library' ) {
+                    wp_trash_post( 1 );
+                }
+
                 wp_send_json_success( array( 'step' => 'users', 'next' => 'content', 'message' => __( 'Importing Contents', 'auxin-elements' ) ) );
 
             case 'content':
@@ -508,6 +514,9 @@ class Auxin_Demo_Importer {
             }
             foreach ( $options as $option => $value) {
                 if( strpos( $option, 'page_id' ) !== false ) {
+                    $value = $this->get_meta_post_id( 'auxin_import_post', $value );
+                }
+                if ( $option == 'elementor_active_kit' ) {
                     $value = $this->get_meta_post_id( 'auxin_import_post', $value );
                 }
                 update_option( $option, maybe_unserialize( $value ) );
@@ -1010,9 +1019,6 @@ class Auxin_Demo_Importer {
 
                 $this->maybe_flush_post( $post_id );
 
-                // Trash the default WordPress Post, "Hello World," which has an ID of '1'.
-                wp_trash_post( 1 );
-
             } else {
 
                 continue;
@@ -1069,6 +1075,16 @@ class Auxin_Demo_Importer {
                         }
                         $new_template   = 'template":"'. auxin_get_transient( "aux-elementor-library-{$old_id}-changs-to" );
                         $elementor_data = str_replace( $template[0], $new_template, $elementor_data );
+                    }
+                }
+
+                // Change contact form 7 old id
+                preg_match_all( '/contact-form-7 id=\\\"(\d*)/', $elementor_data, $contact_forms, PREG_SET_ORDER );
+                if ( ! empty( $contact_forms ) ) {
+                    foreach ( $contact_forms as $key => $form ) {
+                        $new_form         = str_replace( $form[1], $this->get_attachment_id( 'auxin_import_post', $form[1] ), $form[0] );
+
+                        $elementor_data = str_replace( $form[0], $new_form, $elementor_data );
                     }
                 }
 
@@ -1133,6 +1149,29 @@ class Auxin_Demo_Importer {
                         $new_id = implode(',', $new_id );
                         $new_post_id_string = 'only_posts__in":"' . $new_id . '"';
                         $elementor_data = str_replace( $post_id_string[0].'"', $new_post_id_string, $elementor_data );
+                    }
+                }
+
+                // check elementor tags for page url
+                preg_match_all( '/\[elementor-tag.+?\]/', $elementor_data, $elementor_tags, PREG_SET_ORDER );
+                if ( ! empty( $elementor_tags ) ) {
+                    foreach( $elementor_tags as $key => $tag ) {
+                        // tag is page url 
+                        if ( strpos( $tag[0], 'aux-pages-url' ) ) {
+                            preg_match_all( '/settings=\\\"(.+)?\\\"/', $tag[0], $key_values, PREG_SET_ORDER );
+                            if ( ! empty( $key_values ) ) {
+                                foreach ( $key_values as $tag_key => $key_value ) {
+                                    $old_key_value = urldecode( $key_value[1] );
+                                    $page_id = str_replace( '{"key":"', '', $old_key_value );
+                                    $page_id = str_replace( '"}', '', $page_id );
+                                    
+                                    $new_page_id = auxin_get_transient( "aux-page-{$page_id}-changs-to" );
+                                    $new_key_value = urlencode('{"key":"' . $new_page_id . '"}');
+                                    $new_tag = str_replace( $key_value[1], $new_key_value, $tag[0] );
+                                    $elementor_data = str_replace( $tag[0], $new_tag, $elementor_data );
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -1296,6 +1335,10 @@ class Auxin_Demo_Importer {
      * @return  String
      */
     public function prepare_site() {
+        // Clear elementor cache
+        if ( class_exists( '\\Elementor\\Plugin' ) ) {
+            \Elementor\Plugin::instance()->files_manager->clear_cache();
+        }
         // Remove local demo file
         wp_delete_file( $this->get_theme_dir() . '/demo.json' );
         // Send final success message
@@ -1930,7 +1973,9 @@ class Auxin_Demo_Importer {
                 if ( ! empty( $matches ) ) {
                     $new_css = $css[0];
                     foreach( $matches[0] as $key => $url ) {
-                        $new_url = str_replace( '\/' . $matches[1][$key], '', $url );
+                        if ( ! empty( $matches[1][$key] ) ) {
+                            $new_url = str_replace( '\/' . $matches[1][$key], '', $url );
+                        }
                         $new_url = str_replace( "https:\/\/demo.phlox.pro\/", $site_url, $new_url );
                         $new_css = str_replace( $url, $new_url, $new_css );
                     }
@@ -1946,6 +1991,12 @@ class Auxin_Demo_Importer {
             foreach( $urls as $key => $url ) {
                 $meta = str_replace( $url[0], $site_url, $meta );
             }
+        }
+
+        // remove network part of url from importing 
+        // http:\/\/...\/\/wp-content\/uploads\/sites\/12\/2020\/09 => http:\/\/...\/\/wp-content\/uploads\/2020\/09
+        if ( ! is_array( $meta ) ) {
+            $meta = preg_replace( "#sites\\\/\d*\\\/#", '', $meta );
         }
 
         return $meta;

@@ -541,6 +541,8 @@ class Tabs extends Widget_Base {
      */
     protected function render() {
 
+        add_filter( 'auxin/core_elements/dynamic_tags/shortcode/should_escape', '__return_false' );
+
         $settings = $this->get_settings_for_display();
 
         $args     = array(
@@ -552,6 +554,8 @@ class Tabs extends Widget_Base {
 
         // pass the args through the corresponding shortcode callback
         echo auxin_widget_tabs_callback( $args );
+        
+        add_filter( 'auxin/core_elements/dynamic_tags/shortcode/should_escape', '__return_true' );
     }
 
 

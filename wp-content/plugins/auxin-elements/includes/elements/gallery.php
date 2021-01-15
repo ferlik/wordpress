@@ -7,7 +7,7 @@
  * @license    LICENSE.txt
  * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2020 averta
+ * @copyright  (c) 2010-2021 averta
  */
 function auxin_get_gallery_master_array( $master_array ) {
 
@@ -501,7 +501,6 @@ function auxin_widget_gallery_callback( $attr, $shortcode_content = null ){
         $isotop_layout = 'justifyRows';
     } elseif ( 'tiles' == $layout ) {
         $isotop_layout = 'packery';
-        $space = 0;
     } else {
         $isotop_layout = 'masonry';
     }
@@ -619,7 +618,7 @@ function auxin_widget_gallery_callback( $attr, $shortcode_content = null ){
                     'preload_preview' => false,
                     'crop'            => $crop,
                     'size'            => $image_dimension,
-                    'add_hw'          => true, // whether add width and height attr or not
+                    'add_hw'          => 'masonry' == $layout ? false : true, // whether add width and height attr or not
                     'upscale'         => true,
                     'image_sizes'     => array(
                         array( 'min'  => '',      'max' => '767px', 'width' => round( 100 / $phone_cnum ).'vw' ),

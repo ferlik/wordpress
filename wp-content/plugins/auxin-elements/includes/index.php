@@ -10,6 +10,7 @@ include_once( 'general-shortcodes.php' );
 
 Auxin_WhiteLabel::get_instance();
 Auxin_Widget_Shortcode_Map::get_instance();
+Auxels_WC_Attribute_Nav_Menu::get_instance();
 
 Auxin_Import::get_instance();
 if ( wp_doing_ajax() ) {

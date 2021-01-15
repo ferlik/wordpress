@@ -4,7 +4,7 @@
  *
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
  */
 
@@ -1903,7 +1903,8 @@ function auxin_wc_add_to_cart( $args = array() ){
             'simple_mode'    => false,
             'basket_animation' => false,
             'cart_header_text' => '',
-            'total_price_text_in_dropdown' => ''
+            'total_price_text_in_dropdown' => '',
+            'checkout_text'  => ''
         );
 
         $args = wp_parse_args( $args, $defaults );

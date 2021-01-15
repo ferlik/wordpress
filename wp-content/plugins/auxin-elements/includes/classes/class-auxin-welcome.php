@@ -1399,6 +1399,10 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
             ),
             '9' => array(
                 'method' => 'verify_envato_elements_step',
+                'next'   => '10'
+            ),
+            '10' => array(
+                'method' => 'envato_elements_success_step',
                 'next'   => '3'
             )
 
@@ -1666,7 +1670,7 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
                     </div>
                 </div>
                 <h2 class="aux-step-import-title"><?php esc_html_e( 'Remove Watermarks?', 'auxin-elements' ); ?></h2>
-                <p class="aux-step-description"><?php esc_html_e( "For better and faster install proccess it's recommanded to install demo on a clean wordpress website.", 'auxin-elements' ); ?></p>
+                <p class="aux-step-description"><?php esc_html_e( "Some images in this demo are copyrighted and watermarked, you can remove watermarks by authorizing your Envato Elements subscription.", 'auxin-elements' ); ?></p>
                 <?php
                 $skip_watermark_step = '3';
                 ?>
@@ -1695,9 +1699,9 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
         ?>
             <div class="aux-setup-demo-content aux-content-col aux-step-envato-elements">
                 <img src="<?php echo esc_url( AUXELS_ADMIN_URL . '/assets/images/welcome/envato_elements.svg' ); ?>" />
-                <h2 class="aux-step-import-title"><?php esc_html_e( 'Images are copyrighted and watermarked. You can remove watermarks by having Envato Elements subscription', 'auxin-elements' ); ?></h2>
+                <h2 class="aux-step-import-title"><?php esc_html_e( 'Remove watermarks by authorizing your Envato Elements subscription', 'auxin-elements' ); ?></h2>
                 <p class="aux-step-description"><?php esc_html_e( "By subscribing to Envato Elements you will have access to unlimited premium stock images, icons, graphical assets, videos and more.", 'auxin-elements' ); ?></p>
-                <a href="http://avt.li/elements" class="aux-button aux-primary aux-medium aux-explore-envato">
+                <a href="http://avt.li/elements" class="aux-button aux-primary aux-medium aux-explore-envato" target="_blank">
                     <?php _e( 'Explore and Subscribe', 'auxin-elements' ); ?>
                 </a>
                 <?php
@@ -1770,7 +1774,7 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
                         }
                     ?>
                     <a href="<?php echo esc_url( $token_link ); ?>" target="_blank" class="aux-generate-token" ><?php esc_html_e( 'How to generate a token ?', 'auxin-elements' );?></a>
-                    <a href="#" class="aux-subscription" ><?php esc_html_e( 'Don\'t have subscription?', 'auxin-elements' );?></a>
+                    <a href="http://avt.li/elements" target="_blank" class="aux-subscription" ><?php esc_html_e( 'Don\'t have subscription?', 'auxin-elements' );?></a>
                 </div>
             </div>
             <div class="aux-setup-demo-actions">
@@ -1781,13 +1785,35 @@ class Auxin_Welcome extends Auxin_Welcome_Base {
 						data-args="<?php echo htmlspecialchars( wp_json_encode($args), ENT_QUOTES, 'UTF-8' ); ?>"
 						data-step-nonce="<?php echo wp_create_nonce( 'aux-step-manager' ); ?>"
 					><?php esc_html_e( 'Verify Token', 'auxin-elements' ); ?></a>
-                    <a href="#" 
+                    <a href="#"
                         class="aux-button aux-outline aux-round aux-transparent aux-medium aux-next-step aux-skip"
-                        data-next-step="<?php echo esc_attr( $next_step ); ?>"
+                        data-next-step="3"
 						data-args="<?php echo htmlspecialchars( wp_json_encode($args), ENT_QUOTES, 'UTF-8' ); ?>"
 						data-step-nonce="<?php echo wp_create_nonce( 'aux-step-manager' );?>">
                     	<?php _e( 'Skip', 'auxin-elements' ); ?>
                		</a>
+                </div>
+            </div>
+        <?php
+        return ob_get_clean();
+    }
+
+    public function envato_elements_success_step( array $args, $next_step) {
+        ob_start();
+        ?>
+            <div class="aux-setup-demo-content aux-content-col aux-step-envato-elements-success aux-step-import-notice">
+                <img src="<?php echo esc_url( AUXELS_ADMIN_URL . '/assets/images/welcome/completed.svg' ); ?>" />
+                <h2 class="aux-step-import-title"><?php esc_html_e( 'Succeed', 'auxin-elements' ); ?></h2>
+                <p class="aux-step-description"><?php esc_html_e( "Congratulations! you have successfully authorized your Envato Elements subscription.", 'auxin-elements' ); ?></p>
+            </div>
+            <div class="aux-setup-demo-actions">
+                <div class="aux-return-back">
+                <a 	href="#"
+						class="aux-button aux-medium aux-primary button-next aux-next-step"
+						data-next-step="<?php echo esc_attr( $next_step ); ?>"
+						data-args="<?php echo htmlspecialchars( wp_json_encode($args), ENT_QUOTES, 'UTF-8' ); ?>"
+						data-step-nonce="<?php echo wp_create_nonce( 'aux-step-manager' ); ?>"
+					><?php esc_html_e( 'Continue', 'auxin-elements' ); ?></a>
                 </div>
             </div>
         <?php

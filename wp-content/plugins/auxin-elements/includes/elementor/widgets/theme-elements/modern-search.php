@@ -145,7 +145,7 @@ class ModernSearch extends Widget_Base {
                 'type'        => Controls_Manager::SELECT2,
                 'multiple'    => true,
                 'options'     => $this->get_post_types(),
-                'default'     => [ 'category' ],
+                'default'     => [ 'post' ],
             ]
         );
 

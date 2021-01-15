@@ -7,7 +7,7 @@
  * @license    LICENSE.txt
  * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2020 averta
+ * @copyright  (c) 2010-2021 averta
  */
 
 
@@ -1547,13 +1547,14 @@ function auxin_add_theme_options_in_plugin( $fields_sections_list ){
         'id'          => 'auxin_login_bg_color',
         'section'     => 'tools-section-login',
         'type'        => 'color',
+        'selectors'    => ' ',
         'dependency'  => array(
             array(
                 'id' => 'auxin_login_bg_show',
                 'value' => array( '1' )
             )
         ),
-        'transport'   => 'refresh',
+        'transport'   => 'postMessage',
         'default'     => ''
     );
 
@@ -3352,6 +3353,22 @@ function auxels_enable_woocommerce_ajax_add_to_cart( $args ){
 
 add_filter( 'woocommerce_loop_add_to_cart_args', 'auxels_enable_woocommerce_ajax_add_to_cart', 10 );
 
+/*-----------------------------------------------------------------------------------*/
+/*  Change Products Title Dom
+/*-----------------------------------------------------------------------------------*/
+add_action( 'init', 'auxin_remove_default_woocommerce_product_title' );
+    
+function auxin_remove_default_woocommerce_product_title() {
+    remove_action( 'woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10 );
+    add_action( 'woocommerce_shop_loop_item_title', 'auxin_woocommerce_template_loop_product_title', 10 );       
+}
+
+function auxin_woocommerce_template_loop_product_title() {
+    global $product;
+    $dom = '<a href="' . esc_url( get_permalink( $product->get_id() ) ) . '"><h2 class="' . esc_attr( apply_filters( 'woocommerce_product_loop_title_classes', 'woocommerce-loop-product__title' ) ) . '">' . get_the_title() . '</h2></a>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+    echo apply_filters( 'auxin_woocommerce_template_loop_product_title', $dom );
+}
+
 /**
  * Override inner body sections hooks for replace header&footer
  *
@@ -3539,3 +3556,96 @@ function auxels_improve_usage_feedback( $args ) {
 
 }
 add_filter( 'auxels_version_check_args', 'auxels_improve_usage_feedback' );
+
+/*-----------------------------------------------------------------------------------*/
+/* Add header and footer edit link in admin bar
+/*-----------------------------------------------------------------------------------*/
+add_action( 'admin_bar_menu', 'auxin_add_admin_bar_header_footer_edit_link', 100);
+
+function auxin_add_admin_bar_header_footer_edit_link() {
+    global $wp_admin_bar, $post;
+    
+    if ( !is_super_admin() || !is_admin_bar_showing() || is_admin() )
+        return;
+    
+    if ( 'default' === $use_legacy_header = auxin_get_post_meta( $post, 'page_header_use_legacy', 'default' ) ) {
+        $use_legacy_header = auxin_get_option('site_header_use_legacy');
+    }
+
+    if ( 'default' === $use_legacy_footer = auxin_get_post_meta( $post, 'page_footer_use_legacy', 'default' ) ) {
+        $use_legacy_footer = auxin_get_option('site_footer_use_legacy');
+    }
+
+    $template = [];
+
+    if ( get_post_type( $post ) == 'page' ) {
+        if ( ! auxin_is_true( $use_legacy_header) && ( $current_header = auxin_get_post_meta( $post, 'page_elementor_header_template' ) ) && is_numeric( $current_header ) ) {
+            $template['current']['header'] = $current_header; 
+        }
+
+        if ( ! auxin_is_true( $use_legacy_footer) && ( $current_footer = auxin_get_post_meta( $post, 'page_elementor_footer_template' ) ) && is_numeric( $current_footer ) ) {
+            $template['current']['footer'] = $current_footer; 
+        }
+    }
+    
+    if ( ! auxin_is_true( auxin_get_option('site_header_use_legacy') ) && $global_header = auxin_get_option('site_elementor_header_template', '' ) ) {
+        $template['global']['header'] = $global_header;
+    }
+
+    if ( ! auxin_is_true( auxin_get_option('site_footer_use_legacy') ) && $global_footer = auxin_get_option('site_elementor_footer_template', '' ) ) {
+        $template['global']['footer'] = $global_footer;
+    }
+
+    if ( ! empty( $template['current'] ) ) {
+
+        foreach( $template['current'] as $key => $value ) {
+            if ( empty( $value ) ) continue;
+            $args[] = [
+                'id'        => 'aux-current-' . $key ,
+                'title'     => sprintf( '<span>%s</span><span class="aux-state">%s</span>', get_the_title( $value ), __( 'current ', 'auxin-elements' ) . $key ) ,
+                'parent'    => 'aux-header-footer',
+                'href'      => get_edit_post_link( $value ),
+                'meta'      => [
+                    'target' => '_blank'
+                ] 
+            ];
+        } 
+    }
+
+    if ( ! empty( $template['global'] ) ) {
+
+        foreach( $template['global'] as $key => $value ) {
+            if ( empty( $value ) ) continue;
+            $args[] = [
+                'id'        => 'aux-global-' . $key ,
+                'title'     => sprintf( '<span>%s</span><span class="aux-state">%s</span>', get_the_title( $value ), $key ) ,
+                'parent'    => 'aux-header-footer',
+                'href'      => get_edit_post_link( $value ),
+                'meta'      => [
+                    'target' => '_blank'
+                ] 
+            ];
+        } 
+    }
+
+    if ( ! empty( $args ) ) {
+        $wp_admin_bar->add_node(
+            [
+                'id'        => 'aux-header-footer',
+                'title'     => sprintf( '<div class="aux-header-footer-edit-links">%s</div>', __( 'Edit Header & Footer', 'auxin-elements' ) ),
+                'href'      => '',
+            ]
+        );
+
+        foreach ( $args as $arg ) {
+            $wp_admin_bar->add_node( $arg );
+        }
+    }
+}
+
+function auxels_add_svg_upload_permission( $mimes ){
+    $mimes['svg'] = 'image/svg+xml';
+    return $mimes;
+}
+add_filter( 'upload_mimes', 'auxels_add_svg_upload_permission' );
+  

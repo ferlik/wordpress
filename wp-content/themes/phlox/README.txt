@@ -3,8 +3,8 @@ Contributors: averta, averta_support
 Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, grid-layout, custom-menu, custom-colors, editor-style, featured-images, featured-image-header, footer-widgets, full-width-template, post-formats, sticky-post, theme-options, translation-ready, blog, e-commerce, portfolio, threaded-comments, translation-ready
 Requires PHP: 5.4
 Requires at least: 4.6
-Tested up to: 5.5.0
-Stable tag: 2.6.12
+Tested up to: 5.5.1
+Stable tag: 2.7.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,6 +94,81 @@ Phlox bundles the following third-party resources:
 
 
 == Changelog ==
+
+
+= 2.7.6 =
+- [Fix]: An issue with some color options fixed fixed.
+
+
+= 2.7.5 =
+- [New]: Elementor global colors are accessible in customizer.
+- [Improvement]: Improvements for sorting products in shop page applied.
+- [Improvement]: Improvements for product quick view applied.
+- [Improvement]: Improvements for modern search element applied.
+- [Fix]: An issue with style of shop cart page fixed.
+- [Fix]: An issue with pagination of category archive page fixed.
+
+
+= 2.7.2 =
+- [New]: Making the header and footer translatable if WPML is installed.
+- [New]: An incompatibility with next-gen gallery fixed for portfolio items.
+- [Improvement]: Improvements for progress bar element applied.
+- [Improvement]: Style improvements for cart widget applied.
+- [Improvement]: Style improvements for burger menu applied.
+- [Improvement]: Improvements for tiles layout of "Gallery" element applied.
+- [Improvement]: Improvements for "Info Box" element applied.
+- [Improvement]: Improvements for "Progress Bar" element applied.
+- [Improvement]: Improvements for "Accordion" element applied.
+- [Fix]: An issue with displaying product thumbnails in single product page fixed.
+- [Fix]: Addressing a bug with filter option in "Advanced Products" element.
+- [Fix]: Fixing deprecated functions for latest version of WooCommerce.
+- [Fix]: A issue with removing variable products from shopping cart fixed.
+- [Fix]: A bug with importing SVG images fixed.
+- [Fix]: A bug with SubMenu indicator fixed.
+
+= 2.7.1 =
+- [Fix]: A bug in demo importer fixed.
+- [Improvement]: Improvements applied to logo element while sticky header option is enabled.
+
+= 2.7.0 =
+- [New]: New custom animation options added to the list of entrance animations.
+- [New]: Dribbble and Linkedin social options to staff element.
+- [New]: WooCommerce templates are now fully compatible with the new version of WooCommerce.
+- [Improvement]: Improvements for the menu with anchor links applied.
+- [Improvement]: Improvements for sticky menu options applied.
+- [Improvement]: Improvements for masonry layout applied.
+- [Improvement]: New read more option added to "Recent grid portfolio" element.
+- [Improvement]: Improvements for single FAQ pages applied.
+- [Improvement]: Improvements for product title applied.
+- [Fix]: An error for the skin name option in the burger menu fixed.
+- [Fix]: An issue with the shipping page fixed.
+
+
+
+= 2.6.19 =
+- [Improvement]: Improvements for sticky header applied.
+- [Fix]: An issue with displaying share button in blog post fixed.
+
+
+= 2.6.17 =
+- [Fix]: An incompatibility with plugins for "Featured Image by URL" fixed.
+- [Improvement]: Improvements for scroll animation applied.
+
+
+= 2.6.15 =
+- [Fix]: A Javascript error in single shop page fixed.
+
+
+= 2.6.14 =
+- [New]: New options for "Modern Menu" element added.
+- [New]: New options for "Modern Search" element added.
+- [Improvement]: Style improvements for recent grid post element added.
+
+
+= 2.6.13 =
+- [Improvement]: Style improvement for Elementor 3.0 applied.
+- [Improvement]: Improvement for fullscreen menu applied.
+
 
 = 2.6.12 =
 - [Improvement]: Compatibility for Elementor 3.0 applied.

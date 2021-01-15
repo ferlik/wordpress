@@ -140,9 +140,9 @@ function auxels_remove_product_from_cart() {
         $cart->remove_cart_item( $cart_item_key );
 
 		$cart->calculate_totals();
-
+        
 		$response = array(
-			'total'		=> 	wc_format_decimal( $cart->cart_contents_total, 2 ),
+			'total'		=> 	$woocommerce->cart->get_cart_subtotal(),
 			'count'		=> 	$cart->cart_contents_count,
 			'empty'		=>	sprintf( '<div class="aux-card-box">%s</div>',  __( 'Your cart is currently empty.', 'auxin-elements' ) ),
 			'notif'		=>	sprintf( '<div class="aux-woocommerce-ajax-notification woocommerce-message">%s</div>',  __('Item has been removed from your shopping cart.', 'auxin-elements') )

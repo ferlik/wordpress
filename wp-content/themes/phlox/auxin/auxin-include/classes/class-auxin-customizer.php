@@ -4,7 +4,7 @@
  *
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
 */
 
@@ -166,7 +166,7 @@ class Auxin_Customizer{
      * @return array   The list of all special controls
      */
     public function special_types(){
-        return array('group_typography', 'responsive_slider', 'responsive_dimensions', 'typography_template_part');
+        return array('group_typography', 'color',  'responsive_slider', 'responsive_dimensions', 'typography_template_part',  'global_colors_template_part' );
     }
 
     /**
@@ -457,8 +457,8 @@ class Auxin_Customizer{
         switch ( $field['type'] ) {
 
             case 'color':
-                $control_args['type'] = 'auxin_color';
-                $control_type_class = 'Auxin_Customize_Color_Control';
+                $control_args['type'] = 'auxin_group_global_colors';
+                $control_type_class = 'Auxin_Customize_GlobalColors_Controller';
                 break;
 
             case 'gradient':
@@ -584,14 +584,25 @@ class Auxin_Customizer{
                 $control_type_class = 'Auxin_Customize_Textarea_Control';
                 break;
 
+
             case 'typography_template_part':
                 $control_args['type'] = 'auxin_typo_template_part';
                 $control_type_class = 'Auxin_Customize_Typography_Template_Part_Control';
                 break;
 
+            case 'global_colors_template_part':
+                $control_args['type'] = 'auxin_global_colors_template_part';
+                $control_type_class = 'Auxin_Customize_GlobalColors_Template_Part_Control';
+                break;
+
             case 'group_typography':
                 $control_args['type'] = 'auxin_group_typography';
                 $control_type_class = 'Auxin_Customize_Typography_Controller';
+                break;
+
+            case 'group_global_colors':
+                $control_args['type'] = 'auxin_group_global_colors';
+                $control_type_class = 'Auxin_Customize_GlobalColors_Controller';
                 break;
 
             case 'responsive_slider':

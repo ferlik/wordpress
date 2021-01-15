@@ -12,7 +12,7 @@ namespace Auxin\Plugin\CoreElements\Elementor;
  * @license    LICENSE.txt
  * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2020 averta
+ * @copyright  (c) 2010-2021 averta
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -737,10 +737,13 @@ final class Elements {
     public function add_auxin_font_icons( $tabs = [] ) {
 
         // Phlox Icon set 1
+        $icons_list = array();
         $icons = Auxin()->Font_Icons->get_icons_list( 'fontastic' );
 
-        foreach ( $icons as $icon ) {
-            $icons_list[] = str_replace( '.auxicon-', '', $icon->classname );
+        if( is_array( $icons ) ){
+            foreach ( $icons as $icon ) {
+                $icons_list[] = str_replace( '.auxicon-', '', $icon->classname );
+            }
         }
 
         $tabs['auxicon'] = [
@@ -756,10 +759,13 @@ final class Elements {
         ];
 
         // Phlox Icon set 2
-        $icons_v2 = Auxin()->Font_Icons->get_icons_list( 'auxicon2' );
+        $icons_list2 = array();
+        $icons2 = Auxin()->Font_Icons->get_icons_list( 'auxicon2' );
 
-        foreach ( $icons_v2 as $icon ) {
-            $icons_list2[] = str_replace( '.auxicon2-', '', $icon->classname );
+        if( is_array( $icons2 ) ){
+            foreach ( $icons2 as $icon ) {
+                $icons_list2[] = str_replace( '.auxicon2-', '', $icon->classname );
+            }
         }
 
         $tabs['auxicon2'] = [
@@ -785,7 +791,7 @@ final class Elements {
 	 *
 	 */
     public function clear_cache(){
-        //\Elementor\Plugin::instance()->files_manager->clear_cache();
+        // \Elementor\Plugin::instance()->files_manager->clear_cache();
     }
 
 }

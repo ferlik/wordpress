@@ -4,7 +4,7 @@
  *
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
  */
 
@@ -408,7 +408,7 @@ function auxin_add_option_styles( $css ){
                             if( is_numeric( $property ) ){
                                 $selectors .= $property_value . ',';
                             } else {
-                                $selectors .= $property . '{'. $property_value .'} ';
+                                $selectors .= $property . ' {'. $property_value .'} ';
                             }
                         }
                     } else {
@@ -428,6 +428,10 @@ function auxin_add_option_styles( $css ){
                         $css[ $field_id ] = $css_generator->get_css( $replacement_value, $selectors , $placeholder );
                         Auxin_Fonts::get_instance()->parse_typography();
                     } else {
+                        // append placeholder if is not included in selector
+                        if( false === strpos( $selectors, '{' ) && ! empty( $field['placeholder'] ) ){
+                            $selectors .= ' { ' . $field['placeholder'] . ' }';
+                        }
                         $css[ $field_id ] = str_replace( "{{VALUE}}" , $replacement_value, $selectors );
                     }
                 } else {

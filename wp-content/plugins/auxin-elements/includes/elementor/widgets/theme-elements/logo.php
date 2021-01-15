@@ -204,7 +204,7 @@ class Logo extends Widget_Base {
 				),
 				'show_label' => false,
 			)
-		);
+        );
 
         $this->end_controls_section();
 
@@ -713,6 +713,22 @@ class Logo extends Widget_Base {
         );
 
         $logo_markup = '<a ' . $link_attr . ' >' . $logo_image_markup . '</a>';
+        
+        // add secondary sticky logo 
+        if ( $secondary_logo_id ) {
+            $secondary_logo_image_markup = auxin_get_the_responsive_attachment( $secondary_logo_id,
+                    array(
+                        'quality'         => 100,
+                        'size'            => $image_size,
+                        'crop'            => true,
+                        'add_hw'          => true,
+                        'upscale'         => false,
+                        'preloadable'     => false
+                    )
+            );
+            $logo_2_link_attr = \str_replace( 'aux-logo-anchor', 'aux-logo-anchor aux-logo-sticky aux-logo-hidden', $link_attr );
+            $logo_markup .= '<a ' . $logo_2_link_attr . ' >' . $secondary_logo_image_markup . '</a>';
+        }
     }
 
     $output .= '<div class="aux-widget-logo">';

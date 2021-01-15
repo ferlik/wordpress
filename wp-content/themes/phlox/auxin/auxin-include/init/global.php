@@ -4,7 +4,7 @@
  *
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
 */
 
@@ -114,8 +114,11 @@ function auxin_get_option( $option_name, $default_value = '' ){
     if ( 'unpredictableZvidSidXisudpdido899e8' !== $pre )
         return $pre;
 
+
     $auxin_options = auxin_options();
-    return isset( $auxin_options[ $option_name ] ) ? $auxin_options[ $option_name ]: $default_value;
+    $option_value  = isset( $auxin_options[ $option_name ] ) ? $auxin_options[ $option_name ]: $default_value;
+
+    return apply_filters( 'auxin_get_option', $option_value, $option_name, $default_value );
 }
 
 

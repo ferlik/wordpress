@@ -4,7 +4,7 @@
  *
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
  */
 
@@ -45,6 +45,15 @@ function auxin_define_options_info( $fields_sections_list ){
         'section'        => 'general-section-layout',
         'default'        => '',
         'type'           => 'typography_template_part'
+    );
+
+    $options[] = array(
+        'title'          => __( 'Global Colors Template', 'phlox' ),
+        'description'    => '',
+        'id'             => 'global_colors_html_template',
+        'section'        => 'general-section-layout',
+        'default'        => '',
+        'type'           => 'global_colors_template_part'
     );
 
     // --------------------------------------------------------------
@@ -412,7 +421,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'id'          => 'page_preload_prgoress_bar_color',
         'section'     => 'page-animation-preloading-section-layout',
         'type'        => 'color',
-        'transport'   => 'refresh',
+        'transport'   => 'postMessage',
         'dependency'  => array(
             array(
                 'id'      => 'page_preload_enable',
@@ -425,7 +434,27 @@ function auxin_define_options_info( $fields_sections_list ){
                  'operator'=> ''
             )
         ),
-        'default'   => ''
+        'selectors' => ' ',
+        'default'   => '#FFFFFF',
+    );
+
+    $options[] = array(
+        'title'       => __( 'Page Preloading Color', 'phlox' ),
+        'id'          => 'page_preload_page_overlay_color',
+        'section'     => 'page-animation-preloading-section-layout',
+        'type'        => 'color',
+        'transport'   => 'postMessage',
+        'dependency'  => array(
+            array(
+                'id'      => 'page_preload_enable',
+                'value'   => array('1'),
+                'operator'=> ''
+            )
+        ),
+        'default'     => '',
+        'selectors'   => [
+            ".csstransitions .aux-page-animation-cover .aux-page-animation-overlay" => "background-color:{{VALUE}};"
+        ]
     );
 
     /* ---------------------------------------------------------------------------------------------------
@@ -497,19 +526,10 @@ function auxin_define_options_info( $fields_sections_list ){
                 'operator'=> '=='
             )
         ),
-        'style_callback' => function( $value = null ){
-            // Don't generate custom styles if custom site background is disabled
-            if( ! auxin_get_option( 'site_body_background_show' ) ){
-                return '';
-            }
-
-            if( ! $value ){
-                $value = esc_attr( auxin_get_option( 'site_body_background_color' ) );
-            }
-            return empty( $value ) ? '' : "body { background-color:$value; }";
-        },
-        'transport' => 'postMessage',
-        'default'   => ''
+        'selectors'     => 'body',
+        'placeholder'   => 'background-color:{{VALUE}}',
+        'transport'     => 'postMessage',
+        'default'       => ''
     );
 
     $options[] = array(
@@ -826,13 +846,9 @@ function auxin_define_options_info( $fields_sections_list ){
                 'value'   => '1'
             )
         ),
-        'style_callback' => function( $value = null ){
-            if( ! $value ){
-                $value = esc_attr( auxin_get_option( 'site_frame_background_color' ) );
-            }
-            return empty( $value ) ? '' : "@media screen and (min-width: 700px) { .aux-framed .aux-side-frames, body.aux-framed:after,
-            .aux-framed .aux-side-frames:before, .aux-framed .aux-side-frames:after{ background-color:$value; } }";
-        },
+        'selectors' => [
+            '@media screen and (min-width: 700px) { .aux-framed .aux-side-frames, body.aux-framed:after, .aux-framed .aux-side-frames:before, .aux-framed .aux-side-frames:after' => 'background-color:{{VALUE}};}'
+        ],
         'transport' => 'postMessage',
         'default'   => '#111111'
     );
@@ -1241,6 +1257,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'dependency'     => array(),
         'default'        => '#1bb0ce',
         'type'           => 'color',
+        'selectors'      => ' '
     );
 
     // Sub section - Forms -------------------------------
@@ -1722,16 +1739,12 @@ function auxin_define_options_info( $fields_sections_list ){
                 'operator'=> '!='
            ),
            'relation' => 'and'
-       ),
-        'style_callback' => function( $value = null ){
-            if( ! $value ){
-                $value = esc_attr( auxin_get_option( 'sticky_header_color' , '#fff' ) );
-            }
-            return $value ? ".site-header-section.aux-sticky, .aux-elementor-header.aux-sticky { background-color:$value; }" : '';
-        },
-        'type'      => 'color',
-        'transport' => 'postMessage',
-        'default'   => '#FFFFFF'
+        ),
+        'type'          => 'color',
+        'selectors'     => '.aux-elementor-header.aux-sticky .elementor-section-wrap > .elementor-section',
+        'placeholder'   => 'background-color:{{VALUE}} !important;',
+        'transport'     => 'postMessage',
+        'default'       => '#FFFFFF'
     );
 
     $options[] = array(
@@ -1764,7 +1777,7 @@ function auxin_define_options_info( $fields_sections_list ){
 
                 $selector  = ".aux-top-sticky .site-header-section.aux-sticky .aux-fill .aux-menu-depth-0 > .aux-item-content, ".
                              ".aux-top-sticky .site-header-section.aux-sticky .aux-header-elements,".
-                             ".aux-elementor-header.aux-sticky { height:%spx; }";
+                             ".aux-elementor-header.aux-sticky .elementor-section-wrap > .elementor-section > .elementor-container { min-height:%spx; }";
 
             return sprintf( $selector , $value );
         },
@@ -2541,13 +2554,9 @@ function auxin_define_options_info( $fields_sections_list ){
            ),
 
         ),
-        'style_callback' => function( $value = null ){
-            if( ! $value ){
-                $value = auxin_get_option( 'site_transparent_header_bgcolor' , 'rgba(255, 255, 255, 0)' );
-            }
-            return $value ? ".site-header-section { background-color:$value; }" : '';
-        },
         'type'      => 'color',
+        'selectors' => '.site-header-section',
+        'placeholder'   => 'background-color:{{VALUE}};',
         'transport' => 'postMessage',
         'default'   => '#FFFFFF'
     );
@@ -2672,17 +2681,11 @@ function auxin_define_options_info( $fields_sections_list ){
                 'operator'=> '=='
             ),
         ),
-        'transport'      => 'postMessage',
-        'style_callback' => function( $value = null ){
-            if( ! $value )
-                $value = esc_attr( auxin_get_option( 'site_vertical_menu_background_color' , '#FFF' ) );
-
-            $selector  = ".aux-vertical-menu-side  { background-color:%s; }";
-
-            return sprintf( $selector , $value );
-        },
-        'default'   => '#FFF',
-        'type'      => 'color'
+        'transport'     => 'postMessage',
+        'default'       => '#FFF',
+        'type'          => 'color',
+        'selectors'     => '.aux-vertical-menu-side',
+        'placeholder'   => 'background-color:{{VALUE}};'
     );
 
 
@@ -3082,19 +3085,12 @@ function auxin_define_options_info( $fields_sections_list ){
                'value'   => '1',
                'operator'=> '=='
            ),
-       ),
+        ),
         'transport'      => 'postMessage',
-        'style_callback' => function( $value = null ){
-            if( ! $value ) {
-                $value = esc_attr( auxin_get_option( 'site_mobile_header_toggle_button_color', '#333' ) );
-            }
-
-            $selector  = ".site-header-section .aux-header .aux-burger:before, .site-header-section .aux-header .aux-burger:after, .site-header-section .aux-header .aux-burger .mid-line{ border-color:%s; }";
-
-            return sprintf( $selector , $value );
-        },
         'default'        => '#3d3d3d',
         'type'           => 'color',
+        'selectors'      => '.site-header-section .aux-header .aux-burger:before, .site-header-section .aux-header .aux-burger:after, .site-header-section .aux-header .aux-burger .mid-line',
+        'placeholder'    => 'border-color:{{VALUE}};'
     );
 
     $options[] = array(
@@ -3203,16 +3199,10 @@ function auxin_define_options_info( $fields_sections_list ){
             ),
         ),
         'transport'      => 'postMessage',
-        'style_callback' => function( $value = null ){
-            if( ! $value )
-                $value = esc_attr( auxin_get_option( 'site_menu_full_screen_background_color', 'rgba(255, 255, 255, 0.95)' ) );
-
-            $selector  = "#fs-menu-search:before { background-color:%s; }";
-
-            return sprintf( $selector , $value );
-        },
         'default'   => 'rgba(255, 255, 255, 0.95)',
-        'type'      => 'color'
+        'type'      => 'color',
+        'selectors'      => '#fs-menu-search:before',
+        'placeholder'    => 'background-color:{{VALUE}};'
     );
 
     $options[] = array(
@@ -4091,6 +4081,8 @@ function auxin_define_options_info( $fields_sections_list ){
         'description' => __( 'Specifies the color of social icons.', 'phlox' ),
         'section'     => 'header-section-main-socials',
         'type'        => 'color',
+        'selectors'      => '.aux-top-header .aux-social-list a ',
+        'placeholder'    => 'color:{{VALUE}};',
         'dependency'  => array(
             array(
                 'id'      => 'socials_brand_color',
@@ -4098,12 +4090,6 @@ function auxin_define_options_info( $fields_sections_list ){
                 'operator'=> '=='
             )
         ),
-        'style_callback' => function( $value = null ){
-            if( ! $value ){
-                $value = esc_attr( auxin_get_option( 'socials_brand_color_custom' ) );
-            }
-            return empty( $value ) ? '' : ".aux-top-header .aux-social-list a { color:$value; }";
-        },
         'transport' => 'postMessage',
         'default'   => ''
     );
@@ -4440,8 +4426,10 @@ function auxin_define_options_info( $fields_sections_list ){
         'id'          => 'post_single_featured_color',
         'section'     => 'blog-section-single',
         'dependency'  => '',
-        'transport'   => 'refresh',
+        'transport'   => 'postMessage',
         'type'        => 'color',
+        'selectors'   => ' ',
+        'placeholder' => '',
         'default'     => '#1bb0ce'
     );
 
@@ -4707,13 +4695,9 @@ function auxin_define_options_info( $fields_sections_list ){
             'section'       => 'blog-section-single',
             'transport'     => 'postMessage',
             'type'          => 'color',
+            'selectors'     => '.single-post .wp_ulike_btn:before, .single-post .wp_ulike_is_liked .wp_ulike_btn:before ',
+            'placeholder'   => 'color:{{VALUE}};',
             'default'       => '',
-            'style_callback' => function( $value = null ){
-                if( ! $value ){
-                    $value = esc_attr( auxin_get_option( 'blog_post_like_icon_color' ) );
-                }
-                return $value ? ".single-post .wp_ulike_btn:before, .single-post .wp_ulike_is_liked .wp_ulike_btn:before { color:{$value}; }" : '';
-            },
             'dependency'  => array(
                 array(
                      'id'      => 'show_post_single_meta_info',
@@ -4740,13 +4724,9 @@ function auxin_define_options_info( $fields_sections_list ){
             'section'       => 'blog-section-single',
             'transport'     => 'postMessage',
             'type'          => 'color',
+            'selectors'     => '.single-post .wp_ulike_is_unliked .wp_ulike_btn:before',
+            'placeholder'   => 'color:{{VALUE}};',
             'default'       => '',
-            'style_callback' => function( $value = null ){
-                if( ! $value ){
-                    $value = esc_attr( auxin_get_option( 'blog_post_not_like_icon_color' ) );
-                }
-                return $value ? ".single-post .wp_ulike_is_unliked .wp_ulike_btn:before { color:{$value}; }" : '';
-            },
             'dependency'  => array(
                 array(
                      'id'      => 'show_post_single_meta_info',
@@ -4773,13 +4753,9 @@ function auxin_define_options_info( $fields_sections_list ){
             'section'       => 'blog-section-single',
             'transport'     => 'postMessage',
             'type'          => 'color',
+            'selectors'     => '.single-post .wp_ulike_general_class .wp_ulike_btn:hover:before',
+            'placeholder'   => 'color:{{VALUE}};',
             'default'       => '',
-            'style_callback' => function( $value = null ){
-                if( ! $value ){
-                    $value = esc_attr( auxin_get_option( 'blog_post_like_icon_hover_color' ) );
-                }
-                return $value ? ".single-post .wp_ulike_general_class .wp_ulike_btn:hover:before { color:{$value}; }" : '';
-            },
             'dependency'  => array(
                 array(
                      'id'      => 'show_post_single_meta_info',
@@ -4840,7 +4816,7 @@ function auxin_define_options_info( $fields_sections_list ){
             'type'           => 'responsive_dimensions',
             'selectors'      => '.single-post .wp_ulike_general_class button',
             'transport'      => 'postMessage',
-            'placeholder'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+            'placeholder'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
             'dependency'  => array(
                 array(
                      'id'      => 'show_post_single_meta_info',
@@ -4862,6 +4838,18 @@ function auxin_define_options_info( $fields_sections_list ){
     }
 
     $options[] = array(
+        'title'       => __( 'Display Tags Section', 'phlox' ),
+        'description' => __( 'Enable it to display tags section under the post content.', 'phlox' ),
+        'id'          => 'show_post_single_tags_section',
+        'section'     => 'blog-section-single',
+        'dependency'  => '',
+        'transport'   => 'postMessage',
+        'post_js'     => '$(".single-post .hentry .entry-meta").auxToggle( to );',
+        'default'     => '1',
+        'type'        => 'switch'
+    );
+
+    $options[] = array(
         'title'       => __( 'Display Share Button', 'phlox' ),
         'description' => __( 'Enable it to display %s share button%s on single post.', 'phlox' ),
         'id'          => 'show_blog_post_share_button',
@@ -4874,6 +4862,11 @@ function auxin_define_options_info( $fields_sections_list ){
                  'id'      => 'show_post_single_meta_info',
                  'value'   => array('1'),
                  'operator'=> ''
+            ),
+            array(
+                'id'        => 'show_post_single_tags_section',
+                'value'     => array('1'),
+                'operator'  => ''
             )
         ),
         'default'     => '1'
@@ -4900,7 +4893,12 @@ function auxin_define_options_info( $fields_sections_list ){
                 'id'      => 'show_blog_post_share_button',
                 'value'   => array('1'),
                 'operator'=> ''
-           )
+            ),
+            array(
+                'id'        => 'show_post_single_tags_section',
+                'value'     => array('1'),
+                'operator'  => ''
+            )
         ),
         'default'     => 'icon',
     );
@@ -4927,24 +4925,25 @@ function auxin_define_options_info( $fields_sections_list ){
                 'id'      => 'blog_post_share_button_type',
                 'value'   => array('icon'),
                 'operator'=> ''
+            ),
+            array(
+                'id'        => 'show_post_single_tags_section',
+                'value'     => array('1'),
+                'operator'  => ''
             )
         )
     );
 
     $options[] = array(
         'title'         => __( 'Icon Color', 'phlox' ),
-        'description'   => __( 'Like icon color','phlox' ),
+        'description'   => __( 'Share icon color','phlox' ),
         'id'            => 'blog_post_share_button_icon_color',
         'section'       => 'blog-section-single',
         'transport'     => 'postMessage',
         'type'          => 'color',
+        'selectors'     => '.single-post .aux-single-post-share span::before',
+        'placeholder'   => 'color:{{VALUE}};',
         'default'       => '',
-        'style_callback' => function( $value = null ){
-            if( ! $value ){
-                $value = esc_attr( auxin_get_option( 'blog_post_share_button_icon_color' ) );
-            }
-            return $value ? ".single-post .aux-single-post-share span::before { color:{$value}; }" : '';
-        },
         'dependency'  => array(
             array(
                  'id'      => 'show_post_single_meta_info',
@@ -4960,24 +4959,25 @@ function auxin_define_options_info( $fields_sections_list ){
                 'id'      => 'blog_post_share_button_type',
                 'value'   => array('icon'),
                 'operator'=> ''
+            ),
+            array(
+                'id'        => 'show_post_single_tags_section',
+                'value'     => array('1'),
+                'operator'  => ''
             )
         )
     );
 
     $options[] = array(
         'title'         => __( 'Icon Hover Color', 'phlox' ),
-        'description'   => __( 'Like icon hover color','phlox' ),
+        'description'   => __( 'Share icon hover color','phlox' ),
         'id'            => 'blog_post_share_button_icon_hover_color',
         'section'       => 'blog-section-single',
         'transport'     => 'postMessage',
         'type'          => 'color',
+        'selectors'     => '.single-post .aux-single-post-share span:hover::before',
+        'placeholder'   => 'color:{{VALUE}};',
         'default'       => '',
-        'style_callback' => function( $value = null ){
-            if( ! $value ){
-                $value = esc_attr( auxin_get_option( 'blog_post_share_button_icon_hover_color' ) );
-            }
-            return $value ? ".single-post .aux-single-post-share span:hover::before { color:{$value}; }" : '';
-        },
         'dependency'  => array(
             array(
                  'id'      => 'show_post_single_meta_info',
@@ -4993,6 +4993,11 @@ function auxin_define_options_info( $fields_sections_list ){
                 'id'      => 'blog_post_share_button_type',
                 'value'   => array('icon'),
                 'operator'=> ''
+            ),
+            array(
+                'id'        => 'show_post_single_tags_section',
+                'value'     => array('1'),
+                'operator'  => ''
             )
         )
     );
@@ -5018,6 +5023,11 @@ function auxin_define_options_info( $fields_sections_list ){
                 'id'      => 'blog_post_share_button_type',
                 'value'   => array('icon'),
                 'operator'=> ''
+            ),
+            array(
+                'id'        => 'show_post_single_tags_section',
+                'value'     => array('1'),
+                'operator'  => ''
             )
         ),
         'style_callback' => function( $value = null ){
@@ -5038,7 +5048,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'type'           => 'responsive_dimensions',
         'selectors'      => '.single-post .aux-single-post-share',
         'transport'      => 'postMessage',
-        'placeholder'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+        'placeholder'    => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
         'dependency'  => array(
             array(
                  'id'      => 'show_post_single_meta_info',
@@ -5054,20 +5064,13 @@ function auxin_define_options_info( $fields_sections_list ){
                 'id'      => 'blog_post_share_button_type',
                 'value'   => array('icon'),
                 'operator'=> ''
+            ),
+            array(
+                'id'        => 'show_post_single_tags_section',
+                'value'     => array('1'),
+                'operator'  => ''
             )
         ),
-    );
-
-    $options[] = array(
-        'title'       => __( 'Display Tags Section', 'phlox' ),
-        'description' => __( 'Enable it to display tags section under the post content.', 'phlox' ),
-        'id'          => 'show_post_single_tags_section',
-        'section'     => 'blog-section-single',
-        'dependency'  => '',
-        'transport'   => 'postMessage',
-        'post_js'     => '$(".single-post .hentry .entry-meta").auxToggle( to );',
-        'default'     => '1',
-        'type'        => 'switch'
     );
 
     $options[] = array(
@@ -5712,6 +5715,7 @@ function auxin_define_options_info( $fields_sections_list ){
             }
         ),
         'type'          => 'color',
+        'selectors'     => ' ',
         'default'       => '',
         'dependency'    => array(
             array(
@@ -5927,6 +5931,7 @@ function auxin_define_options_info( $fields_sections_list ){
             }
         ),
         'type'          => 'color',
+        'selectors'     => ' ',
         'default'       => '',
         'dependency'    => array(
             array(
@@ -6135,6 +6140,7 @@ function auxin_define_options_info( $fields_sections_list ){
             }
         ),
         'type'          => 'color',
+        'selectors'     => ' ',
         'default'       => '',
         'dependency'    => array(
             array(
@@ -8413,8 +8419,8 @@ function auxin_define_options_info( $fields_sections_list ){
     $sections[] = array(
         'id'          => 'blog-section-blog-appearence',
         'parent'      => 'blog-section', // section parent's id
-        'title'       => __( 'Blog Page Appereance', 'phlox' ),
-        'description' => __( 'Blog Page Appereance', 'phlox' ),
+        'title'       => __( 'Blog Page Appearance', 'phlox' ),
+        'description' => __( 'Blog Page Appearance', 'phlox' ),
     );
 
     $options[] = array(
@@ -9133,6 +9139,7 @@ function auxin_define_options_info( $fields_sections_list ){
             }
         ),
         'type'          => 'color',
+        'selectors'     => ' ',
         'default'       => '',
         'dependency'    => array(
             array(
@@ -9347,6 +9354,7 @@ function auxin_define_options_info( $fields_sections_list ){
             }
         ),
         'type'          => 'color',
+        'selectors'     => ' ',
         'default'       => '',
         'dependency'    => array(
             array(
@@ -9556,6 +9564,7 @@ function auxin_define_options_info( $fields_sections_list ){
             }
         ),
         'type'          => 'color',
+        'selectors'     => ' ',
         'default'       => '',
         'dependency'    => array(
             array(
@@ -9829,13 +9838,9 @@ function auxin_define_options_info( $fields_sections_list ){
         'id'            => 'page_title_breadcrumb_sep_color',
         'section'       => 'page-section-typography',
         'transport'     => 'postMessage',
-        'style_callback' => function( $value = null ){
-            if( ! $value ){
-                $value = esc_attr( auxin_get_option( 'page_title_breadcrumb_sep_color' ) );
-            }
-            return $value ? ".page-title-section .aux-breadcrumbs span:after { color:$value; }" : '';
-        },
         'type'          => 'color',
+        'selectors'     => '.page-title-section .aux-breadcrumbs span:after',
+        'placeholder'   => 'color:{{VALUE}};',
         'default'       => ''
     );
 
@@ -10432,6 +10437,8 @@ function auxin_define_options_info( $fields_sections_list ){
         'description' => __( 'Specifies background color of subfooter bar.', 'phlox' ),
         'section'     => 'footer-section-subfooter-bar',
         'type'        => 'color',
+        'selectors'   => '.aux-subfooter-bar',
+        'placeholder' => 'background-color:{{VALUE}};',
         'dependency'  => array(
             array(
                  'id'      => 'show_subfooter_bar',
@@ -10444,12 +10451,6 @@ function auxin_define_options_info( $fields_sections_list ){
                 'operator'=> '=='
            )
         ),
-        'style_callback' => function( $value = null ){
-            if( ! $value ){
-                $value = esc_attr( auxin_get_option( 'subfooter_bar_layout_bg_color' ) );
-            }
-            return $value ? ".aux-subfooter-bar { background-color:$value; }" : '';
-        },
         'transport' => 'postMessage',
         'default'   => '#fafafa'
     );
@@ -10460,6 +10461,8 @@ function auxin_define_options_info( $fields_sections_list ){
         'description' => __( 'Specifies top border color of subfooter bar.', 'phlox' ),
         'section'     => 'footer-section-subfooter-bar',
         'type'        => 'color',
+        'selectors'   => '.aux-subfooter-bar',
+        'placeholder' => 'border-top:1px solid {{VALUE}};',
         'dependency'  => array(
             array(
                  'id'      => 'show_subfooter_bar',
@@ -10472,12 +10475,6 @@ function auxin_define_options_info( $fields_sections_list ){
                 'operator'=> '=='
            )
         ),
-        'style_callback' => function( $value = null ){
-            if( ! $value ){
-                $value = esc_attr( auxin_get_option( 'subfooter_bar_top_border_color' ) );
-            }
-            return $value ? ".aux-subfooter-bar { border-top:1px solid $value; }" : '';
-        },
         'transport' => 'postMessage',
         'default'   => '#EAEAEA'
     );
@@ -10600,6 +10597,8 @@ function auxin_define_options_info( $fields_sections_list ){
         'description' => __( 'Specifies background color of subfooter.', 'phlox' ),
         'section'     => 'footer-section-subfooter',
         'type'        => 'color',
+        'selectors'   => '.aux-subfooter',
+        'placeholder' => 'background-color:{{VALUE}};',
         'dependency' => array(
             array(
                  'id'      => 'show_subfooter',
@@ -10612,12 +10611,6 @@ function auxin_define_options_info( $fields_sections_list ){
                 'operator'=> '=='
            )
         ),
-        'style_callback' => function( $value = null ){
-            if( ! $value ){
-                $value = esc_attr( auxin_get_option( 'subfooter_layout_bg_color' ) );
-            }
-            return $value ? ".aux-subfooter { background-color:$value; }" : '';
-        },
         'transport' => 'postMessage',
         'default'   => ''
     );
@@ -10798,6 +10791,8 @@ function auxin_define_options_info( $fields_sections_list ){
         'description' => __( 'Specifies top border color of subfooter.', 'phlox' ),
         'section'     => 'footer-section-subfooter',
         'type'        => 'color',
+        'selectors'   => '.aux-subfooter',
+        'placeholder' => 'border-top:1px solid {{VALUE}};',
         'dependency'  => array(
             array(
                  'id'      => 'show_subfooter',
@@ -10810,12 +10805,6 @@ function auxin_define_options_info( $fields_sections_list ){
                 'operator'=> '=='
            )
         ),
-        'style_callback' => function( $value = null ){
-            if( ! $value ){
-                $value = esc_attr( auxin_get_option( 'subfooter_top_border_color' ) );
-            }
-            return $value ? ".aux-subfooter { border-top:1px solid $value; }" : '';
-        },
         'transport' => 'postMessage',
         'default'   => '#EAEAEA',
         'starter'   => '#EAEAEA'
@@ -10899,7 +10888,7 @@ function auxin_define_options_info( $fields_sections_list ){
         'type'           => 'responsive_dimensions',
         'selectors'      => '.aux-subfooter > .aux-wrapper > .aux-container',
         'transport'      => 'postMessage',
-        'placeholder'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}',
+        'placeholder'    => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
         'dependency'  => array(
             array(
                 'id'      => 'site_footer_use_legacy',

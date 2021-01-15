@@ -7,7 +7,7 @@
  * @license    LICENSE.txt
  * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2020 averta
+ * @copyright  (c) 2010-2021 averta
  */
 function  auxin_get_text_master_array( $master_array ) {
 
@@ -989,11 +989,7 @@ function auxin_widget_column_callback( $atts, $shortcode_content = null ){
         'preloadable'        => '0',
         'preload_preview'    => '0',
         'preload_bgcolor'    => '',
-        'icon_color'         => '#888',            // color for icon
         'icon_size'          => 'large',           // small, medium, large, x-large
-        'icon_bg_color'      => '',                // empty mean inherit,
-        'icon_border_color'  => '',                // border color for icon
-        'icon_border_width'  => '1',               // border width for icon
         'icon_shape'         => '',                // circle, semi-circle, round-rect, rect, fill, ...
         'img_shape'          => '',                // circle, semi-circle, round-rect, rect, fill, ...
         'image_position'     => 'top',             // top,left,right
@@ -1108,19 +1104,6 @@ function auxin_widget_column_callback( $atts, $shortcode_content = null ){
     $header_classess .= empty( $header_bg_img ) ? '' : 'aux-text-widget-bg-' . esc_attr( $header_img_display ) . ' ';
 
     //---------------------------------------------
-    // Icon Inline Styles
-
-    $icon_styles  = '';
-    if( 'icon' == $icon_or_image ){
-        $icon_styles .= empty( $icon_color ) ? '' : 'color: ' . esc_attr( $icon_color ) . '; ';
-        $icon_styles .= empty( $icon_bg_color ) ? '' : 'background-color:' . esc_attr( $icon_bg_color ) . '; ';
-    }
-    $icon_styles .= empty( $icon_border_color ) && empty( $icon_border_width ) ? '' : 'border: '. esc_attr( $icon_border_width ) . 'px solid ' . esc_attr( $icon_border_color ) . '; ';
-
-    $icon_styles  = ! empty( $icon_styles ) ? 'style="' . $icon_styles . '"' : '';
-
-
-    //---------------------------------------------
     // Icon Classnames
 
     $icon_box_classnames  = '';
@@ -1174,7 +1157,7 @@ function auxin_widget_column_callback( $atts, $shortcode_content = null ){
 
             <?php if( ! empty( $icon ) || ! empty( $image ) ||  ! empty( $header_bg_img ) || ! empty( $icon_svg_inline ) ) { ?>
                 <div class="aux-text-widget-header <?php echo $header_classess ;?>" <?php echo $header_styles ;?> >
-                        <div class="aux-ico-box <?php echo $icon_box_classnames ;?> " <?php echo $icon_styles ;?>>
+                        <div class="aux-ico-box <?php echo $icon_box_classnames ;?> ">
                             <?php if ( ! empty( $icon ) ){ ;?>
                                 <span class="aux-ico <?php echo esc_attr( $icon_classname ) ;?>" > </span>
                             <?php } elseif ( ! empty( $image ) ) { ?>

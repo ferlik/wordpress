@@ -917,7 +917,7 @@ add_action('admin_notices', 'auxin_check_license_terms');
 function auxin_maybe_set_default_header_template() {
 
     // check if auxin-elements and elementor is active and if site header template is set or not
-    if ( ! empty( auxin_get_option('site_elementor_header_template' ) ) || ! class_exists( '\Elementor\Plugin' ) ){
+    if ( ! empty( auxin_get_option('site_elementor_header_template' ) ) || ! class_exists( '\Elementor\Plugin' ) || get_theme_mod( 'default_template_imported' ) ){
         return;
     }
 
@@ -935,6 +935,7 @@ function auxin_maybe_set_default_header_template() {
     if ( $template_data['success'] == true ) {
         auxin_update_option( 'site_elementor_header_edit_template', $template_data['data']['postId'] );
         auxin_update_option( 'site_elementor_header_template', $template_data['data']['postId'] );
+        set_theme_mod( 'default_template_imported', true );
     }
 
 }

@@ -4,7 +4,7 @@
  *
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
 */
 
@@ -1207,8 +1207,13 @@ class Auxin_Customize_Typography_Template_Part_Control extends Auxin_Customize_C
             <div class="aux-loading">LOADING...</div>
         </div>
 
-        <div class="aux-control" data-type="color" data-name="color" data-default="">
-            <input type="text"/>
+        <div class="aux-control" data-type="GlobalColorPicker" data-name="color" data-selector="inherit" data-default="">
+            <div class="aux-control" data-type="color" data-name="color" data-default="">
+                <input type="text" />
+            </div>
+            <div class="aux-control" data-type="popover" data-template="aux-global-colors-controller-template" data-name="popover" data-container=".wp-full-overlay-sidebar-content" >
+                <button></button>
+            </div>
         </div>
 
         <div class="aux-control" data-type="responsive" data-name="font-size-resp">
@@ -1320,6 +1325,110 @@ class Auxin_Customize_Typography_Template_Part_Control extends Auxin_Customize_C
     }
 }
 
+/**
+ * Customize Global Colors Template Part Control class.
+ */
+class Auxin_Customize_GlobalColors_Template_Part_Control extends Auxin_Customize_Control {
+    /**
+     * @access public
+     * @var string
+     */
+    public $type = 'auxin_global_colors_template_part';
+
+    /**
+     * @access public
+     * @var array
+     */
+    public $global_colors = [];
+
+    /**
+     * @access public
+     * @var string
+     */
+    public $edit_link = '';
+
+    /**
+     * @access public
+     * @var string
+     */
+    public $edit_title = '';
+
+    /**
+     * Don't render the control content from PHP, as it's rendered via JS on load.
+     */
+    public function render_content() {
+        $this->set_global_colors();
+    ?>
+    <div id="aux-global-colors-controller-template" class="aux-control aux-controller-template"  data-remove-defaults="true" data-selector="inherit">
+        <div class="aux-global-colors-header">
+            <span><?php _e( 'GLOBAL COLORS', 'phlox' );?></span>
+            <a href="<?php echo esc_url( $this->edit_link );?>" target="_blank"><?php echo esc_html( $this->edit_title );?></a>
+        </div>
+        <div class="aux-global-colors-divider"></div>
+        <ul class="aux-colors aux-control" data-type="choose" data-name="variable">
+            <?php
+                $this->get_global_colors_markup();
+            ?>
+        </ul>
+    </div>
+
+    <?php
+    }
+
+    /**
+     * Get global colors from elementor plugin
+     *
+     * @return void
+     */
+    public function set_global_colors() {
+        $active_kit_ID = get_option( 'elementor_active_kit');
+        $init_warning = __('Please set global colors in elementor', 'phlox' );
+
+        if ( ! defined( 'ELEMENTOR_VERSION' ) || empty( $active_kit_ID ) ) {
+            $this->edit_title = __( 'Install Elementor', 'phlox' );
+            $this->edit_link = admin_url( 'plugins.php' );
+            $this->global_colors = ['aux' => [ 'color' => '', 'title' => $init_warning ] ];
+            return;
+        }
+
+        $elementor_page_settings = maybe_unserialize( get_post_meta( $active_kit_ID, '_elementor_page_settings', true ) );
+        // elementor global system colors
+        if ( ! empty( $elementor_page_settings['system_colors'] ) ) {
+            foreach( $elementor_page_settings['system_colors'] as $key => $color ) {
+                $global_colors[ $color['_id'] ]['color'] = $color['color'];
+                $global_colors[ $color['_id'] ]['title'] = $color['title'];
+            }
+        }
+
+        // elementor global custom colors
+        if ( ! empty( $elementor_page_settings['custom_colors'] ) ) {
+            foreach( $elementor_page_settings['custom_colors'] as $key => $color ) {
+                $global_colors[ $color['_id'] ]['color'] = $color['color'];
+                $global_colors[ $color['_id'] ]['title'] = $color['title'];
+            }
+        }
+
+        $this->edit_title = empty( $global_colors ) ? __( 'Setup Global Colors', 'phlox' ) : __( 'Edit', 'phlox' );
+        $this->edit_link = admin_url( 'edit.php?post_type=elementor_library&tabs_group=library' );
+        $this->global_colors = !empty( $global_colors ) ? $global_colors : ['aux' => [ 'color' => '', 'title' => $init_warning ] ];
+    }
+
+    /**
+     * Print Global Colors markup
+     */
+    public function get_global_colors_markup() {
+
+        foreach ( $this->global_colors as $color_ID => $color ) {
+            ?>
+            <li class="aux-option-item" data-value="var(--e-global-color-<?php echo esc_attr( $color_ID ) . ')'; ?>" data-color="<?php echo esc_attr( $color['color'] ); ?>">
+                <div class="aux-color" style="background-color: <?php echo esc_attr( $color['color'] ); ?>"></div>
+                <span class="aux-color-label"><?php echo esc_html( $color['title'] );?></span>
+                <span class="aux-color-hex"><?php echo esc_html( $color['color'] );?></span>
+            </li>
+            <?php
+        }
+    }
+}
 
 /**
  * Customize Typography Control class.
@@ -1382,6 +1491,81 @@ class Auxin_Customize_Typography_Controller extends Auxin_Customize_Control {
         </div>
         <hr />
 
+    <?php }
+}
+
+/**
+ * Customize Global Colors Control class.
+ */
+class Auxin_Customize_GlobalColors_Controller extends Auxin_Customize_Control {
+    /**
+     * @access public
+     * @var string
+     */
+    public $type = 'auxin_group_global_colors';
+
+    /**
+     * @access public
+     * @var array
+     */
+    public $statuses;
+
+    /**
+     * Constructor.
+     *
+     * @param WP_Customize_Manager $manager Customizer bootstrap instance.
+     * @param string               $id      Control ID.
+     * @param array                $args    Optional. Arguments to override class property defaults.
+     */
+    public function __construct( $manager, $id, $args = array() ) {
+        $this->statuses = '';
+        parent::__construct( $manager, $id, $args );
+    }
+
+    /**
+     * Refresh the parameters passed to the JavaScript via JSON.
+     */
+    public function to_json() {
+        parent::to_json();
+        $this->json['statuses'] = $this->statuses;
+        $this->json['defaultValue'] = $this->setting->default;
+        $this->json['value'] = $this->value();
+    }
+
+    /**
+     * Don't render the control content from PHP, as it's rendered via JS on load.f
+     */
+    public function render_content() {
+        $selector = $this->setting->selectors;
+        $placeholder = $this->css_placeholder;
+
+        if ( is_array($selector) ) {
+
+            foreach( $selector as $current_selector => $current_placeholder) {
+                $selector = $current_selector;
+                $placeholder = $current_placeholder;
+            }
+        }
+
+        $style_template = !empty($placeholder) ? 'data-style-template="' . esc_attr($placeholder) . '"' : '';
+        ?>
+        <div class="aux-global-colors-controller aux-controller-wrapper">
+            <div class="aux-control aux-global-colors-controller-container aux-controller-btn-wrapper" data-type="container" data-selector="<?php echo esc_attr( $selector ) ;?>">
+                <span class="aux-controller-label"><?php echo esc_html( $this->label ); ?></span>
+                <div class="aux-control" data-type="GlobalColorPicker" data-name="color" data-selector="inherit" <?php echo $style_template ;?>>
+                    <div class="aux-control" data-type="color" data-name="color" data-default="">
+                        <input type="text" />
+                    </div>
+                    <div class="aux-control" data-type="popover" data-template="aux-global-colors-controller-template" data-name="popover" data-container=".wp-full-overlay-sidebar-content" >
+                        <button></button>
+                    </div>
+                </div>
+                <input type="text" class="aux-controller-input aux-global-colors-controller-json-input" data-is-json="true" value="<?php echo esc_attr( wp_json_encode( array( 'color' => $this->value() ) ) ); ?>" />
+            </div>
+            <input type="text" class="aux-controller-input aux-global-colors-controller-input" value="<?php echo esc_attr( $this->value() ); ?>" <?php $this->link(); ?> />
+            <span class="description customize-control-description aux-controller-description"><?php echo $this->description; ?></span>
+        </div>
+        <hr />
     <?php }
 }
 

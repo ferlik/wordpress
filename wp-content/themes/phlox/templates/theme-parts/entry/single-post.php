@@ -141,7 +141,7 @@
                                                 $show_share_links = auxin_get_option( 'show_post_single_tags_section', true );
                                                 $the_tags         = get_the_tag_list('<span>'. esc_html__("Tags: ", 'phlox'). '</span>', '<i>, </i>', '');
 
-                                                if( $show_share_links && ( $the_tags || is_customize_preview() ) ){
+                                                if( $show_share_links ){
                                                 ?>
                                                 <footer class="entry-meta">
                                                 <?php $share_icon = auxin_get_option( 'blog_post_share_button_icon', 'auxicon-share' ) ; ?>

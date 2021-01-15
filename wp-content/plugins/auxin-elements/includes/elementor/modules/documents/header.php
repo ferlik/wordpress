@@ -22,6 +22,7 @@ class Header extends Library_Document {
 		$properties = parent::get_properties();
 
 		$properties['location'] = 'header';
+		$properties['support_kit'] = true;
 
 		return $properties;
 	}

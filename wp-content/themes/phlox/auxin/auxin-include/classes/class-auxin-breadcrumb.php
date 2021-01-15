@@ -4,7 +4,7 @@
  *
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
 */
 
@@ -78,7 +78,7 @@ class Auxin_Breadcrumb {
             // loops thtough branch if has parent
             $p_post = $post;
 
-            while ( $p_post->post_parent ) {
+            while ( is_object( $p_post ) && $p_post->post_parent ) {
                 $branch[] = $this->create_crumb( get_the_title( $p_post->post_parent ), get_permalink( $p_post->post_parent ) );
                 $p_post   = get_post( $p_post->post_parent );
             }

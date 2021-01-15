@@ -14,6 +14,7 @@ include_once( 'compatibility/sliders/layerslider.php' );
 include_once( 'compatibility/element-pack/element-pack.php' );
 include_once( 'compatibility/yoast-seo/yoast-seo.php' );
 include_once( 'compatibility/smush/smush.php' );
+include_once( 'compatibility/woocommerce/wc.php' );
 
 
 if ( function_exists('icl_object_id') ) {

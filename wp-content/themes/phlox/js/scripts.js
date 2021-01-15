@@ -1,7 +1,7 @@
-/*! Auxin WordPress Framework - v2.6.12 (2020-08-31)
+/*! Auxin WordPress Framework - v2.7.6 (2021-01-12)
  *  Scripts for initializing plugins 
  *  http://averta.net
- *  (c) 2014-2020 averta;
+ *  (c) 2014-2021 averta;
  */
 
 
@@ -106,7 +106,7 @@ function auxin_get_contrast( color ){
                 if ( (link.href && link.href.indexOf('#') != -1) && ( (link.pathname == location.pathname) || ('/'+link.pathname == location.pathname) ) && (link.search == location.search) ) {
 
                     link.addEventListener('click', function(e) {
-                        var isWCTabs     = this.closest('.woocommerce-tabs');
+                        var isWCTabs     = this.closest('.woocommerce-tabs') || this.classList.contains('.woocommerce-review-link');
 
                         if ( !this.hash || isWCTabs ) {
                             return;
@@ -123,7 +123,7 @@ function auxin_get_contrast( color ){
                         }
 
                         if  ( isFullScreen ) {
-                            $('#nav-burger').trigger('click');
+                            $(isFullScreen).siblings('.aux-panel-close').trigger('click')
                         }
                     });
 
@@ -214,11 +214,11 @@ function auxin_get_contrast( color ){
         }
 
         var $btns = $('#site-header .aux-btns-box .aux-button'), $btn,
-            $default_logo   = $('.aux-logo-header .aux-logo-anchor:not(.aux-logo-sticky)'),
-            $sticky_logo    = $('.aux-logo-header .aux-logo-anchor.aux-logo-sticky'),
+            $default_logo   = $('.aux-logo-header .aux-logo-anchor:not(.aux-logo-sticky), .aux-widget-logo .aux-logo-anchor:not(.aux-logo-sticky)'),
+            $sticky_logo    = $('.aux-logo-header .aux-logo-anchor.aux-logo-sticky, .aux-widget-logo .aux-logo-anchor.aux-logo-sticky'),
             has_sticky_logo = $sticky_logo.length;
 
-        $('#site-header').on( 'sticky', function(){
+        $('#site-header, #site-elementor-header').on( 'sticky', function(){
             for ( var i = 0, l = $btns.length; i < l; i++ ) {
                 $btn = $btns.eq(i);
                 $btn.removeClass( "aux-" + $btn.data("colorname-default") ).addClass( "aux-" + $btn.data("colorname-sticky") );
@@ -1255,7 +1255,7 @@ for ( var i = 0 ; UlikeHeart.length > i; i++){
             // from caching the page in the in-memory bfcache.
 
             // Firefox Fix 
-            $(window).unload(function () { $(window).unbind('unload'); });
+            $(window).on( "unload", function () { $(window).unbind('unload'); });
 
             // IOS Safari Fix
             $(window).bind('pageshow', function(event) {
@@ -1736,7 +1736,7 @@ for ( var i = 0 ; UlikeHeart.length > i; i++){
 
         window.addEventListener('click', function(e){
 
-            if ( e.target.className != $FilterBy.attr('class') && e.target.className != $FilterBy.find('.aux-filter-name').attr('class') ) {
+            if ( e.target.className != $FilterBy.attr('class') && e.target.className != $FilterBy.find('.aux-filter-name').attr('class') && e.target.className != $FilterBy.find('.aux-filter-name-current').attr('class') ) {
                 if ( $DropDown.hasClass('aux-active') ){
                     $DropDown.removeClass('aux-active');
                 }
@@ -1974,8 +1974,14 @@ for ( var i = 0 ; UlikeHeart.length > i; i++){
                     break;
 
                 case 'overlay':
-                var oldSkinClassName   = args.menu.attr( 'class' ).match( /aux-skin-\w+/ )[0];
-                    args.targetWrapper = args.targetWrapper.closest('.aux-fs-popup');
+                var isBurger = !!args.menu,
+                    oldSkinClassName;
+
+                args.targetWrapper = args.targetWrapper.closest('.aux-fs-popup');
+
+                if ( !isBurger ) {
+                    oldSkinClassName = args.menu.attr( 'class' ).match( /aux-skin-\w+/ )[0];
+                }
 
                 $(this).on( 'click', args.toggleOverlayMenu );
                 args.targetWrapper.find( '.aux-panel-close' ).click( args.toggleOverlayMenu );
@@ -1983,12 +1989,20 @@ for ( var i = 0 ; UlikeHeart.length > i; i++){
                 var checkForHide = function() {
                     if ( window.innerWidth > args.activeWidth ) {
                         args.targetWrapper.hide();
-                        args.menu.addClass( oldSkinClassName );
+
+                        if ( !isBurger ) {
+                            args.menu.addClass( oldSkinClassName );
+                        }
+
                     } else {
                         if ( !args.isClosed ) {
                             args.targetWrapper.show();
                         }
-                        args.menu.removeClass( oldSkinClassName );
+
+                        if ( !isBurger ) {
+                            args.menu.removeClass( oldSkinClassName );
+                        }
+
                     }
                 }
 
@@ -2103,6 +2117,55 @@ for ( var i = 0 ; UlikeHeart.length > i; i++){
             $scope.find('.aux-master-menu').mastermenu( /*{openOn:'press'}*/ );
         }
     };
+
+    $.fn.AuxinCurrentAnchorDetect = function( $scope ) {
+        $scope = $scope || $(this) ;
+
+        var $anchors = $('a[href*="#"]'),
+            currentClass = 'current-menu-item',
+            currentClassTarget = '.aux-menu-item';
+
+        $anchors.each( function( index, element ) {
+
+            // abort on invalid hash IDs
+            if( !! element.hash.match(/[^A-Za-z0-9-#]/g) ){
+                return;
+            }
+
+            var $target = $(element.hash);
+
+            if ( !$target.length ) {
+                return
+            }
+
+            function toggleClass() {
+                var boundaries    = $target[0].getBoundingClientRect();
+                    delta         = Math.floor( Math.min( Math.max( (boundaries.y + boundaries.height) / window.innerHeight , -1 ), 1 ) ),
+                    currentTarget = element.closest( currentClassTarget );
+
+                if ( !currentTarget ) {
+                    return
+                }
+
+
+                if ( delta === 0 ) {
+                    if ( !currentTarget.classList.contains(currentClass) ) {
+                        currentTarget.classList.add(currentClass);
+                    }
+                } else {
+                    if ( currentTarget.classList.contains(currentClass) ) {
+                        currentTarget.classList.remove(currentClass);
+                    }
+                }
+            }
+
+            toggleClass();
+            $(window).on('scroll', toggleClass)
+
+        })
+
+    }
+
 
 })(jQuery, window, document);
 
@@ -2420,6 +2483,10 @@ for ( var i = 0 ; UlikeHeart.length > i; i++){
 
         // Overlay Modern Search Init
         $.fn.AuxinOverlayModernSearchInit( $scope );
+
+        // Anchor Add Current Class
+        $.fn.AuxinCurrentAnchorDetect( $scope );
+
     }
 
     /**

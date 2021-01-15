@@ -177,7 +177,7 @@ class Gallery extends Widget_Base {
                     )
                 ),
                 'condition'  => array(
-                    'layout' => array('masonry','grid')
+                    'layout' => array('masonry','grid', 'tiles')
                 )
             )
         );

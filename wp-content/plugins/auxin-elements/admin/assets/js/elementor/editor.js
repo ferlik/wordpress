@@ -375,8 +375,7 @@
                     if ( changedModel.changed.hasOwnProperty( settingName ) ) {
 
                         // Replay the animation if an animation option changed (except the animation name)
-                        if( settingName !== "aux_animation_name" && -1 !== settingName.indexOf("aux_animation_") ){
-
+                        if( settingName !== "aux_animation_name" && ( -1 !== settingName.indexOf("aux_animation_") || -1 !== settingName.indexOf("_custom") ) ){
                             // Reply the animation
                             view.$el.removeClass( model.getSetting('aux_animation_name') );
 

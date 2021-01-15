@@ -4,7 +4,7 @@
  *
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
 */
 
@@ -38,6 +38,9 @@ class Auxin_Theme_Screen_Help {
 
         $screen = get_current_screen();
 
+        if ( is_null( $screen ) ) {
+            return;
+        }
 
         // List screen properties
         $help_content  = '<p><strong>'. sprintf( __( 'Below resources are available to help you in using %s theme.', 'phlox' ), THEME_NAME_I18N ) .'</strong></p>';
@@ -69,6 +72,11 @@ class Auxin_Theme_Screen_Help {
 
         global $hook_suffix;
         $screen = get_current_screen();
+
+        if ( is_null( $screen ) ) {
+            return;
+        }
+
         $screen_id = $screen->id;
 
         // List screen properties
@@ -118,6 +126,10 @@ class Auxin_Theme_Screen_Help {
     public function display_technical_info() {
 
         $screen = get_current_screen();
+
+        if ( is_null( $screen ) ) {
+            return;
+        }
 
         // List screen properties
         $help_content  = '<ul style="width:50%;float:left;"> <strong>Web server</strong>';

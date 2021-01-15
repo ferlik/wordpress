@@ -688,6 +688,9 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
 .aux-button-loading.aux-button-error { background: #FF5858 !important; }
 .aux-button-loading.aux-button-error:after { background-image: url(images/welcome/warning.svg); width: 3px; height: 17px; }
 
+#wpadminbar .aux-header-footer-edit-links:before { content: ' '; width: 20px; height: 20px; top: 5px; margin-right: 10px; background: url(../auxin/css/images/elements/admin-logo.svg) no-repeat left center; display: inline-block; position: relative; }
+#wpadminbar #wp-admin-bar-aux-header-footer a { display: flex; justify-content: space-between; }
+#wpadminbar #wp-admin-bar-aux-header-footer a .aux-state { margin-left: 15px; background-color: #55595c; padding: 4px 8px; border-radius: 2px; line-height: 9px; margin-top: 6px; }
 #wpadminbar ul li.aux-title { background-color: #dedede; }
 #wpadminbar ul li.aux-title div { color: #222; }
 
@@ -706,7 +709,7 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
 --------------------------*/
 .customize-control { position: relative; }
 
-/*!------------------------ 
+/*!------------------------
    Deprecated Badge
 --------------------------*/
 .aux-deprecated { float: right; font-size: 11px; color: #bbb; border: 1px solid #dcdcdc; padding: 0 5px; display: inline-block; margin-right: 5px; border-radius: 4px; }
@@ -1036,9 +1039,9 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
 .aux-controller-wrapper .aux-controller-btn-wrapper .aux-reset > i:before { font-size: inherit; vertical-align: middle; padding-top: 0; }
 .aux-controller-wrapper .aux-controller-btn-wrapper [data-type='popover'] { float: right; }
 .aux-controller-wrapper .aux-controller-input { position: absolute; overflow: hidden; clip: rect(0 0 0 0); height: 1px !important; width: 1px !important; margin: -1px; padding: 0; border: 0; }
-.aux-controller-wrapper .aux-typo-controller-container { float: none; display: block; }
-.aux-controller-wrapper .aux-typo-controller-container .aux-controller-label { float: left; }
-.aux-controller-wrapper .aux-typo-controller-container .aux-reset { float: right; }
+.aux-controller-wrapper .aux-typo-controller-container, .aux-controller-wrapper .aux-global-colors-controller-container { float: none; display: block; }
+.aux-controller-wrapper .aux-typo-controller-container .aux-controller-label, .aux-controller-wrapper .aux-global-colors-controller-container .aux-controller-label { float: left; }
+.aux-controller-wrapper .aux-typo-controller-container .aux-reset, .aux-controller-wrapper .aux-global-colors-controller-container .aux-reset { float: right; }
 
 .aux-control { overflow: hidden; position: relative; }
 .aux-control label { display: block; font-size: 12px; color: #444444; margin-bottom: 10px; }
@@ -1075,6 +1078,9 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
 .aux-control[data-type='dimension'] .aux-dimension-inputs .aux-links-value.aux-is-active { background-color: #0077a4; }
 .aux-control[data-type='dimension'] .aux-dimension-inputs .aux-links-value > i:before { font-size: inherit; vertical-align: middle; padding-top: 0; margin-top: -2px; }
 .aux-control[data-type='dimension'] .aux-dimension-inputs .aux-side-name { position: absolute; bottom: -5px; left: 0; right: 0; transform: translateY(100%); text-align: center; color: #aaaaaa; font-size: 10px; font-weight: 400; text-transform: uppercase; }
+.aux-control[data-type='GlobalColorPicker'] { float: right; }
+.aux-control[data-type='GlobalColorPicker'] > .aux-control { display: inline-block; float: none; }
+.aux-control[data-type='GlobalColorPicker'] > .aux-control[data-type='popover'] > button { width: 27px; height: 22px; box-shadow: inset -1px 2px 0 rgba(255, 255, 255, 0.12); border-radius: 3px; background-color: #fafafa; outline: none; background-position: center; background-repeat: no-repeat; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' data-name='Layer 1' id='Layer_1' viewBox='0 0 32 32' fill='%2335383c'%3E%3Cpath d='M16,30A14,14,0,1,1,30,16,14,14,0,0,1,16,30ZM16,4A12,12,0,1,0,28,16,12,12,0,0,0,16,4Z'/%3E%3Cpath d='M16,30a1,1,0,0,1-1-1V3a1,1,0,0,1,2,0V29A1,1,0,0,1,16,30Z'/%3E%3Cpath d='M23,17a1,1,0,0,1-1-1c0-6.5-2.75-12-6-12a1,1,0,0,1,0-2c4.49,0,8,6.15,8,14A1,1,0,0,1,23,17Z'/%3E%3Cpath d='M16,30a1,1,0,0,1,0-2c3.25,0,6-5.5,6-12a1,1,0,0,1,2,0C24,23.85,20.49,30,16,30Z'/%3E%3Cpath d='M9,17a1,1,0,0,1-1-1C8,8.15,11.51,2,16,2a1,1,0,0,1,0,2c-3.25,0-6,5.5-6,12A1,1,0,0,1,9,17Z'/%3E%3Cpath d='M16,30c-4.49,0-8-6.15-8-14a1,1,0,0,1,2,0c0,6.5,2.75,12,6,12a1,1,0,0,1,0,2Z'/%3E%3Cpath d='M29,17H3a1,1,0,0,1,0-2H29a1,1,0,0,1,0,2Z'/%3E%3Cpath d='M27,11H5A1,1,0,0,1,5,9H27a1,1,0,0,1,0,2Z'/%3E%3Cpath d='M27,23H5a1,1,0,0,1,0-2H27a1,1,0,0,1,0,2Z'/%3E%3C/svg%3E"); }
 .aux-control[data-type='hover'] .aux-states { display: flex; flex-flow: row wrap; text-align: center; border: 1px solid #b2b2b2; border-radius: 3px; overflow: hidden; margin-bottom: 10px; }
 .aux-control[data-type='hover'] .aux-states .aux-option-item { flex-basis: 50%; background: #FFF; padding: 5px 0px; color: #303030; box-sizing: border-box; margin-bottom: 0; cursor: pointer; }
 .aux-control[data-type='hover'] .aux-states .aux-option-item.aux-option-selected { background-color: #0077a4; color: #FFF; }
@@ -1093,6 +1099,16 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
 .aux-controller-template:after { border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 7px solid #FFF; right: 25px; top: 1px; }
 .aux-controller-template .aux-control:not(:last-child) { margin-bottom: 20px; }
 .aux-controller-template .aux-control[data-type='responsive'] label { display: inline-block; margin-bottom: 0; font-size: 12px; line-height: normal; font-weight: 400; }
+
+#aux-global-colors-controller-template { padding: 0; z-index: 100; }
+#aux-global-colors-controller-template .aux-global-colors-header { display: flex; align-items: center; justify-content: space-between; flex-flow: row wrap; font-size: 11px; padding: 15px 15px 5px; }
+#aux-global-colors-controller-template .aux-global-colors-header > a { color: #737fad; text-decoration: none; }
+#aux-global-colors-controller-template .aux-global-colors-divider { width: 100%; height: 1px; background: #d6d6d6; margin-top: 6px; }
+#aux-global-colors-controller-template .aux-colors { margin: 0; }
+#aux-global-colors-controller-template .aux-colors li { display: flex; align-items: center; margin: 0; padding: 7px 15px; cursor: pointer; }
+#aux-global-colors-controller-template .aux-colors li.aux-option-selected { background-color: #d7d7d7; }
+#aux-global-colors-controller-template .aux-colors li .aux-color { background-color: #000; width: 17px; height: 13px; display: inline-block; border-radius: 3px; margin-right: 5px; }
+#aux-global-colors-controller-template .aux-colors li .aux-color-label { flex: 1; }
 
 /*  Import/Exporter Style */
 .auxin-import-export-form { text-align: center; }
@@ -1125,6 +1141,9 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
 .aux-selective-list .axi-select-caption { font-size: 14px; font-weight: 500; }
 
 .aux-custom-symbol-svg:before { content: ''; display: inline-block; width: 15px; height: 15px; background: url(../images/other/custom.svg) no-repeat; }
+
+#aux-typo-controller-template .aux-control[data-type='GlobalColorPicker'] { float: none; }
+#aux-typo-controller-template .aux-control[data-type='color'] { margin-bottom: 0; }
 
 /*!===================== _metabox-tab.scss =========================*/
 [id*="axi_meta_hub"] .inside { padding: 0; margin: 0 !important; }
@@ -1296,6 +1315,24 @@ body.wp-admin #wpwrap #qm { margin-left: 160px !important; }
 .aux-welcome-page-feedback .aux-sending-status .ajax-progress, .aux-welcome-page-feedback .aux-sending-status .ajax-response { float: left; }
 .aux-welcome-page-feedback .aux-sending-status .ajax-progress { margin-right: 5px; margin-top: 2px; }
 .aux-welcome-page-feedback .aux-sending-status .ajax-response ._success { margin-right: 5px; color: #00BA26; font-weight: 600; font-size: 14px; }
+.aux-welcome-page-feedback.aux-feedback-notice { max-width: 80%; padding: 30px 20px; background-color: #fff; position: fixed; right: 10px; top: 50px; border-radius: 5px; z-index: 2; box-shadow: 0 1px 3px 3px #00000050; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-ratings-measure { display: flex; justify-content: space-between; width: 100%; margin-bottom: 3px; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-ratings-measure p { font-size: 14px; color: #666; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-theme-ratings { display: flex; width: 100%; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-theme-ratings .aux-rate-cell { display: inline-block; position: relative; background-color: #dedede; margin-right: 2px; padding: 2px 25px; transition: all 0.3s ease; color: #000; border-radius: 2px; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-theme-ratings .aux-rate-cell.checked { background-color: #505050; color: #fff; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-theme-ratings .aux-rate-cell input { opacity: 0; position: absolute; width: 100%; height: 100%; top: 4px; border-radius: 0; left: 0; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-content-title { margin-top: 0; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-content-title strong { font-weight: 800; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-rate-us-offer { margin-top: 25px; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-rate-us-offer a { font-size: 14px; }
+.aux-welcome-page-feedback.aux-feedback-notice textarea, .aux-welcome-page-feedback.aux-feedback-notice input[type="text"] { width: 100%; }
+.aux-welcome-page-feedback.aux-feedback-notice input[type="text"] { margin: 20px 0; }
+.aux-welcome-page-feedback.aux-feedback-notice input[type="submit"] { padding: 5px 15px; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-sending-status { margin-top: 10px; height: auto; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-sending-status .ajax-response { display: none; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-feedback-detail { margin-top: 2em; }
+.aux-welcome-page-feedback.aux-feedback-notice .aux-button { margin-bottom: 0; }
 
 .aux-welcome-page-status .aux-content-title { margin-bottom: 50px; }
 

@@ -700,20 +700,18 @@ class Image extends Widget_Base {
 
     $settings    = $this->get_settings_for_display();
 
-    $link_target = $settings['link']['is_external'] ? '_blank' : '_self';
-
     $args        = array(
         'image_html'       => Group_Control_Image_Size::get_attachment_image_html( $settings, 'image' ),
 
-        'attach_id'        => $settings['image']['id'],
+        'attach_id'        => auxin_get_array_value( $settings['image'], 'id' ),
         'size'             => $settings['image_size'],
-        'width'            => $settings['image_custom_dimension']['width'],
-        'height'           => $settings['image_custom_dimension']['height'],
-        'link'             => $settings['link']['url'],
-        'nofollow'         => $settings['link']['nofollow'],
-        'target'           => $link_target,
+        'width'            => auxin_get_array_value( $settings['image_custom_dimension'], 'width'  ),
+        'height'           => auxin_get_array_value( $settings['image_custom_dimension'], 'height' ),
+        'link'             => auxin_get_array_value( $settings['link'], 'url' ),
+        'nofollow'         => auxin_get_array_value( $settings['link'], 'nofollow' ),
+        'target'           => auxin_get_array_value( $settings['link'], 'is_external', false ) ? '_blank' : '_self',
 
-        'attach_id_hover'  => $settings['hover_image']['id'],
+        'attach_id_hover'  => auxin_get_array_value( $settings['hover_image'], 'id' ),
 
         'display_ribbon'   => $settings['display_ribbon'],
         'ribbon_text'      => $settings['ribbon_text'],

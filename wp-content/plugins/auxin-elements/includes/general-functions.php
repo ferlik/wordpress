@@ -6,7 +6,7 @@
  * @license    LICENSE.txt
  * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2020 averta
+ * @copyright  (c) 2010-2021 averta
  */
 
 /**
@@ -2072,6 +2072,8 @@ function auxin_get_header_template(){
     $template_ID = auxin_get_option( 'site_elementor_header_template', '' );
     $template_ID = ( ! empty( auxin_get_post_meta( $post, 'page_elementor_header_template' ) ) && auxin_get_post_meta($post , 'page_header_use_legacy' ) !== 'default' ) ?
     auxin_get_post_meta( $post, 'page_elementor_header_template' ) : $template_ID ;
+    // get translated template if wpml enabled
+    $template_ID = ( function_exists( 'icl_object_id' ) && defined( 'ICL_LANGUAGE_CODE' ) ) ? icl_object_id( $template_ID, 'elementor_library', false, ICL_LANGUAGE_CODE ) : $template_ID;
 
     $attrs = [
         'class'     => ['aux-elementor-header'],
@@ -2112,11 +2114,13 @@ function auxin_get_header_template(){
  */
 function auxin_get_footer_template(){
     global $post;
-    
+
     $template_ID = auxin_get_option( 'site_elementor_footer_template', '' );
     $template_ID = ( ! empty( auxin_get_post_meta( $post, 'page_elementor_footer_template' ) ) && auxin_get_post_meta($post , 'page_footer_use_legacy' ) !== 'default' ) ?
     auxin_get_post_meta( $post, 'page_elementor_footer_template' ) : $template_ID ;
-    
+    // get translated template if wpml enabled
+    $template_ID = ( function_exists( 'icl_object_id' ) && defined( 'ICL_LANGUAGE_CODE' ) ) ? icl_object_id( $template_ID, 'elementor_library', false, ICL_LANGUAGE_CODE ) : $template_ID;
+
     $attrs = [
         'class'     => ['aux-elementor-footer'],
         'itemscope' => 'itemscope',
@@ -2449,9 +2453,14 @@ function auxin_search_page_results($post_type = 'post',$args = array()) {
 
 function auxin_maybe_create_image_size( $attachment_id, $size = '' ) {
 
-    if ( empty( $attachment_id) || ! is_numeric( $attachment_id ) ) {
+    if ( empty( $attachment_id ) || ! is_numeric( $attachment_id ) ) {
         return;
     }
+
+    if ( 'full' === $size ) {
+        return;
+    }
+
     // check if image size exist or not
     if ( ! image_get_intermediate_size( $attachment_id, $size )) {
 
@@ -2486,7 +2495,7 @@ function auxin_list_pages() {
     $all_pages = get_pages();
     $list = array( '' => __( 'Select Page', 'auxin-elements' ) );
     foreach( $all_pages as $page ) {
-        $list[ $page->ID ] = $page->post_title ; 
+        $list[ $page->ID ] = $page->post_title ;
     }
 
     return $list;
@@ -2494,14 +2503,26 @@ function auxin_list_pages() {
 
 /**
  * Get List of available image sizes
- * 
+ *
  * @return array
  */
 function auxin_get_available_image_sizes() {
-    
+
     $image_sizes = get_intermediate_image_sizes();
     $auto_size = array( 'auto' => 'auto' );
 
     return array_merge( $image_sizes, $auto_size );
 
+}
+
+/**
+ * Retrives the value of a key in array if key exists
+ *
+ * @param array $array
+ * @param string $key
+ * @param string $default
+ * @return void
+ */
+function auxin_get_array_value( $array, $key, $default = '' ){
+    return isset( $array[ $key ] ) ? $array[ $key ] : $default;
 }

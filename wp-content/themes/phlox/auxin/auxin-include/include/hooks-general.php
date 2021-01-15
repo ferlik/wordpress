@@ -4,7 +4,7 @@
  *
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
 */
 
@@ -350,8 +350,7 @@ function auxin_front_end_update_query( $query ) {
     }
 
     // if current query is archive blog
-    if ( $query->is_home || ( $query->is_archive && ! $query->is_post_type_archive ) ){
-
+    if ( $query->is_home || $query->is_date || $query->is_author || $query->is_category || $query->is_tag || is_post_type_archive( 'post' ) ){
         // get template type id
         $template_type_id = esc_attr( auxin_get_option( 'post_index_template_type', 'default' ) );
 
@@ -604,6 +603,7 @@ function auxin_allow_img_srcset_shortcode( $allowedposttags, $context ) {
         $allowedposttags['path'] = [
             'd' => [],
             'fill' => [],
+            'fill-rule' => [],
             'width' => [],
             'height' => [],
             'transform' => [],
@@ -655,6 +655,22 @@ function auxin_allow_img_srcset_shortcode( $allowedposttags, $context ) {
         $allowedposttags['script'] = [
             'type' => [],
             'src'  => []
+        ];
+        $allowedposttags['linearGradient'] = [
+            'id'  => [],
+            'href'=> [],
+            'x1'  => [],
+            'x2'  => [],
+            'y1'  => [],
+            'y2'  => [],
+            'spreadMethod'  => [],
+            'gradientUnits' => [],
+            'gradientTransform' => []
+        ];
+        $allowedposttags['defs'] = [];
+        $allowedposttags['stop'] = [
+            'offset'     => [],
+            'stop-color' => []
         ];
     }
 

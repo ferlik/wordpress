@@ -7,7 +7,7 @@
  * @license    LICENSE.txt
  * @author     averta
  * @link       http://phlox.pro/
- * @copyright  (c) 2010-2020 averta
+ * @copyright  (c) 2010-2021 averta
  */
 
 function  auxin_get_staff_master_array( $master_array )  {
@@ -577,6 +577,7 @@ function auxin_widget_staff_callback( $atts, $shortcode_content = null ){
         'social_github'       => '',
         'social_delicious'    => '',
         'social_instagram'    => '',
+        'social_dribbble'      => '',
         'layout_style'        => 'top',
         'extra_classes'       => '', // custom css class names for this element
         'custom_el_id'        => '', // custom id attribute for this element
@@ -715,6 +716,12 @@ function auxin_widget_staff_callback( $atts, $shortcode_content = null ){
                    <?php if ( ! empty( $social_instagram ) ) { ;?>
                         <li>
                             <a class="instagram" href="<?php echo esc_url( $social_instagram ) ;?>" target="_blank"><span class="auxicon-instagram"></span>
+                            </a>
+                        </li>
+                   <?php } ?>
+                   <?php if ( ! empty( $social_dribbble ) ) { ;?>
+                        <li>
+                            <a class="dribbble" href="<?php echo esc_url( $social_dribble ) ;?>" target="_blank"><span class="auxicon-dribbble"></span>
                             </a>
                         </li>
                    <?php } ?>

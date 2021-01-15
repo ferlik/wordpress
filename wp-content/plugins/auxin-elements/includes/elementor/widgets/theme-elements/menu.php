@@ -1518,9 +1518,12 @@ class MenuBox extends Widget_Base {
         $settings = $this->get_settings_for_display();
 
         if ( ! isset( $settings['menu_slug'] ) ) {
-            return _e( 'There are no menus in your site.', 'auxin-elements' ) ;
+            return _e( 'Please choose a menu.', 'auxin-elements' ) ;
         }
 
+        if ( empty( wp_get_nav_menu_object( $settings['menu_slug'] ) ) || ! wp_get_nav_menu_object( $settings['menu_slug'] )->count ) {
+            return _e( 'There are no menu items in this menu.', 'auxin-elements' ) ;
+        }
 
         $offcanvas_output  = '';
         $fullscreen_output = '';
@@ -1592,7 +1595,7 @@ class MenuBox extends Widget_Base {
             'container_id'       => 'master-menu-elementor-'. $this->get_id(),
             'menu'               => $settings['menu_slug'],
             'direction'          => 'burger' === $settings['type'] ? null : $settings['type'],
-            'mobile_under'       => 'burger' === $settings['type'] ? 7000 : $breakpoint,
+            'mobile_under'       => 'burger' === $settings['type'] ? 9000 : $breakpoint,
             'mobile_menu_type'   => $settings['burger_toggle_type'],
             'mobile_menu_target' => $mobile_menu_target,
             'theme_location'     => 'element',
@@ -1607,7 +1610,7 @@ class MenuBox extends Widget_Base {
         echo '</div>';
 
         if ( 'burger' !== $settings['type'] ) {
-            printf( '<style>@media only screen and (min-width: %spx) { .elementor-element-%s .aux-burger-box { display: none } }</style>', $breakpoint + 1,  $this->get_id() );
+            printf( '<style>@media only screen and (min-width: %spx) { .elementor-element-%s .aux-burger-box { display: none } }</style>', (int)$breakpoint + 1,  $this->get_id() );
         }
 
     }

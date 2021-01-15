@@ -4,7 +4,7 @@
  *
  * 
  * @package    Auxin
- * @author     averta (c) 2014-2020
+ * @author     averta (c) 2014-2021
  * @link       http://averta.net
 */
 
@@ -1045,16 +1045,20 @@ function auxin_the_post_thumbnail( $post_id = null, $width = null , $height = nu
         /*   Generate main image
         /*-------------------------------------*/
         // crop the main image
-        if( is_string( $size ) ){
-            $main_image = wp_get_attachment_image_src( $attachment_id, $size );
-            if ( $size !== 'full' && empty( $main_image['3'] ) && in_array( $size, get_intermediate_image_sizes() ) ) {
-                require_once(ABSPATH . "wp-admin" . '/includes/image.php');
-                wp_update_image_subsizes( $attachment_id );
+        if ( auxin_is_local_url( $original_image[0] ) ) {
+            if( is_string( $size ) ){
                 $main_image = wp_get_attachment_image_src( $attachment_id, $size );
+                if ( $size !== 'full' && empty( $main_image['3'] ) && in_array( $size, get_intermediate_image_sizes() ) ) {
+                    require_once(ABSPATH . "wp-admin" . '/includes/image.php');
+                    wp_update_image_subsizes( $attachment_id );
+                    $main_image = wp_get_attachment_image_src( $attachment_id, $size );
+                }
+                $src = $main_image['0'];
+            } else {
+                $src = auxin_get_the_resized_attachment_src( $attachment_id, $dimensions['width'] , $dimensions['height'], $crop, $quality, $upscale );
             }
-            $src = $main_image['0'];
         } else {
-            $src = auxin_get_the_resized_attachment_src( $attachment_id, $dimensions['width'] , $dimensions['height'], $crop, $quality, $upscale );
+            $src = $original_image[0];
         }
 
 
@@ -2489,10 +2493,15 @@ if( ! function_exists( 'auxin_get_string_between' ) ) {
 function auxin_wp_get_image_size( $size_name ){
     $all_image_sizes = auxin_get_all_image_sizes();
 
+    if( 'full' === $size_name ){
+        return false;
+    }
+
     if( ! empty( $all_image_sizes[ $size_name ] ) ){
         return $all_image_sizes[ $size_name ];
     }
     auxin_error( sprintf( 'Invalid image size name (%s) for "%s" function.', $size_name, __FUNCTION__ ) );
+
     return false;
 }
 
@@ -2862,7 +2871,10 @@ if ( ! function_exists( 'auxin_get_cart_items' ) ) {
             ?>
             </div>
             <div class="aux-button-wrapper">
-                <?php $checkout = auxin_is_true( $simple_mode ) ? __( 'Proceed to checkout', 'phlox' ) : __( 'Checkout', 'phlox' ); ?>
+                <?php
+                $checkout = auxin_is_true( $simple_mode ) ? __( 'Proceed to checkout', 'phlox' ) : __( 'Checkout', 'phlox' );
+                $checkout = ! empty( $args['checkout_text'] ) ? $args['checkout_text'] : $checkout;
+                ?>
                 <a href="<?php echo esc_url( wc_get_checkout_url() ); ?>" class="aux-button aux-checkout-button aux-large <?php echo esc_attr( $args['color_class'] ); ?> aux-uppercase">
                     <span class="aux-overlay"></span>
                     <span class="aux-text"><?php echo esc_html( $checkout ); ?></span>
@@ -2989,5 +3001,19 @@ if ( ! function_exists('auxin_general_post_types_category_slug') ) {
         }
 
         return apply_filters( 'auxin_general_post_types_category_slug', $post_types );
+    }
+}
+
+/**
+ * Check if attachment url is local or external
+ *
+ * @param string $url
+ *
+ * @return boolean
+ */
+if ( ! function_exists( 'auxin_is_local_url' ) ) {
+    function auxin_is_local_url( $url ){
+        $uploads_dir = wp_upload_dir();
+        return strpos( $url, $uploads_dir['baseurl'] ) !== false;
     }
 }

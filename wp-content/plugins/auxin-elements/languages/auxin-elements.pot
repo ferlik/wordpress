@@ -1,13 +1,13 @@
-# Averta Copyright (c) {2020}
+# Averta Copyright (c) {2021}
 msgid ""
 msgstr ""
-"Project-Id-Version: Phlox Core Elements 2.6.16\n"
+"Project-Id-Version: Phlox Core Elements 2.7.6\n"
 "Report-Msgid-Bugs-To: http://averta.net/phlox/wordpress-theme/\n"
-"POT-Creation-Date: 2020-09-13 06:40:52+00:00\n"
+"POT-Creation-Date: 2021-01-10 12:05:01+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2020-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Averta <info@averta.net>\n"
 "Language-Team: Averta <info@averta.net>\n"
 "Language: en\n"
@@ -97,7 +97,7 @@ msgstr ""
 #: includes/classes/class-auxin-demo-importer.php:192
 #: includes/classes/class-auxin-welcome.php:1234
 #: includes/classes/class-auxin-welcome.php:1269
-#: includes/classes/class-auxin-welcome.php:1633
+#: includes/classes/class-auxin-welcome.php:1637
 msgid "Close"
 msgstr ""
 
@@ -338,9 +338,9 @@ msgid "You need to enter a unique id for notice."
 msgstr ""
 
 #: admin/includes/classes/class-auxin-notices.php:186
-#: includes/classes/class-auxin-welcome.php:1685
-#: includes/classes/class-auxin-welcome.php:1714
-#: includes/classes/class-auxin-welcome.php:1789
+#: includes/classes/class-auxin-welcome.php:1689
+#: includes/classes/class-auxin-welcome.php:1718
+#: includes/classes/class-auxin-welcome.php:1793
 msgid "Skip"
 msgstr ""
 
@@ -772,9 +772,9 @@ msgid "Disable it to replace footer section with an Elementor template"
 msgstr ""
 
 #: admin/includes/metaboxes/metabox-fields-general-footer.php:21
-#: includes/elementor/modules/documents/footer.php:34
-#: includes/elementor/modules/documents/footer.php:45
-#: includes/elementor/widgets/text.php:1564
+#: includes/elementor/modules/documents/footer.php:35
+#: includes/elementor/modules/documents/footer.php:46
+#: includes/elementor/widgets/text.php:1570
 msgid "Footer"
 msgstr ""
 
@@ -904,7 +904,7 @@ msgid "Use Legacy Header"
 msgstr ""
 
 #: admin/includes/metaboxes/metabox-fields-general-header.php:21
-#: includes/elementor/modules/documents/header.php:34
+#: includes/elementor/modules/documents/header.php:35
 #: includes/elementor/widgets/text.php:104
 #: includes/elementor/widgets/text.php:347
 msgid "Header"
@@ -1012,7 +1012,7 @@ msgstr ""
 
 #: admin/includes/metaboxes/metabox-fields-general-header.php:202
 #: includes/elements/staff.php:207 includes/elements/text.php:105
-#: includes/general-hooks.php:3000
+#: includes/general-hooks.php:3001
 msgid "Boxed"
 msgstr ""
 
@@ -1200,10 +1200,12 @@ msgstr ""
 #: includes/elementor/widgets/recent-posts-grid-carousel.php:1773
 #: includes/elementor/widgets/recent-posts-masonry.php:1159
 #: includes/elementor/widgets/recent-posts-timeline.php:130
-#: includes/elementor/widgets/staff.php:846
+#: includes/elementor/widgets/responsive-table.php:141
+#: includes/elementor/widgets/responsive-table.php:208
+#: includes/elementor/widgets/staff.php:878
 #: includes/elementor/widgets/svg.php:288
 #: includes/elementor/widgets/testimonial.php:813
-#: includes/elementor/widgets/text.php:1437
+#: includes/elementor/widgets/text.php:1443
 #: includes/elementor/widgets/theme-elements/breadcrumbs.php:435
 #: includes/elementor/widgets/theme-elements/copyright.php:146
 #: includes/elementor/widgets/theme-elements/current-time.php:139
@@ -1221,7 +1223,7 @@ msgid "Center"
 msgstr ""
 
 #: admin/includes/metaboxes/metabox-fields-general-header.php:603
-#: includes/elementor/modules/common.php:657
+#: includes/elementor/modules/common.php:755
 #: includes/elementor/widgets/button.php:234
 #: includes/elementor/widgets/button.php:378
 #: includes/elementor/widgets/custom-list.php:473
@@ -1238,13 +1240,15 @@ msgstr ""
 #: includes/elementor/widgets/recent-posts-grid-carousel.php:1769
 #: includes/elementor/widgets/recent-posts-masonry.php:1155
 #: includes/elementor/widgets/recent-posts-timeline.php:134
-#: includes/elementor/widgets/staff.php:827
-#: includes/elementor/widgets/staff.php:842
+#: includes/elementor/widgets/responsive-table.php:137
+#: includes/elementor/widgets/responsive-table.php:204
+#: includes/elementor/widgets/staff.php:859
+#: includes/elementor/widgets/staff.php:874
 #: includes/elementor/widgets/svg.php:284
 #: includes/elementor/widgets/testimonial.php:809
 #: includes/elementor/widgets/text.php:367
-#: includes/elementor/widgets/text.php:1134
-#: includes/elementor/widgets/text.php:1433
+#: includes/elementor/widgets/text.php:1140
+#: includes/elementor/widgets/text.php:1439
 #: includes/elementor/widgets/theme-elements/breadcrumbs.php:431
 #: includes/elementor/widgets/theme-elements/copyright.php:142
 #: includes/elementor/widgets/theme-elements/current-time.php:135
@@ -1301,8 +1305,8 @@ msgstr ""
 #: includes/elementor/widgets/button.php:163
 #: includes/elementor/widgets/divider.php:146
 #: includes/elementor/widgets/modern-button.php:311
-#: includes/elementor/widgets/staff.php:755
-#: includes/elementor/widgets/text.php:1030 includes/elements/button.php:66
+#: includes/elementor/widgets/staff.php:787
+#: includes/elementor/widgets/text.php:1036 includes/elements/button.php:66
 #: includes/elements/divider.php:90 includes/elements/socials-list.php:63
 #: includes/elements/staff.php:463 includes/elements/text.php:469
 #: includes/elements/text.php:677 includes/general-hooks.php:689
@@ -1315,8 +1319,8 @@ msgstr ""
 #: includes/elementor/widgets/button.php:162
 #: includes/elementor/widgets/divider.php:145
 #: includes/elementor/widgets/modern-button.php:310
-#: includes/elementor/widgets/staff.php:756
-#: includes/elementor/widgets/text.php:1029
+#: includes/elementor/widgets/staff.php:788
+#: includes/elementor/widgets/text.php:1035
 #: includes/elements/before-after.php:104 includes/elements/button.php:65
 #: includes/elements/divider.php:89 includes/elements/instagram-feed.php:98
 #: includes/elements/socials-list.php:64 includes/elements/staff.php:111
@@ -1330,8 +1334,8 @@ msgstr ""
 #: includes/classes/class-auxin-svg-support.php:193
 #: includes/elementor/widgets/button.php:161
 #: includes/elementor/widgets/modern-button.php:309
-#: includes/elementor/widgets/staff.php:757
-#: includes/elementor/widgets/text.php:1028
+#: includes/elementor/widgets/staff.php:789
+#: includes/elementor/widgets/text.php:1034
 #: includes/elements/before-after.php:105 includes/elements/button.php:64
 #: includes/elements/divider.php:88 includes/elements/socials-list.php:65
 #: includes/elements/staff.php:110 includes/elements/staff.php:465
@@ -1380,8 +1384,8 @@ msgid "Dropdown Action On"
 msgstr ""
 
 #: admin/includes/metaboxes/metabox-fields-general-header.php:841
-#: includes/elementor/modules/common.php:489
-#: includes/elementor/modules/common.php:545
+#: includes/elementor/modules/common.php:587
+#: includes/elementor/modules/common.php:643
 #: includes/elementor/modules/dynamic-tags/current-date-time.php:37
 #: includes/elementor/modules/dynamic-tags/current-date-time.php:55
 #: includes/elementor/modules/dynamic-tags/post-date.php:49
@@ -1397,7 +1401,7 @@ msgstr ""
 #: includes/elementor/widgets/recent-posts-tiles-carousel.php:130
 #: includes/elementor/widgets/recent-posts-tiles.php:130
 #: includes/elementor/widgets/tabs.php:195
-#: includes/elementor/widgets/text.php:1133
+#: includes/elementor/widgets/text.php:1139
 #: includes/elementor/widgets/theme-elements/menu.php:999
 #: includes/elementor/widgets/theme-elements/modern-search.php:577
 #: includes/elements/button.php:179 includes/elements/code.php:99
@@ -1464,8 +1468,8 @@ msgstr ""
 #: includes/elementor/widgets/recent-posts-timeline.php:741
 #: includes/elementor/widgets/recent-posts-timeline.php:918
 #: includes/elementor/widgets/recent-products.php:644
-#: includes/elementor/widgets/staff.php:459
-#: includes/elementor/widgets/staff.php:706
+#: includes/elementor/widgets/staff.php:491
+#: includes/elementor/widgets/staff.php:738
 #: includes/elementor/widgets/svg.php:357
 #: includes/elementor/widgets/tabs.php:289
 #: includes/elementor/widgets/tabs.php:403
@@ -1473,14 +1477,14 @@ msgstr ""
 #: includes/elementor/widgets/testimonial.php:511
 #: includes/elementor/widgets/testimonial.php:629
 #: includes/elementor/widgets/testimonial.php:923
-#: includes/elementor/widgets/text.php:560
-#: includes/elementor/widgets/text.php:713
-#: includes/elementor/widgets/text.php:809
-#: includes/elementor/widgets/text.php:920
-#: includes/elementor/widgets/text.php:1087
-#: includes/elementor/widgets/text.php:1207
-#: includes/elementor/widgets/text.php:1282
-#: includes/elementor/widgets/text.php:1512
+#: includes/elementor/widgets/text.php:566
+#: includes/elementor/widgets/text.php:719
+#: includes/elementor/widgets/text.php:815
+#: includes/elementor/widgets/text.php:926
+#: includes/elementor/widgets/text.php:1093
+#: includes/elementor/widgets/text.php:1213
+#: includes/elementor/widgets/text.php:1288
+#: includes/elementor/widgets/text.php:1518
 #: includes/elementor/widgets/theme-elements/breadcrumbs.php:516
 #: includes/elementor/widgets/theme-elements/copyright.php:212
 #: includes/elementor/widgets/theme-elements/logo.php:327
@@ -1798,19 +1802,20 @@ msgstr ""
 
 #: includes/classes/class-auxels-admin-assets.php:67
 #: includes/classes/class-auxin-welcome.php:1310
-#: includes/classes/class-auxin-welcome.php:1433
-#: includes/classes/class-auxin-welcome.php:1742
+#: includes/classes/class-auxin-welcome.php:1437
+#: includes/classes/class-auxin-welcome.php:1746
+#: includes/classes/class-auxin-welcome.php:1816
 msgid "Continue"
 msgstr ""
 
 #: includes/classes/class-auxels-admin-assets.php:68
 #: includes/classes/class-auxin-welcome.php:522
-#: includes/classes/class-auxin-welcome.php:1508
+#: includes/classes/class-auxin-welcome.php:1512
 msgid "Install Plugins"
 msgstr ""
 
 #: includes/classes/class-auxels-admin-assets.php:69
-#: includes/classes/class-auxin-welcome.php:1599
+#: includes/classes/class-auxin-welcome.php:1603
 msgid "Import Content"
 msgstr ""
 
@@ -1885,6 +1890,27 @@ msgstr ""
 msgid "Include theme options"
 msgstr ""
 
+#: includes/classes/class-auxels-wc-attribute-nav-menu.php:66
+#: includes/classes/class-auxels-wc-attribute-nav-menu.php:67
+msgid "WooCommerce Attributes"
+msgstr ""
+
+#: includes/classes/class-auxels-wc-attribute-nav-menu.php:111
+msgid "Attribute"
+msgstr ""
+
+#: includes/classes/class-auxels-wc-attribute-nav-menu.php:121
+msgid "WooCommerce attributes"
+msgstr ""
+
+#: includes/classes/class-auxels-wc-attribute-nav-menu.php:163
+msgid "Select all"
+msgstr ""
+
+#: includes/classes/class-auxels-wc-attribute-nav-menu.php:166
+msgid "Add to menu"
+msgstr ""
+
 #: includes/classes/class-auxin-admin-dashboard.php:38
 msgid "%s Status"
 msgstr ""
@@ -1940,41 +1966,41 @@ msgid "Importing Media"
 msgstr ""
 
 #: includes/classes/class-auxin-demo-importer.php:293
-#: includes/classes/class-auxin-demo-importer.php:1224
+#: includes/classes/class-auxin-demo-importer.php:1263
 msgid "Importing Users"
 msgstr ""
 
-#: includes/classes/class-auxin-demo-importer.php:298
-#: includes/classes/class-auxin-demo-importer.php:310
+#: includes/classes/class-auxin-demo-importer.php:304
+#: includes/classes/class-auxin-demo-importer.php:316
 msgid "Importing Contents"
 msgstr ""
 
-#: includes/classes/class-auxin-demo-importer.php:322
+#: includes/classes/class-auxin-demo-importer.php:328
 msgid "Importing Options"
 msgstr ""
 
-#: includes/classes/class-auxin-demo-importer.php:339
-#: includes/classes/class-auxin-demo-importer.php:545
+#: includes/classes/class-auxin-demo-importer.php:345
+#: includes/classes/class-auxin-demo-importer.php:554
 msgid "Importing Menus"
 msgstr ""
 
-#: includes/classes/class-auxin-demo-importer.php:345
+#: includes/classes/class-auxin-demo-importer.php:351
 msgid "Importing Widgets"
 msgstr ""
 
-#: includes/classes/class-auxin-demo-importer.php:425
+#: includes/classes/class-auxin-demo-importer.php:431
 msgid "Retrieve Body Fails"
 msgstr ""
 
-#: includes/classes/class-auxin-demo-importer.php:611
+#: includes/classes/class-auxin-demo-importer.php:620
 msgid "Importing Sliders"
 msgstr ""
 
-#: includes/classes/class-auxin-demo-importer.php:1287
+#: includes/classes/class-auxin-demo-importer.php:1326
 msgid "Preparing Site ..."
 msgstr ""
 
-#: includes/classes/class-auxin-demo-importer.php:1302
+#: includes/classes/class-auxin-demo-importer.php:1345
 msgid "All steps are successful"
 msgstr ""
 
@@ -2218,10 +2244,10 @@ msgstr ""
 #: includes/classes/class-auxin-walker-nav-menu-back.php:384
 #: includes/classes/class-auxin-welcome.php:1313
 #: includes/classes/class-auxin-welcome.php:1341
-#: includes/classes/class-auxin-welcome.php:1436
-#: includes/classes/class-auxin-welcome.php:1510
-#: includes/classes/class-auxin-welcome.php:1601
-#: includes/classes/class-auxin-welcome.php:1744
+#: includes/classes/class-auxin-welcome.php:1440
+#: includes/classes/class-auxin-welcome.php:1514
+#: includes/classes/class-auxin-welcome.php:1605
+#: includes/classes/class-auxin-welcome.php:1748
 msgid "Cancel"
 msgstr ""
 
@@ -2431,7 +2457,7 @@ msgstr ""
 #: includes/classes/class-auxin-welcome.php:829
 #: includes/classes/class-auxin-welcome.php:943
 #: includes/classes/class-auxin-welcome.php:1231
-#: includes/classes/class-auxin-welcome.php:1630
+#: includes/classes/class-auxin-welcome.php:1634
 msgid "Preview"
 msgstr ""
 
@@ -2483,7 +2509,7 @@ msgstr ""
 
 #: includes/classes/class-auxin-welcome.php:1066
 #: includes/classes/class-auxin-welcome.php:1096
-#: includes/classes/class-auxin-welcome.php:1484
+#: includes/classes/class-auxin-welcome.php:1488
 msgid "Ready to update"
 msgstr ""
 
@@ -2535,176 +2561,184 @@ msgid "Are you sure you want to uninstall this demo?"
 msgstr ""
 
 #: includes/classes/class-auxin-welcome.php:1347
-#: includes/classes/class-auxin-welcome.php:1607
+#: includes/classes/class-auxin-welcome.php:1611
 msgid "Please wait, this may take several minutes .."
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1409
+#: includes/classes/class-auxin-welcome.php:1413
 msgid "An error occurred!"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1411
+#: includes/classes/class-auxin-welcome.php:1415
 msgid "Method not exist!"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1425
-#: includes/classes/class-auxin-welcome.php:1461
+#: includes/classes/class-auxin-welcome.php:1429
+#: includes/classes/class-auxin-welcome.php:1465
 msgid "Required Plugins for this demo."
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1427
+#: includes/classes/class-auxin-welcome.php:1431
 msgid ""
 "For better and faster install process it's recommended to install demo on a "
 "clean WordPress website."
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1462
+#: includes/classes/class-auxin-welcome.php:1466
 msgid "The following plugins are required to be installed for this demo."
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1476
+#: includes/classes/class-auxin-welcome.php:1480
 msgid "Ready to install"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1480
+#: includes/classes/class-auxin-welcome.php:1484
 msgid "Not activated"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1526
+#: includes/classes/class-auxin-welcome.php:1530
 msgid "Import Demo Content of Phlox Theme."
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1531
+#: includes/classes/class-auxin-welcome.php:1535
 msgid "Complete pre-build Website"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1536
+#: includes/classes/class-auxin-welcome.php:1540
 msgid "Import media (images, videos, etc.)"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1543
+#: includes/classes/class-auxin-welcome.php:1547
 msgid "Selected Data Only"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1549
+#: includes/classes/class-auxin-welcome.php:1553
 msgid "Posts/Pages"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1554
+#: includes/classes/class-auxin-welcome.php:1558
 msgid "Media"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1559
+#: includes/classes/class-auxin-welcome.php:1563
 msgid "Widgets"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1566
+#: includes/classes/class-auxin-welcome.php:1570
 msgid "Menus"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1571
+#: includes/classes/class-auxin-welcome.php:1575
 msgid "Theme Options"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1576
+#: includes/classes/class-auxin-welcome.php:1580
 msgid "MasterSlider (If Available)"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1586
+#: includes/classes/class-auxin-welcome.php:1590
 msgid "Importing Demo Content is in Progress..."
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1587
+#: includes/classes/class-auxin-welcome.php:1591
 msgid ""
 "This process may take 5 to 10 minutes to complete, please do not close or "
 "refresh this page."
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1621
+#: includes/classes/class-auxin-welcome.php:1625
 msgid "Congratulations!"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1622
+#: includes/classes/class-auxin-welcome.php:1626
 msgid "Demo has been successfully imported."
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1627
+#: includes/classes/class-auxin-welcome.php:1631
 msgid "Customize"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1644
+#: includes/classes/class-auxin-welcome.php:1648
 msgid "Importing page content ..."
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1668
+#: includes/classes/class-auxin-welcome.php:1672
 msgid "Remove Watermarks?"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1669
+#: includes/classes/class-auxin-welcome.php:1673
 msgid ""
-"For better and faster install proccess it's recommanded to install demo on "
-"a clean wordpress website."
+"Some images in this demo are copyrighted and watermarked, you can remove "
+"watermarks by authorizing your Envato Elements subscription."
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1683
+#: includes/classes/class-auxin-welcome.php:1687
 msgid "Remove Watermarks"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1698
-msgid ""
-"Images are copyrighted and watermarked. You can remove watermarks by having "
-"Envato Elements subscription"
+#: includes/classes/class-auxin-welcome.php:1702
+msgid "Remove watermarks by authorizing your Envato Elements subscription"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1699
+#: includes/classes/class-auxin-welcome.php:1703
 msgid ""
 "By subscribing to Envato Elements you will have access to unlimited premium "
 "stock images, icons, graphical assets, videos and more."
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1701
+#: includes/classes/class-auxin-welcome.php:1705
 msgid "Explore and Subscribe"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1709
+#: includes/classes/class-auxin-welcome.php:1713
 msgid "Already an Envato Elements member?"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1709
+#: includes/classes/class-auxin-welcome.php:1713
 msgid "Activate here"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1727
-#: includes/classes/class-auxin-welcome.php:1757
+#: includes/classes/class-auxin-welcome.php:1731
+#: includes/classes/class-auxin-welcome.php:1761
 msgid "Verify Your Envato Elements Subscription"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1728
+#: includes/classes/class-auxin-welcome.php:1732
 msgid "Enter your email below and click continue button"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1730
+#: includes/classes/class-auxin-welcome.php:1734
 msgid "Enter your email"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1758
+#: includes/classes/class-auxin-welcome.php:1762
 msgid "Enter your token below to verify your Subscription"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1760
+#: includes/classes/class-auxin-welcome.php:1764
 msgid "Enter token here"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1772
+#: includes/classes/class-auxin-welcome.php:1776
 msgid "How to generate a token ?"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1773
+#: includes/classes/class-auxin-welcome.php:1777
 msgid "Don't have subscription?"
 msgstr ""
 
-#: includes/classes/class-auxin-welcome.php:1783
+#: includes/classes/class-auxin-welcome.php:1787
 msgid "Verify Token"
+msgstr ""
+
+#: includes/classes/class-auxin-welcome.php:1806
+msgid "Succeed"
+msgstr ""
+
+#: includes/classes/class-auxin-welcome.php:1807
+msgid ""
+"Congratulations! you have successfully authorized your Envato Elements "
+"subscription."
 msgstr ""
 
 #: includes/classes/class-auxin-widget-shortcode-map.php:308
@@ -2805,11 +2839,11 @@ msgstr ""
 msgid "PHP"
 msgstr ""
 
-#: includes/elementor/class-auxin-elementor-core-elements.php:748
+#: includes/elementor/class-auxin-elementor-core-elements.php:751
 msgid "Phlox Icons - Set 1"
 msgstr ""
 
-#: includes/elementor/class-auxin-elementor-core-elements.php:767
+#: includes/elementor/class-auxin-elementor-core-elements.php:773
 msgid "Phlox Icons - Set 2"
 msgstr ""
 
@@ -2890,56 +2924,85 @@ msgid "Animation"
 msgstr ""
 
 #: includes/elementor/modules/common.php:395
+msgid "Fade In For X"
+msgstr ""
+
+#: includes/elementor/modules/common.php:415
+msgid "Fade In For Y"
+msgstr ""
+
+#: includes/elementor/modules/common.php:435
+#: includes/elementor/widgets/theme-elements/logo.php:425
+msgid "Scale"
+msgstr ""
+
+#: includes/elementor/modules/common.php:454
+msgid "Rotate Degree"
+msgstr ""
+
+#: includes/elementor/modules/common.php:473
+msgid "Rotate Origin"
+msgstr ""
+
+#: includes/elementor/modules/common.php:477
+msgid "Left Bottom"
+msgstr ""
+
+#: includes/elementor/modules/common.php:478
+msgid "Right Bottom"
+msgstr ""
+
+#: includes/elementor/modules/common.php:493
 #: includes/elements/general-element-fields.php:51
 msgid "Duration"
 msgstr ""
 
-#: includes/elementor/modules/common.php:413
+#: includes/elementor/modules/common.php:511
 #: includes/elements/general-element-fields.php:61
 msgid "Delay"
 msgstr ""
 
-#: includes/elementor/modules/common.php:430
+#: includes/elementor/modules/common.php:528
 msgid "Easing"
 msgstr ""
 
-#: includes/elementor/modules/common.php:486
+#: includes/elementor/modules/common.php:584
 msgid "Repeat Count"
 msgstr ""
 
-#: includes/elementor/modules/common.php:495
+#: includes/elementor/modules/common.php:593
 msgid "Infinite"
 msgstr ""
 
-#: includes/elementor/modules/common.php:533
+#: includes/elementor/modules/common.php:631
 msgid "Positioning"
 msgstr ""
 
-#: includes/elementor/modules/common.php:541
+#: includes/elementor/modules/common.php:639
 msgid "Position Type"
 msgstr ""
 
-#: includes/elementor/modules/common.php:546
+#: includes/elementor/modules/common.php:644
 msgid "Static"
 msgstr ""
 
-#: includes/elementor/modules/common.php:547
+#: includes/elementor/modules/common.php:645
 msgid "Relative"
 msgstr ""
 
-#: includes/elementor/modules/common.php:548
+#: includes/elementor/modules/common.php:646
 msgid "Absolute"
 msgstr ""
 
-#: includes/elementor/modules/common.php:560
+#: includes/elementor/modules/common.php:658
 #: includes/elementor/widgets/modern-button.php:139
-#: includes/elementor/widgets/staff.php:815
+#: includes/elementor/widgets/staff.php:847
 #: includes/elementor/widgets/text.php:363 includes/elements/staff.php:226
 #: includes/elements/text.php:616
 msgid "Top"
 msgstr ""
 
-#: includes/elementor/modules/common.php:592
+#: includes/elementor/modules/common.php:690
 #: includes/elementor/widgets/button.php:242
 #: includes/elementor/widgets/button.php:379
 #: includes/elementor/widgets/custom-list.php:481
@@ -2956,13 +3019,15 @@ msgstr ""
 #: includes/elementor/widgets/recent-posts-grid-carousel.php:1777
 #: includes/elementor/widgets/recent-posts-masonry.php:1163
 #: includes/elementor/widgets/recent-posts-timeline.php:138
-#: includes/elementor/widgets/staff.php:819
-#: includes/elementor/widgets/staff.php:850
+#: includes/elementor/widgets/responsive-table.php:145
+#: includes/elementor/widgets/responsive-table.php:212
+#: includes/elementor/widgets/staff.php:851
+#: includes/elementor/widgets/staff.php:882
 #: includes/elementor/widgets/svg.php:292
 #: includes/elementor/widgets/testimonial.php:817
 #: includes/elementor/widgets/text.php:371
-#: includes/elementor/widgets/text.php:1135
-#: includes/elementor/widgets/text.php:1441
+#: includes/elementor/widgets/text.php:1141
+#: includes/elementor/widgets/text.php:1447
 #: includes/elementor/widgets/theme-elements/breadcrumbs.php:439
 #: includes/elementor/widgets/theme-elements/copyright.php:150
 #: includes/elementor/widgets/theme-elements/current-time.php:143
@@ -2983,25 +3048,25 @@ msgstr ""
 msgid "Right"
 msgstr ""
 
-#: includes/elementor/modules/common.php:625
+#: includes/elementor/modules/common.php:723
 #: includes/elementor/widgets/modern-button.php:147
-#: includes/elementor/widgets/staff.php:823 includes/elements/staff.php:234
+#: includes/elementor/widgets/staff.php:855 includes/elements/staff.php:234
 msgid "Bottom"
 msgstr ""
 
-#: includes/elementor/modules/common.php:689
+#: includes/elementor/modules/common.php:787
 msgid "From Center"
 msgstr ""
 
-#: includes/elementor/modules/common.php:690
+#: includes/elementor/modules/common.php:788
 msgid "Please avoid using \"From Center\" and \"Left\" options at the same time."
 msgstr ""
 
-#: includes/elementor/modules/common.php:746
+#: includes/elementor/modules/common.php:844
 msgid "Dimensions (extra)"
 msgstr ""
 
-#: includes/elementor/modules/common.php:754
+#: includes/elementor/modules/common.php:852
 #: includes/elementor/widgets/contact-form.php:217
 #: includes/elementor/widgets/contact-form.php:527
 #: includes/elementor/widgets/contact-form.php:747
@@ -3024,21 +3089,21 @@ msgstr ""
 msgid "Max Width"
 msgstr ""
 
-#: includes/elementor/modules/common.php:786
+#: includes/elementor/modules/common.php:884
 #: includes/elementor/widgets/image.php:458
 #: includes/elementor/widgets/svg.php:250
 msgid "Max Height"
 msgstr ""
 
-#: includes/elementor/modules/common.php:819
+#: includes/elementor/modules/common.php:917
 msgid "Min Width"
 msgstr ""
 
-#: includes/elementor/modules/common.php:851
+#: includes/elementor/modules/common.php:949
 msgid "Min Height"
 msgstr ""
 
-#: includes/elementor/modules/common.php:884
+#: includes/elementor/modules/common.php:982
 #: includes/elementor/widgets/before-after.php:194
 #: includes/elementor/widgets/carousel-navigation.php:254
 #: includes/elementor/widgets/contact-form.php:244
@@ -3061,11 +3126,11 @@ msgstr ""
 msgid "Height"
 msgstr ""
 
-#: includes/elementor/modules/common.php:916
+#: includes/elementor/modules/common.php:1014
 msgid "Grow in width"
 msgstr ""
 
-#: includes/elementor/modules/documents/header.php:45
+#: includes/elementor/modules/documents/header.php:46
 msgid "Site Header"
 msgstr ""
 
@@ -3234,7 +3299,7 @@ msgstr ""
 #: includes/elementor/widgets/recent-posts-timeline.php:519
 #: includes/elementor/widgets/testimonial.php:238
 #: includes/elementor/widgets/text.php:115
-#: includes/elementor/widgets/text.php:1577
+#: includes/elementor/widgets/text.php:1583
 #: includes/elementor/widgets/theme-elements/menu.php:658
 #: includes/elementor/widgets/theme-elements/search.php:118
 #: includes/elements/flickr.php:156 includes/elements/flickr.php:205
@@ -3250,7 +3315,7 @@ msgstr ""
 #: includes/elements/recent-posts-tiles.php:154
 #: includes/elements/recent-posts-timeline.php:149
 #: includes/elements/testimonial.php:132 includes/elements/text.php:903
-#: includes/general-hooks.php:348 includes/general-hooks.php:1611
+#: includes/general-hooks.php:348 includes/general-hooks.php:1612
 #: public/templates/vcomposer/auxin_vc_extendes.php:63
 msgid "None"
 msgstr ""
@@ -3404,10 +3469,10 @@ msgstr ""
 #: includes/elementor/widgets/recent-posts-timeline.php:598
 #: includes/elementor/widgets/recent-products.php:384
 #: includes/elementor/widgets/recent-products.php:543
-#: includes/elementor/widgets/staff.php:420
+#: includes/elementor/widgets/staff.php:452
 #: includes/elementor/widgets/tabs.php:373
 #: includes/elementor/widgets/text.php:232
-#: includes/elementor/widgets/text.php:680
+#: includes/elementor/widgets/text.php:686
 #: includes/elementor/widgets/theme-elements/logo.php:454
 #: includes/elementor/widgets/theme-elements/site-title.php:94
 #: includes/elementor/widgets/touch-slider.php:332
@@ -3621,7 +3686,7 @@ msgid "Taxonomy"
 msgstr ""
 
 #: includes/elementor/modules/dynamic-tags/post-terms.php:71
-#: includes/elementor/widgets/staff.php:770
+#: includes/elementor/widgets/staff.php:802
 #: includes/elementor/widgets/theme-elements/breadcrumbs.php:365
 msgid "Separator"
 msgstr ""
@@ -4060,7 +4125,7 @@ msgid "Select Post Type"
 msgstr ""
 
 #: includes/elementor/modules/theme-builder/module.php:131
-#: includes/general-hooks.php:1758 includes/general-hooks.php:1764
+#: includes/general-hooks.php:1759 includes/general-hooks.php:1765
 msgid "404 Page"
 msgstr ""
 
@@ -4082,14 +4147,14 @@ msgstr ""
 #: includes/elementor/widgets/quote.php:105
 #: includes/elementor/widgets/staff.php:100
 #: includes/elementor/widgets/staff.php:140
-#: includes/elementor/widgets/staff.php:605
+#: includes/elementor/widgets/staff.php:637
 #: includes/elementor/widgets/tabs.php:100
 #: includes/elementor/widgets/tabs.php:136
 #: includes/elementor/widgets/tabs.php:439
 #: includes/elementor/widgets/testimonial.php:193
 #: includes/elementor/widgets/text.php:225
 #: includes/elementor/widgets/text.php:263
-#: includes/elementor/widgets/text.php:889
+#: includes/elementor/widgets/text.php:895
 #: includes/elements/accordion-widget.php:76 includes/elements/accordion.php:93
 #: includes/elements/dropcap.php:82 includes/elements/highlight.php:78
 #: includes/elements/staff.php:514 includes/elements/tabs.php:92
@@ -4217,7 +4282,7 @@ msgstr ""
 #: includes/elementor/widgets/recent-products.php:522
 #: includes/elementor/widgets/tabs.php:235
 #: includes/elementor/widgets/tabs.php:493
-#: includes/elementor/widgets/text.php:1468
+#: includes/elementor/widgets/text.php:1474
 #: includes/elementor/widgets/theme-elements/breadcrumbs.php:463
 #: includes/elementor/widgets/theme-elements/logo.php:390
 #: includes/elementor/widgets/theme-elements/menu.php:421
@@ -4290,8 +4355,8 @@ msgstr ""
 #: includes/elementor/widgets/recent-posts-timeline.php:715
 #: includes/elementor/widgets/recent-posts-timeline.php:898
 #: includes/elementor/widgets/recent-products.php:618
-#: includes/elementor/widgets/staff.php:433
-#: includes/elementor/widgets/staff.php:680
+#: includes/elementor/widgets/staff.php:465
+#: includes/elementor/widgets/staff.php:712
 #: includes/elementor/widgets/svg.php:320
 #: includes/elementor/widgets/tabs.php:251
 #: includes/elementor/widgets/tabs.php:383
@@ -4300,14 +4365,14 @@ msgstr ""
 #: includes/elementor/widgets/testimonial.php:591
 #: includes/elementor/widgets/testimonial.php:887
 #: includes/elementor/widgets/text.php:507
-#: includes/elementor/widgets/text.php:693
-#: includes/elementor/widgets/text.php:789
-#: includes/elementor/widgets/text.php:900
-#: includes/elementor/widgets/text.php:1060
-#: includes/elementor/widgets/text.php:1187
-#: includes/elementor/widgets/text.php:1244
-#: includes/elementor/widgets/text.php:1376
-#: includes/elementor/widgets/text.php:1484
+#: includes/elementor/widgets/text.php:699
+#: includes/elementor/widgets/text.php:795
+#: includes/elementor/widgets/text.php:906
+#: includes/elementor/widgets/text.php:1066
+#: includes/elementor/widgets/text.php:1193
+#: includes/elementor/widgets/text.php:1250
+#: includes/elementor/widgets/text.php:1382
+#: includes/elementor/widgets/text.php:1490
 #: includes/elementor/widgets/theme-elements/breadcrumbs.php:490
 #: includes/elementor/widgets/theme-elements/copyright.php:175
 #: includes/elementor/widgets/theme-elements/logo.php:293
@@ -4402,16 +4467,16 @@ msgstr ""
 #: includes/elementor/widgets/modern-button.php:987
 #: includes/elementor/widgets/quote.php:333
 #: includes/elementor/widgets/recent-posts-grid-carousel.php:1403
-#: includes/elementor/widgets/staff.php:778
+#: includes/elementor/widgets/staff.php:810
 #: includes/elementor/widgets/tabs.php:210
 #: includes/elementor/widgets/tabs.php:467
 #: includes/elementor/widgets/testimonial.php:695
 #: includes/elementor/widgets/testimonial.php:843
 #: includes/elementor/widgets/text.php:392
 #: includes/elementor/widgets/text.php:490
-#: includes/elementor/widgets/text.php:961
-#: includes/elementor/widgets/text.php:1395
-#: includes/elementor/widgets/text.php:1456
+#: includes/elementor/widgets/text.php:967
+#: includes/elementor/widgets/text.php:1401
+#: includes/elementor/widgets/text.php:1462
 #: includes/elementor/widgets/theme-elements/breadcrumbs.php:475
 #: includes/elementor/widgets/theme-elements/menu.php:517
 #: includes/elementor/widgets/theme-elements/menu.php:956
@@ -4525,12 +4590,16 @@ msgstr ""
 #: includes/elementor/widgets/recent-products.php:554
 #: includes/elementor/widgets/recent-products.php:628
 #: includes/elementor/widgets/recent-products.php:654
-#: includes/elementor/widgets/staff.php:443
-#: includes/elementor/widgets/staff.php:469
-#: includes/elementor/widgets/staff.php:554
-#: includes/elementor/widgets/staff.php:616
-#: includes/elementor/widgets/staff.php:690
-#: includes/elementor/widgets/staff.php:716
+#: includes/elementor/widgets/responsive-table.php:179
+#: includes/elementor/widgets/responsive-table.php:246
+#: includes/elementor/widgets/responsive-table.php:276
+#: includes/elementor/widgets/responsive-table.php:306
+#: includes/elementor/widgets/staff.php:475
+#: includes/elementor/widgets/staff.php:501
+#: includes/elementor/widgets/staff.php:586
+#: includes/elementor/widgets/staff.php:648
+#: includes/elementor/widgets/staff.php:722
+#: includes/elementor/widgets/staff.php:748
 #: includes/elementor/widgets/tabs.php:390
 #: includes/elementor/widgets/tabs.php:410
 #: includes/elementor/widgets/tabs.php:447
@@ -4540,16 +4609,16 @@ msgstr ""
 #: includes/elementor/widgets/testimonial.php:521
 #: includes/elementor/widgets/testimonial.php:601
 #: includes/elementor/widgets/testimonial.php:639
-#: includes/elementor/widgets/text.php:700
-#: includes/elementor/widgets/text.php:720
-#: includes/elementor/widgets/text.php:796
-#: includes/elementor/widgets/text.php:816
-#: includes/elementor/widgets/text.php:907
-#: includes/elementor/widgets/text.php:927
-#: includes/elementor/widgets/text.php:1194
-#: includes/elementor/widgets/text.php:1214
-#: includes/elementor/widgets/text.php:1251
-#: includes/elementor/widgets/text.php:1289
+#: includes/elementor/widgets/text.php:706
+#: includes/elementor/widgets/text.php:726
+#: includes/elementor/widgets/text.php:802
+#: includes/elementor/widgets/text.php:822
+#: includes/elementor/widgets/text.php:913
+#: includes/elementor/widgets/text.php:933
+#: includes/elementor/widgets/text.php:1200
+#: includes/elementor/widgets/text.php:1220
+#: includes/elementor/widgets/text.php:1257
+#: includes/elementor/widgets/text.php:1295
 #: includes/elementor/widgets/theme-elements/copyright.php:182
 #: includes/elementor/widgets/theme-elements/copyright.php:219
 #: includes/elementor/widgets/theme-elements/current-time.php:172
@@ -4901,7 +4970,7 @@ msgstr ""
 #: includes/elementor/widgets/button.php:283
 #: includes/elementor/widgets/modern-button.php:320
 #: includes/elementor/widgets/tabs.php:149
-#: includes/elementor/widgets/text.php:1048
+#: includes/elementor/widgets/text.php:1054
 #: includes/elementor/widgets/theme-elements/menu.php:616
 #: includes/elements/audio.php:97
 msgid "Skin"
@@ -5013,7 +5082,7 @@ msgstr ""
 #: includes/elementor/widgets/modern-button.php:101
 #: includes/elementor/widgets/modern-button.php:269
 #: includes/elementor/widgets/text.php:278
-#: includes/elementor/widgets/text.php:1012
+#: includes/elementor/widgets/text.php:1018
 #: includes/elementor/widgets/theme-elements/modern-search.php:99
 #: includes/elementor/widgets/theme-elements/modern-search.php:434
 #: includes/elementor/widgets/theme-elements/search.php:120
@@ -5050,7 +5119,7 @@ msgstr ""
 #: includes/elementor/widgets/heading-modern.php:1038
 #: includes/elementor/widgets/recent-posts-grid-carousel.php:1532
 #: includes/elementor/widgets/recent-posts-masonry.php:1073
-#: includes/elementor/widgets/text.php:1413
+#: includes/elementor/widgets/text.php:1419
 msgid "Wrapper"
 msgstr ""
 
@@ -5061,7 +5130,7 @@ msgstr ""
 
 #: includes/elementor/widgets/button.php:160
 #: includes/elementor/widgets/modern-button.php:308
-#: includes/elementor/widgets/text.php:1027 includes/elements/button.php:63
+#: includes/elementor/widgets/text.php:1033 includes/elements/button.php:63
 #: includes/elements/text.php:674 includes/general-hooks.php:686
 #: includes/general-hooks.php:1091
 msgid "Exlarge"
@@ -5070,7 +5139,7 @@ msgstr ""
 #: includes/elementor/widgets/button.php:164
 #: includes/elementor/widgets/divider.php:147
 #: includes/elementor/widgets/modern-button.php:312
-#: includes/elementor/widgets/text.php:1031 includes/elements/button.php:67
+#: includes/elementor/widgets/text.php:1037 includes/elements/button.php:67
 #: includes/elements/divider.php:91 includes/elements/text.php:678
 #: includes/general-hooks.php:690 includes/general-hooks.php:1095
 msgid "Tiny"
@@ -5086,14 +5155,14 @@ msgid "Button shape"
 msgstr ""
 
 #: includes/elementor/widgets/button.php:188
-#: includes/elementor/widgets/text.php:1352 includes/elements/button.php:91
+#: includes/elementor/widgets/text.php:1358 includes/elements/button.php:91
 #: includes/elements/text.php:708
 msgid "Box"
 msgstr ""
 
 #: includes/elementor/widgets/button.php:192
 #: includes/elementor/widgets/modern-button.php:295
-#: includes/elementor/widgets/text.php:1356 includes/elements/button.php:95
+#: includes/elementor/widgets/text.php:1362 includes/elements/button.php:95
 #: includes/elements/text.php:712 includes/general-hooks.php:721
 #: includes/general-hooks.php:1126
 msgid "Round"
@@ -5101,7 +5170,7 @@ msgstr ""
 
 #: includes/elementor/widgets/button.php:196
 #: includes/elementor/widgets/modern-button.php:296
-#: includes/elementor/widgets/text.php:1360 includes/elements/button.php:99
+#: includes/elementor/widgets/text.php:1366 includes/elements/button.php:99
 #: includes/elements/text.php:716 includes/general-hooks.php:725
 #: includes/general-hooks.php:1130
 msgid "Curve"
@@ -5113,7 +5182,7 @@ msgid "Button style"
 msgstr ""
 
 #: includes/elementor/widgets/button.php:215
-#: includes/elementor/widgets/text.php:1380 includes/elements/button.php:122
+#: includes/elementor/widgets/text.php:1386 includes/elements/button.php:122
 #: includes/elements/text.php:742 includes/general-hooks.php:758
 #: includes/general-hooks.php:1163
 msgid "3D"
@@ -5121,7 +5190,7 @@ msgstr ""
 
 #: includes/elementor/widgets/button.php:219
 #: includes/elementor/widgets/modern-button.php:282
-#: includes/elementor/widgets/text.php:1384 includes/elements/button.php:126
+#: includes/elementor/widgets/text.php:1390 includes/elements/button.php:126
 #: includes/elements/text.php:746 includes/general-hooks.php:762
 #: includes/general-hooks.php:1167
 msgid "Outline"
@@ -5160,10 +5229,10 @@ msgstr ""
 #: includes/elementor/widgets/testimonial.php:895
 #: includes/elementor/widgets/testimonial.php:931
 #: includes/elementor/widgets/text.php:383
-#: includes/elementor/widgets/text.php:548
-#: includes/elementor/widgets/text.php:607
-#: includes/elementor/widgets/text.php:1068
-#: includes/elementor/widgets/text.php:1095
+#: includes/elementor/widgets/text.php:554
+#: includes/elementor/widgets/text.php:613
+#: includes/elementor/widgets/text.php:1074
+#: includes/elementor/widgets/text.php:1101
 #: includes/elementor/widgets/theme-elements/menu.php:403
 #: includes/elementor/widgets/theme-elements/menu.php:480
 #: includes/elementor/widgets/theme-elements/menu.php:593
@@ -5211,39 +5280,39 @@ msgid "Icon for button"
 msgstr ""
 
 #: includes/elementor/widgets/button.php:373
-#: includes/elementor/widgets/text.php:1129 includes/elements/button.php:171
+#: includes/elementor/widgets/text.php:1135 includes/elements/button.php:171
 #: includes/elements/text.php:800 includes/general-hooks.php:372
 msgid "Icon alignment"
 msgstr ""
 
 #: includes/elementor/widgets/button.php:380
 #: includes/elementor/widgets/modern-button.php:804
-#: includes/elementor/widgets/text.php:1136 includes/elements/button.php:191
+#: includes/elementor/widgets/text.php:1142 includes/elements/button.php:191
 #: includes/elements/text.php:809 includes/general-hooks.php:847
 #: includes/general-hooks.php:1252
 msgid "Over"
 msgstr ""
 
 #: includes/elementor/widgets/button.php:381
-#: includes/elementor/widgets/text.php:1137 includes/elements/button.php:195
+#: includes/elementor/widgets/text.php:1143 includes/elements/button.php:195
 #: includes/elements/text.php:810 includes/general-hooks.php:851
 #: includes/general-hooks.php:1256
 msgid "Animate from Left"
 msgstr ""
 
 #: includes/elementor/widgets/button.php:382
-#: includes/elementor/widgets/text.php:1138 includes/elements/text.php:811
+#: includes/elementor/widgets/text.php:1144 includes/elements/text.php:811
 msgid "Animate from Right"
 msgstr ""
 
 #: includes/elementor/widgets/button.php:390
 #: includes/elementor/widgets/text.php:429
-#: includes/elementor/widgets/text.php:1150
+#: includes/elementor/widgets/text.php:1156
 msgid "Icon Size"
 msgstr ""
 
 #: includes/elementor/widgets/button.php:413
-#: includes/elementor/widgets/text.php:1335
+#: includes/elementor/widgets/text.php:1341
 #: includes/elementor/widgets/theme-elements/search.php:245
 msgid "Icon Margin"
 msgstr ""
@@ -5286,11 +5355,11 @@ msgstr ""
 #: includes/elementor/widgets/recent-posts-grid-carousel.php:1913
 #: includes/elementor/widgets/recent-posts-masonry.php:1255
 #: includes/elementor/widgets/recent-posts-masonry.php:1311
-#: includes/elementor/widgets/text.php:746
-#: includes/elementor/widgets/text.php:842
-#: includes/elementor/widgets/text.php:953
-#: includes/elementor/widgets/text.php:1263
-#: includes/elementor/widgets/text.php:1301
+#: includes/elementor/widgets/text.php:752
+#: includes/elementor/widgets/text.php:848
+#: includes/elementor/widgets/text.php:959
+#: includes/elementor/widgets/text.php:1269
+#: includes/elementor/widgets/text.php:1307
 #: includes/elementor/widgets/theme-elements/current-time.php:184
 #: includes/elementor/widgets/theme-elements/logo.php:507
 #: includes/elementor/widgets/theme-elements/logo.php:599
@@ -5373,7 +5442,7 @@ msgstr ""
 #: includes/elementor/widgets/modern-button.php:824
 #: includes/elementor/widgets/modern-button.php:923
 #: includes/elementor/widgets/testimonial.php:756
-#: includes/elementor/widgets/text.php:1023
+#: includes/elementor/widgets/text.php:1029
 #: includes/elementor/widgets/theme-elements/breadcrumbs.php:268
 #: includes/elementor/widgets/theme-elements/breadcrumbs.php:400
 #: includes/elementor/widgets/theme-elements/modern-search.php:264
@@ -5729,7 +5798,7 @@ msgstr ""
 #: includes/elementor/widgets/recent-posts-tiles.php:117
 #: includes/elementor/widgets/recent-posts-timeline.php:117
 #: includes/elementor/widgets/recent-products.php:129
-#: includes/elementor/widgets/staff.php:810 includes/elements/gallery.php:228
+#: includes/elementor/widgets/staff.php:842 includes/elements/gallery.php:228
 #: includes/elements/gallery.php:250 includes/elements/gallery.php:270
 #: includes/elements/recent-posts-grid-carousel.php:489
 #: includes/elements/recent-posts-grid-carousel.php:508
@@ -5748,14 +5817,14 @@ msgid "Direction"
 msgstr ""
 
 #: includes/elementor/widgets/custom-list.php:386
-#: includes/elementor/widgets/staff.php:738
+#: includes/elementor/widgets/staff.php:770
 #: includes/elementor/widgets/theme-elements/menu.php:161
 #: includes/elements/socials-list.php:84 includes/elements/staff.php:486
 msgid "Vertical"
 msgstr ""
 
 #: includes/elementor/widgets/custom-list.php:387
-#: includes/elementor/widgets/staff.php:739
+#: includes/elementor/widgets/staff.php:771
 #: includes/elementor/widgets/theme-elements/menu.php:160
 #: includes/elements/socials-list.php:83 includes/elements/staff.php:487
 msgid "Horizontal"
@@ -5866,7 +5935,7 @@ msgstr ""
 #: includes/elementor/widgets/icon.php:140
 #: includes/elementor/widgets/staff.php:200
 #: includes/elementor/widgets/text.php:460
-#: includes/elementor/widgets/text.php:649
+#: includes/elementor/widgets/text.php:655
 #: includes/elements/about-widget.php:121 includes/elements/divider.php:69
 #: includes/elements/dropcap.php:72 includes/elements/staff.php:168
 #: includes/elements/text.php:539 includes/elements/text.php:581
@@ -5902,6 +5971,8 @@ msgstr ""
 #: includes/elementor/widgets/image.php:314
 #: includes/elementor/widgets/modern-button.php:180
 #: includes/elementor/widgets/modern-button.php:800
+#: includes/elementor/widgets/responsive-table.php:133
+#: includes/elementor/widgets/responsive-table.php:200
 #: includes/elementor/widgets/svg.php:279
 #: includes/elementor/widgets/theme-elements/breadcrumbs.php:427
 #: includes/elementor/widgets/theme-elements/copyright.php:138
@@ -6393,7 +6464,7 @@ msgstr ""
 
 #: includes/elementor/widgets/image.php:278
 #: includes/elementor/widgets/theme-elements/shopping-cart.php:101
-#: includes/general-hooks.php:1906
+#: includes/general-hooks.php:1907
 msgid "Settings"
 msgstr ""
 
@@ -6667,14 +6738,14 @@ msgstr ""
 #: includes/elementor/widgets/recent-posts-timeline.php:863
 #: includes/elementor/widgets/recent-posts-timeline.php:949
 #: includes/elementor/widgets/recent-products.php:684
-#: includes/elementor/widgets/staff.php:518
-#: includes/elementor/widgets/staff.php:580
-#: includes/elementor/widgets/staff.php:642
+#: includes/elementor/widgets/staff.php:550
+#: includes/elementor/widgets/staff.php:612
+#: includes/elementor/widgets/staff.php:674
 #: includes/elementor/widgets/testimonial.php:553
 #: includes/elementor/widgets/testimonial.php:774
-#: includes/elementor/widgets/text.php:754
-#: includes/elementor/widgets/text.php:867
-#: includes/elementor/widgets/text.php:990
+#: includes/elementor/widgets/text.php:760
+#: includes/elementor/widgets/text.php:873
+#: includes/elementor/widgets/text.php:996
 msgid "Bottom space"
 msgstr ""
 
@@ -7500,7 +7571,7 @@ msgstr ""
 #: includes/elements/recent-posts-tiles-carousel.php:199
 #: includes/elements/recent-posts-tiles.php:229
 #: includes/elements/recent-posts-timeline.php:224
-#: includes/general-hooks.php:1846
+#: includes/general-hooks.php:1847
 msgid "Include posts"
 msgstr ""
 
@@ -7705,20 +7776,20 @@ msgstr ""
 
 #: includes/elementor/widgets/recent-posts-grid-carousel.php:1540
 #: includes/elementor/widgets/recent-posts-masonry.php:1178
-#: includes/elementor/widgets/staff.php:862
+#: includes/elementor/widgets/staff.php:894
 msgid "Padding for main wrapper"
 msgstr ""
 
 #: includes/elementor/widgets/recent-posts-grid-carousel.php:1552
 #: includes/elementor/widgets/recent-posts-grid-carousel.php:1792
 #: includes/elementor/widgets/recent-posts-masonry.php:1190
-#: includes/elementor/widgets/staff.php:874
+#: includes/elementor/widgets/staff.php:906
 msgid "Padding for content wrapper"
 msgstr ""
 
 #: includes/elementor/widgets/recent-posts-grid-carousel.php:1629
-#: includes/elementor/widgets/text.php:616
-#: includes/elementor/widgets/text.php:1537
+#: includes/elementor/widgets/text.php:622
+#: includes/elementor/widgets/text.php:1543
 msgid "Transition duration"
 msgstr ""
 
@@ -7902,18 +7973,18 @@ msgid "Table Markup"
 msgstr ""
 
 #: includes/elementor/widgets/responsive-table.php:125
-msgid "Table Heading"
-msgstr ""
-
-#: includes/elementor/widgets/responsive-table.php:153
 msgid "Table Body"
 msgstr ""
 
-#: includes/elementor/widgets/responsive-table.php:181
+#: includes/elementor/widgets/responsive-table.php:192
+msgid "Table Heading"
+msgstr ""
+
+#: includes/elementor/widgets/responsive-table.php:259
 msgid "Table Odd Rows"
 msgstr ""
 
-#: includes/elementor/widgets/responsive-table.php:200
+#: includes/elementor/widgets/responsive-table.php:289
 msgid "Table Even Rows"
 msgstr ""
 
@@ -7976,28 +8047,28 @@ msgid "Limit the number of words in the Content"
 msgstr ""
 
 #: includes/elementor/widgets/staff.php:196
-#: includes/elementor/widgets/text.php:641 includes/elements/staff.php:161
+#: includes/elementor/widgets/text.php:647 includes/elements/staff.php:161
 #: includes/elements/text.php:571
 msgid "Image shape"
 msgstr ""
 
 #: includes/elementor/widgets/staff.php:204
 #: includes/elementor/widgets/text.php:464
-#: includes/elementor/widgets/text.php:653 includes/elements/staff.php:172
+#: includes/elementor/widgets/text.php:659 includes/elements/staff.php:172
 #: includes/elements/text.php:543 includes/elements/text.php:585
 msgid "Semi-circle"
 msgstr ""
 
 #: includes/elementor/widgets/staff.php:208
 #: includes/elementor/widgets/text.php:468
-#: includes/elementor/widgets/text.php:657 includes/elements/staff.php:176
+#: includes/elementor/widgets/text.php:663 includes/elements/staff.php:176
 #: includes/elements/text.php:547 includes/elements/text.php:589
 msgid "Round Rectangle"
 msgstr ""
 
 #: includes/elementor/widgets/staff.php:212
 #: includes/elementor/widgets/text.php:476
-#: includes/elementor/widgets/text.php:661 includes/elements/staff.php:180
+#: includes/elementor/widgets/text.php:667 includes/elements/staff.php:180
 #: includes/elements/text.php:555 includes/elements/text.php:593
 msgid "Rectangle"
 msgstr ""
@@ -8042,21 +8113,29 @@ msgstr ""
 msgid "Instagram Address"
 msgstr ""
 
-#: includes/elementor/widgets/staff.php:499
-#: includes/elementor/widgets/text.php:850
-#: includes/elementor/widgets/text.php:973
+#: includes/elementor/widgets/staff.php:414
+msgid "Dribbble Address"
+msgstr ""
+
+#: includes/elementor/widgets/staff.php:430
+msgid "LinkedIn Address"
+msgstr ""
+
+#: includes/elementor/widgets/staff.php:531
+#: includes/elementor/widgets/text.php:856
+#: includes/elementor/widgets/text.php:979
 msgid "Top space"
 msgstr ""
 
-#: includes/elementor/widgets/staff.php:543
+#: includes/elementor/widgets/staff.php:575
 #: includes/elementor/widgets/text.php:242
-#: includes/elementor/widgets/text.php:776
+#: includes/elementor/widgets/text.php:782
 #: includes/elements/recent-posts-grid-carousel.php:70
 #: includes/elements/recent-products.php:56 includes/elements/text.php:59
 msgid "Subtitle"
 msgstr ""
 
-#: includes/elementor/widgets/staff.php:667
+#: includes/elementor/widgets/staff.php:699
 #: includes/elements/socials-list.php:15 includes/elements/staff.php:325
 #: includes/elements/staff.php:341 includes/elements/staff.php:357
 #: includes/elements/staff.php:373 includes/elements/staff.php:389
@@ -8066,25 +8145,25 @@ msgstr ""
 msgid "Socials"
 msgstr ""
 
-#: includes/elementor/widgets/staff.php:734 includes/elements/staff.php:480
+#: includes/elementor/widgets/staff.php:766 includes/elements/staff.php:480
 msgid "Icon Direction"
 msgstr ""
 
-#: includes/elementor/widgets/staff.php:751 includes/elements/staff.php:457
+#: includes/elementor/widgets/staff.php:783 includes/elements/staff.php:457
 msgid "Socials Icon size"
 msgstr ""
 
-#: includes/elementor/widgets/staff.php:758 includes/elements/staff.php:466
+#: includes/elementor/widgets/staff.php:790 includes/elements/staff.php:466
 #: includes/elements/text.php:472
 msgid "X-Large"
 msgstr ""
 
-#: includes/elementor/widgets/staff.php:799
+#: includes/elementor/widgets/staff.php:831
 msgid "Wrappers"
 msgstr ""
 
-#: includes/elementor/widgets/staff.php:838
-#: includes/elementor/widgets/text.php:1429
+#: includes/elementor/widgets/staff.php:870
+#: includes/elementor/widgets/text.php:1435
 #: includes/elementor/widgets/theme-elements/menu.php:324
 #: includes/elementor/widgets/theme-elements/menu.php:1341
 #: includes/elements/text.php:118
@@ -8295,63 +8374,63 @@ msgid "Cross Rectangle"
 msgstr ""
 
 #: includes/elementor/widgets/text.php:523
-#: includes/elementor/widgets/text.php:576
+#: includes/elementor/widgets/text.php:582
 #: includes/elementor/widgets/theme-elements/search.php:233
 #: includes/elements/text.php:445
 msgid "Icon color"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:535
-#: includes/elementor/widgets/text.php:591 includes/elements/text.php:486
+#: includes/elementor/widgets/text.php:538
+#: includes/elementor/widgets/text.php:597 includes/elements/text.php:486
 msgid "Icon background color"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:645 includes/elements/text.php:577
+#: includes/elementor/widgets/text.php:651 includes/elements/text.php:577
 msgid "Default Aspect"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:1039
+#: includes/elementor/widgets/text.php:1045
 msgid "Button Skin"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:1116
+#: includes/elementor/widgets/text.php:1122
 msgid "Button Icon"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:1229
+#: includes/elementor/widgets/text.php:1235
 msgid "Button Text"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:1322
+#: includes/elementor/widgets/text.php:1328
 msgid "Button Wrapper"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:1347
+#: includes/elementor/widgets/text.php:1353
 msgid "Shape Style"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:1371 includes/general-hooks.php:747
+#: includes/elementor/widgets/text.php:1377 includes/general-hooks.php:747
 #: includes/general-hooks.php:1152
 msgid "Button Style"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:1421
+#: includes/elementor/widgets/text.php:1427
 msgid "Overlay"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:1572 includes/elements/text.php:896
+#: includes/elementor/widgets/text.php:1578 includes/elements/text.php:896
 msgid "Footer Shape"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:1581 includes/elements/text.php:907
+#: includes/elementor/widgets/text.php:1587 includes/elements/text.php:907
 msgid "Wave"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:1585 includes/elements/text.php:911
+#: includes/elementor/widgets/text.php:1591 includes/elements/text.php:911
 msgid "Tail"
 msgstr ""
 
-#: includes/elementor/widgets/text.php:1596 includes/elements/button.php:212
+#: includes/elementor/widgets/text.php:1602 includes/elements/button.php:212
 #: includes/elements/text.php:825
 msgid "Color of button"
 msgstr ""
@@ -8490,10 +8569,6 @@ msgstr ""
 
 #: includes/elementor/widgets/theme-elements/logo.php:413
 msgid "Scale on sticky"
-msgstr ""
-
-#: includes/elementor/widgets/theme-elements/logo.php:425
-msgid "Scale"
 msgstr ""
 
 #: includes/elementor/widgets/theme-elements/menu.php:53
@@ -8695,7 +8770,11 @@ msgid "Menu Title Color"
 msgstr ""
 
 #: includes/elementor/widgets/theme-elements/menu.php:1521
-msgid "There are no menus in your site."
+msgid "Please choose a menu."
+msgstr ""
+
+#: includes/elementor/widgets/theme-elements/menu.php:1525
+msgid "There are no menu items in this menu."
 msgstr ""
 
 #: includes/elementor/widgets/theme-elements/modern-search.php:52
@@ -9043,7 +9122,7 @@ msgstr ""
 msgid "The name which appears in about widget."
 msgstr ""
 
-#: includes/elements/about-widget.php:72 includes/general-hooks.php:2377
+#: includes/elements/about-widget.php:72 includes/general-hooks.php:2378
 msgid "Skills"
 msgstr ""
 
@@ -10035,7 +10114,7 @@ msgstr ""
 msgid "Resolution/size of the photos. "
 msgstr ""
 
-#: includes/elements/instagram-feed.php:96 includes/general-hooks.php:1584
+#: includes/elements/instagram-feed.php:96 includes/general-hooks.php:1585
 msgid "Auto"
 msgstr ""
 
@@ -10824,7 +10903,7 @@ msgid "Single Color"
 msgstr ""
 
 #: includes/elements/text.php:201 includes/elements/text.php:296
-#: includes/general-hooks.php:1561
+#: includes/general-hooks.php:1562
 msgid "Background Image"
 msgstr ""
 
@@ -10841,7 +10920,7 @@ msgid "Wrapper Background Image Display"
 msgstr ""
 
 #: includes/elements/text.php:254 includes/elements/text.php:349
-#: includes/general-hooks.php:1592
+#: includes/general-hooks.php:1593
 msgid "Cover"
 msgstr ""
 
@@ -10854,7 +10933,7 @@ msgid "Centered, with original size"
 msgstr ""
 
 #: includes/elements/text.php:257 includes/elements/text.php:352
-#: includes/general-hooks.php:1725
+#: includes/general-hooks.php:1726
 msgid "Fixed"
 msgstr ""
 
@@ -11043,62 +11122,62 @@ msgstr ""
 msgid "Loading spinner (dark)"
 msgstr ""
 
-#: includes/general-functions.php:2239
+#: includes/general-functions.php:2243
 #. translators: %s: Search term.
 msgid "Search Results for: %s"
 msgstr ""
 
-#: includes/general-functions.php:2243
+#: includes/general-functions.php:2247
 #. translators: %s is the page number.
 msgid "&nbsp;&ndash; Page %s"
 msgstr ""
 
-#: includes/general-functions.php:2250
+#: includes/general-functions.php:2254
 #. translators: Category archive title. 1: Category name
 msgid "Category: %s"
 msgstr ""
 
-#: includes/general-functions.php:2256
+#: includes/general-functions.php:2260
 #. translators: Tag archive title. 1: Tag name
 msgid "Tag: %s"
 msgstr ""
 
-#: includes/general-functions.php:2263
+#: includes/general-functions.php:2267
 #. translators: Author archive title. 1: Author name
 msgid "Author: %s"
 msgstr ""
 
-#: includes/general-functions.php:2270
+#: includes/general-functions.php:2274
 #. translators: Yearly archive title. 1: Year
 msgid "Year: %s"
 msgstr ""
 
-#: includes/general-functions.php:2277
+#: includes/general-functions.php:2281
 #. translators: Monthly archive title. 1: Month name and year
 msgid "Month: %s"
 msgstr ""
 
-#: includes/general-functions.php:2284
+#: includes/general-functions.php:2288
 #. translators: Daily archive title. 1: Date
 msgid "Day: %s"
 msgstr ""
 
-#: includes/general-functions.php:2311
+#: includes/general-functions.php:2315
 #. translators: Post type archive title. 1: Post type name
 msgid "Archives: %s"
 msgstr ""
 
-#: includes/general-functions.php:2319
+#: includes/general-functions.php:2323
 #. translators: Taxonomy term archive title. 1: Taxonomy singular name, 2:
 #. Current taxonomy term
 msgid "%1$s: %2$s"
 msgstr ""
 
-#: includes/general-functions.php:2322
+#: includes/general-functions.php:2326
 msgid "Page Not Found"
 msgstr ""
 
-#: includes/general-functions.php:2487
+#: includes/general-functions.php:2496
 msgid "Select Page"
 msgstr ""
 
@@ -11444,328 +11523,336 @@ msgstr ""
 msgid "Specifies background color of website."
 msgstr ""
 
-#: includes/general-hooks.php:1562
+#: includes/general-hooks.php:1563
 msgid "You can upload custom image for background of login page"
 msgstr ""
 
-#: includes/general-hooks.php:1577
+#: includes/general-hooks.php:1578
 msgid "Background Size"
 msgstr ""
 
-#: includes/general-hooks.php:1578
+#: includes/general-hooks.php:1579
 msgid "Specifies background size on login page."
 msgstr ""
 
-#: includes/general-hooks.php:1588
+#: includes/general-hooks.php:1589
 msgid "Contain"
 msgstr ""
 
-#: includes/general-hooks.php:1607
+#: includes/general-hooks.php:1608
 msgid "Background Pattern"
 msgstr ""
 
-#: includes/general-hooks.php:1608
+#: includes/general-hooks.php:1609
 msgid ""
 "You can select one of these patterns as login background image. %s Some of "
 "these can be used as a pattern over your background image."
 msgstr ""
 
-#: includes/general-hooks.php:1624
+#: includes/general-hooks.php:1625
 msgid "Background Repeat"
 msgstr ""
 
-#: includes/general-hooks.php:1625
+#: includes/general-hooks.php:1626
 msgid "Specifies how background image repeats."
 msgstr ""
 
-#: includes/general-hooks.php:1630
+#: includes/general-hooks.php:1631
 msgid "No repeat"
 msgstr ""
 
-#: includes/general-hooks.php:1634
+#: includes/general-hooks.php:1635
 msgid "Repeat horizontally and vertically"
 msgstr ""
 
-#: includes/general-hooks.php:1638
+#: includes/general-hooks.php:1639
 msgid "Repeat horizontally"
 msgstr ""
 
-#: includes/general-hooks.php:1642
+#: includes/general-hooks.php:1643
 msgid "Repeat vertically"
 msgstr ""
 
-#: includes/general-hooks.php:1658
+#: includes/general-hooks.php:1659
 msgid "Background Position"
 msgstr ""
 
-#: includes/general-hooks.php:1659
+#: includes/general-hooks.php:1660
 msgid "Specifies background image position."
 msgstr ""
 
-#: includes/general-hooks.php:1664
+#: includes/general-hooks.php:1665
 msgid "Left top"
 msgstr ""
 
-#: includes/general-hooks.php:1668
+#: includes/general-hooks.php:1669
 msgid "Center top"
 msgstr ""
 
-#: includes/general-hooks.php:1672
+#: includes/general-hooks.php:1673
 msgid "Right top"
 msgstr ""
 
-#: includes/general-hooks.php:1677
+#: includes/general-hooks.php:1678
 msgid "Left center"
 msgstr ""
 
-#: includes/general-hooks.php:1681
+#: includes/general-hooks.php:1682
 msgid "Center center"
 msgstr ""
 
-#: includes/general-hooks.php:1685
+#: includes/general-hooks.php:1686
 msgid "Right center"
 msgstr ""
 
-#: includes/general-hooks.php:1690
+#: includes/general-hooks.php:1691
 msgid "Left bottom"
 msgstr ""
 
-#: includes/general-hooks.php:1694
+#: includes/general-hooks.php:1695
 msgid "Center bottom"
 msgstr ""
 
-#: includes/general-hooks.php:1698
+#: includes/general-hooks.php:1699
 msgid "Right bottom"
 msgstr ""
 
-#: includes/general-hooks.php:1714
+#: includes/general-hooks.php:1715
 msgid "Background Attachment"
 msgstr ""
 
-#: includes/general-hooks.php:1715
+#: includes/general-hooks.php:1716
 msgid ""
 "Specifies whether the background is fixed or scrollable as user scrolls the "
 "page."
 msgstr ""
 
-#: includes/general-hooks.php:1721
+#: includes/general-hooks.php:1722
 msgid "Scroll"
 msgstr ""
 
-#: includes/general-hooks.php:1742
+#: includes/general-hooks.php:1743
 msgid "Custom CSS class name"
 msgstr ""
 
-#: includes/general-hooks.php:1743
+#: includes/general-hooks.php:1744
 msgid ""
 "In this field you can define custom CSS class name for login page.\n"
 "                          This class name will be added to body classes in "
 "login page and is useful for advance custom styling purposes."
 msgstr ""
 
-#: includes/general-hooks.php:1759
+#: includes/general-hooks.php:1760
 msgid "404 Page Options"
 msgstr ""
 
-#: includes/general-hooks.php:1765
+#: includes/general-hooks.php:1766
 msgid "Specifies a page to display on 404."
 msgstr ""
 
-#: includes/general-hooks.php:1780 includes/general-hooks.php:1797
+#: includes/general-hooks.php:1781 includes/general-hooks.php:1798
 msgid "Maintenance or Comingsoon Page"
 msgstr ""
 
-#: includes/general-hooks.php:1781
+#: includes/general-hooks.php:1782
 msgid "Maintenance or Comingsoon Page Options"
 msgstr ""
 
-#: includes/general-hooks.php:1786
+#: includes/general-hooks.php:1787
 msgid "Enable Maintenance or Comingsoon Mode"
 msgstr ""
 
-#: includes/general-hooks.php:1787
+#: includes/general-hooks.php:1788
 msgid "With this option you can manually enable Maintenance or Comingsoon mode"
 msgstr ""
 
-#: includes/general-hooks.php:1798
+#: includes/general-hooks.php:1799
 msgid ""
 "In This Case You Can Set Your Specifc Page for Maintenance or Comingsoon "
 "Mode"
 msgstr ""
 
-#: includes/general-hooks.php:1817
+#: includes/general-hooks.php:1818
 msgid "Search Results"
 msgstr ""
 
-#: includes/general-hooks.php:1818
+#: includes/general-hooks.php:1819
 msgid "Search Results Options"
 msgstr ""
 
-#: includes/general-hooks.php:1824
+#: includes/general-hooks.php:1825
 msgid "Exclude Posts Types"
 msgstr ""
 
-#: includes/general-hooks.php:1825
+#: includes/general-hooks.php:1826
 msgid "The post types which should be excluded from search results."
 msgstr ""
 
-#: includes/general-hooks.php:1835
+#: includes/general-hooks.php:1836
 msgid "Exclude Posts Without Featured Image"
 msgstr ""
 
-#: includes/general-hooks.php:1836
+#: includes/general-hooks.php:1837
 msgid "Exclude posts without featured image in search results."
 msgstr ""
 
-#: includes/general-hooks.php:1847
+#: includes/general-hooks.php:1848
 msgid ""
 "If you intend to include additional posts, you should specify the posts "
 "here.<br>You have to insert the Post IDs that are separated by camma (eg. "
 "53,34,87,25)"
 msgstr ""
 
-#: includes/general-hooks.php:1861
+#: includes/general-hooks.php:1862
 msgid "Import/Export"
 msgstr ""
 
-#: includes/general-hooks.php:1862
+#: includes/general-hooks.php:1863
 msgid "Import or Export options"
 msgstr ""
 
-#: includes/general-hooks.php:1869
+#: includes/general-hooks.php:1870
 msgid "Export Data"
 msgstr ""
 
-#: includes/general-hooks.php:1870
+#: includes/general-hooks.php:1871
 msgid "Your theme options code which you can import later."
 msgstr ""
 
-#: includes/general-hooks.php:1880
+#: includes/general-hooks.php:1881
 msgid "Import Data"
 msgstr ""
 
-#: includes/general-hooks.php:1881
+#: includes/general-hooks.php:1882
 msgid "Paste the exported theme options code to import into theme."
 msgstr ""
 
-#: includes/general-hooks.php:1896
+#: includes/general-hooks.php:1897
 msgid "White Label"
 msgstr ""
 
-#: includes/general-hooks.php:1897
+#: includes/general-hooks.php:1898
 msgid "White Label Settings"
 msgstr ""
 
-#: includes/general-hooks.php:1907
+#: includes/general-hooks.php:1908
 msgid "Change PHLOX labels."
 msgstr ""
 
-#: includes/general-hooks.php:1911
+#: includes/general-hooks.php:1912
 msgid "Theme Name"
 msgstr ""
 
-#: includes/general-hooks.php:1922
+#: includes/general-hooks.php:1923
 msgid "Theme Author Name"
 msgstr ""
 
-#: includes/general-hooks.php:1931
+#: includes/general-hooks.php:1932
 msgid "Theme Author URL"
 msgstr ""
 
-#: includes/general-hooks.php:1940
+#: includes/general-hooks.php:1941
 msgid "Theme Description"
 msgstr ""
 
-#: includes/general-hooks.php:1949
+#: includes/general-hooks.php:1950
 msgid "Theme Screenshot (1200x900)"
 msgstr ""
 
-#: includes/general-hooks.php:1962
+#: includes/general-hooks.php:1963
 msgid "Displays"
 msgstr ""
 
-#: includes/general-hooks.php:1963
+#: includes/general-hooks.php:1964
 msgid "Change PHLOX admin views."
 msgstr ""
 
-#: includes/general-hooks.php:1967
+#: includes/general-hooks.php:1968
 msgid "Hide Notifications"
 msgstr ""
 
-#: includes/general-hooks.php:1978
+#: includes/general-hooks.php:1979
 msgid "Hide Theme Badge"
 msgstr ""
 
-#: includes/general-hooks.php:1989
+#: includes/general-hooks.php:1990
 msgid "Hide Phlox Menu"
 msgstr ""
 
-#: includes/general-hooks.php:2000
+#: includes/general-hooks.php:2001
 msgid "Hide Dashboard Section"
 msgstr ""
 
-#: includes/general-hooks.php:2018
+#: includes/general-hooks.php:2019
 msgid "Hide Customization Section"
 msgstr ""
 
-#: includes/general-hooks.php:2036
+#: includes/general-hooks.php:2037
 msgid "Hide Demo Importer Section"
 msgstr ""
 
-#: includes/general-hooks.php:2054
+#: includes/general-hooks.php:2055
 msgid "Hide Template Kits Section"
 msgstr ""
 
-#: includes/general-hooks.php:2072
+#: includes/general-hooks.php:2073
 msgid "Hide Plugins Section"
 msgstr ""
 
-#: includes/general-hooks.php:2090
+#: includes/general-hooks.php:2091
 msgid "Hide Tutorials Section"
 msgstr ""
 
-#: includes/general-hooks.php:2108
+#: includes/general-hooks.php:2109
 msgid "Hide Feedback Section"
 msgstr ""
 
-#: includes/general-hooks.php:2370
+#: includes/general-hooks.php:2371
 msgid "Twitter"
 msgstr ""
 
-#: includes/general-hooks.php:2371
+#: includes/general-hooks.php:2372
 msgid "Facebook"
 msgstr ""
 
-#: includes/general-hooks.php:2372
+#: includes/general-hooks.php:2373
 msgid "Google Plus"
 msgstr ""
 
-#: includes/general-hooks.php:2373
+#: includes/general-hooks.php:2374
 msgid "Flickr"
 msgstr ""
 
-#: includes/general-hooks.php:2374
+#: includes/general-hooks.php:2375
 msgid "Delicious"
 msgstr ""
 
-#: includes/general-hooks.php:2375
+#: includes/general-hooks.php:2376
 msgid "Pinterest"
 msgstr ""
 
-#: includes/general-hooks.php:2376
+#: includes/general-hooks.php:2377
 msgid "GitHub"
 msgstr ""
 
-#: includes/general-hooks.php:2548
+#: includes/general-hooks.php:2549
 msgid "Page Options"
 msgstr ""
 
-#: includes/general-hooks.php:2556
+#: includes/general-hooks.php:2557
 msgid "Post Options"
 msgstr ""
 
-#: includes/general-hooks.php:3031
+#: includes/general-hooks.php:3032
 msgid "Page %s"
+msgstr ""
+
+#: includes/general-hooks.php:3605
+msgid "current "
+msgstr ""
+
+#: includes/general-hooks.php:3635
+msgid "Edit Header & Footer"
 msgstr ""
 
 #: public/includes/frontend-ajax.php:17
@@ -11935,73 +12022,73 @@ msgstr ""
 msgid "http://averta.net"
 msgstr ""
 
-#: includes/general-functions.php:2266
+#: includes/general-functions.php:2270
 msgctxt "yearly archives date format"
 msgid "Y"
 msgstr ""
 
-#: includes/general-functions.php:2273
+#: includes/general-functions.php:2277
 msgctxt "monthly archives date format"
 msgid "F Y"
 msgstr ""
 
-#: includes/general-functions.php:2280
+#: includes/general-functions.php:2284
 msgctxt "daily archives date format"
 msgid "F j, Y"
 msgstr ""
 
-#: includes/general-functions.php:2288
+#: includes/general-functions.php:2292
 msgctxt "post format archive title"
 msgid "Asides"
 msgstr ""
 
-#: includes/general-functions.php:2290
+#: includes/general-functions.php:2294
 msgctxt "post format archive title"
 msgid "Galleries"
 msgstr ""
 
-#: includes/general-functions.php:2292
+#: includes/general-functions.php:2296
 msgctxt "post format archive title"
 msgid "Images"
 msgstr ""
 
-#: includes/general-functions.php:2294
+#: includes/general-functions.php:2298
 msgctxt "post format archive title"
 msgid "Videos"
 msgstr ""
 
-#: includes/general-functions.php:2296
+#: includes/general-functions.php:2300
 msgctxt "post format archive title"
 msgid "Quotes"
 msgstr ""
 
-#: includes/general-functions.php:2298
+#: includes/general-functions.php:2302
 msgctxt "post format archive title"
 msgid "Links"
 msgstr ""
 
-#: includes/general-functions.php:2300
+#: includes/general-functions.php:2304
 msgctxt "post format archive title"
 msgid "Statuses"
 msgstr ""
 
-#: includes/general-functions.php:2302
+#: includes/general-functions.php:2306
 msgctxt "post format archive title"
 msgid "Audio"
 msgstr ""
 
-#: includes/general-functions.php:2304
+#: includes/general-functions.php:2308
 msgctxt "post format archive title"
 msgid "Chats"
 msgstr ""
 
-#: includes/general-hooks.php:3052
+#: includes/general-hooks.php:3053
 #. translators: playlist item title
 msgctxt "playlist item title"
 msgid "&#8220;%s&#8221;"
 msgstr ""
 
-#: includes/general-hooks.php:3077 includes/general-hooks.php:3082
+#: includes/general-hooks.php:3078 includes/general-hooks.php:3083
 #. translators: playlist item title
 msgctxt "playlist item title"
 msgid "%s"

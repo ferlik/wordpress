@@ -309,6 +309,7 @@ selector .child-element{ margin: 10px; }
                     'aux-fade-in-right'          => 'Fade In Right',
                     'aux-fade-in-right-1'        => 'Fade In Right 1',
                     'aux-fade-in-right-2'        => 'Fade In Right 2',
+                    'aux-fade-in-custom'         => 'Fade In - Custom',
 
                     // Slide Animation
                     'aux-slide-from-right'       => 'Slide From Right',
@@ -335,6 +336,7 @@ selector .child-element{ margin: 10px; }
                     'aux-rotate-in-up-right'     => 'Rotate In Up Right',
                     'aux-rotate-in-up-right-1'   => 'Rotate In Up Right 1',
                     'aux-rotate-in-up-right-2'   => 'Rotate In Up Right 2',
+                    'aux-rotate-custom'          => 'Rotate In - Custom',
 
                     'aux-zoom-in'                => 'Zoom In',
                     'aux-zoom-in-1'              => 'Zoom In 1',
@@ -348,6 +350,7 @@ selector .child-element{ margin: 10px; }
                     'aux-scale-down'             => 'Scale Down',
                     'aux-scale-down-1'           => 'Scale Down 1',
                     'aux-scale-down-2'           => 'Scale Down 2',
+                    'aux-scale-custom'           => 'Scale - Custom',
 
                     'aux-flip-in-down'           => 'Flip In Down',
                     'aux-flip-in-down-1'         => 'Flip In Down 1',
@@ -378,9 +381,7 @@ selector .child-element{ margin: 10px; }
                     // Specials
                     'aux-shake'                  => 'Shake',
                     'aux-bounce-in'              => 'Bounce In',
-                    'aux-jack-in-box'            => 'Jack In the Box',
-
-
+                    'aux-jack-in-box'            => 'Jack In the Box'
                 ),
                 'default'            => '',
                 'prefix_class'       => 'aux-appear-watch-animation ',
@@ -388,6 +389,103 @@ selector .child-element{ margin: 10px; }
             )
         );
 
+        $widget->add_control(
+            'aux_fade_in_custom_x',
+            array(
+                'label'     => __( 'Fade In For X', 'auxin-elements' ) . ' (px)',
+                'type'      => Controls_Manager::NUMBER,
+                'default'   => '',
+                'min'       => -500,
+                'max'       => 500,
+                'step'      => 25,
+                'default'   => 50,
+                'selectors'    => array(
+                    '{{WRAPPER}}.aux-appear-watch-animation' => '--aux-anim-fade-in-from-x:{{SIZE}}px;'
+                ),
+                'condition' => array(
+                    'aux_animation_name' => 'aux-fade-in-custom'
+                ),
+                'render_type' => 'template'
+            )
+        );
+
+        $widget->add_control(
+            'aux_fade_in_custom_y',
+            array(
+                'label'     => __( 'Fade In For Y', 'auxin-elements' ) . ' (px)',
+                'type'      => Controls_Manager::NUMBER,
+                'default'   => '',
+                'min'       => -500,
+                'max'       => 500,
+                'step'      => 25,
+                'default'   => 50,
+                'selectors' => array(
+                    '{{WRAPPER}}.aux-appear-watch-animation' => '--aux-anim-fade-in-from-y:{{SIZE}}px;'
+                ),
+                'condition' => array(
+                    'aux_animation_name' => 'aux-fade-in-custom'
+                ),
+                'render_type' => 'template'
+            )
+        );
+
+        $widget->add_control(
+            'aux_scale_custom',
+            array(
+                'label'     => __( 'Scale', 'auxin-elements' ) . '',
+                'type'      => Controls_Manager::NUMBER,
+                'default'   => '',
+                'min'       => 0.1,
+                'max'       => 3,
+                'step'      => 0.1,
+                'selectors' => array(
+                    '{{WRAPPER}}.aux-appear-watch-animation' => '--aux-scale-custom:{{SIZE}};'
+                ),
+                'condition' => array(
+                    'aux_animation_name' => 'aux-scale-custom'
+                ),
+                'render_type' => 'template'
+            )
+        );
+
+        $widget->add_control(
+            'aux_rotate_custom_deg',
+            array(
+                'label'     => __( 'Rotate Degree', 'auxin-elements' ) . '',
+                'type'      => Controls_Manager::NUMBER,
+                'default'   => '',
+                'min'       => -360,
+                'max'       => 360,
+                'step'      => 10,
+                'selectors' => array(
+                    '{{WRAPPER}}.aux-appear-watch-animation' => '--aux-anim-rotate-deg:{{SIZE}}deg;'
+                ),
+                'condition' => array(
+                    'aux_animation_name' => 'aux-rotate-custom'
+                ),
+                'render_type' => 'template'
+            )
+        );
+
+        $widget->add_control(
+            'aux_rotate_custom_origin',
+            array(
+                'label'     => __( 'Rotate Origin', 'auxin-elements' ) . '',
+                'type'      => Controls_Manager::SELECT,
+                'default'   => 'left bottom',
+                'options'   => [
+                    'left bottom'  => __( 'Left Bottom', 'auxin-elements' ),
+                    'right bottom' => __( 'Right Bottom', 'auxin-elements' ),
+                ],
+                'selectors' => array(
+                    '{{WRAPPER}}.aux-appear-watch-animation' => '--aux-anim-rotate-origin:{{VALUE}};'
+                ),
+                'condition' => array(
+                    'aux_animation_name' => 'aux-rotate-custom'
+                ),
+                'render_type' => 'template'
+            )
+        );
 
         $widget->add_control(
             'aux_animation_duration',

@@ -523,6 +523,9 @@ class Text extends Widget_Base {
                 'label'       => __('Icon color', 'auxin-elements'),
                 'type'        => Controls_Manager::COLOR,
                 'default'     => '#ffffff',
+                'selectors' => array(
+                    '{{WRAPPER}} .aux-ico-box' => 'color:{{VALUE}};',
+                ),
                 'condition'   => array(
                     'icon_or_image' => array('icon')
                 )
@@ -534,7 +537,10 @@ class Text extends Widget_Base {
             array(
                 'label'       => __('Icon background color','auxin-elements' ),
                 'type'        => Controls_Manager::COLOR,
-                'default'     => '#1bb0ce',
+                'default'     => '',
+                'selectors' => array(
+                    '{{WRAPPER}} .aux-ico-box' => 'background-color:{{VALUE}};',
+                ),
                 'condition'   => array(
                     'icon_or_image' => array('icon')
                 )
@@ -1623,12 +1629,10 @@ class Text extends Widget_Base {
 
         $btn_icon_value = ! empty( $settings['aux_text_btn_icon']['value'] ) ? $settings['aux_text_btn_icon']['value'] : ( ! empty( $settings['btn_icon'] ) ? $settings['btn_icon'] : '' ) ;
 
-        $btn_target = $settings['btn_link']['is_external'] ? '_blank' : '_self';
-
         $args       = array(
             'title'              => $settings['title'],
             'subtitle'           => $settings['subtitle'],
-            'title_link'         => $settings['title_link']['url'],
+            'title_link'         => auxin_get_array_value( $settings['title_link'], 'url' ),
             'content'            => $settings['content'],
 
             'display_button'     => $settings['display_button'],
@@ -1639,26 +1643,24 @@ class Text extends Widget_Base {
             'btn_icon'           => $btn_icon_value,
             'btn_icon_align'     => $settings['btn_icon_align'],
             'btn_color_name'     => $settings['btn_color_name'],
-            'btn_link'           => $settings['btn_link']['url'],
-            'btn_nofollow'       => $settings['btn_link']['nofollow'],
-            'btn_target'         => $btn_target,
-
+            'btn_link'           => auxin_get_array_value( $settings['btn_link'], 'url' ),
+            'btn_nofollow'       => auxin_get_array_value( $settings['btn_link'], 'nofollow' ),
+            'btn_target'         => auxin_get_array_value( $settings['btn_link'], 'is_external', false ) ? '_blank' : '_self',
 
             'icon_or_image'      => $settings['icon_or_image'],
             'icon'               => $main_icon,
             'icon_color'         => $settings['icon_color'],
             'icon_bg_color'      => $settings['icon_bg_color'],
             'icon_shape'         => $settings['icon_shape'],
-            'image'              => $settings['image']['id'],
+            'image'              => auxin_get_array_value( $settings['image'], 'id' ),
             'size'               => $settings['image_size'],
-            'width'              => $settings['image_custom_dimension']['width'],
-            'height'             => $settings['image_custom_dimension']['height'],
+            'width'              => auxin_get_array_value( $settings['image_custom_dimension'], 'width'  ),
+            'height'             => auxin_get_array_value( $settings['image_custom_dimension'], 'height' ),
             'preloadable'        => $settings['preloadable'],
             'preload_preview'    => $settings['preload_preview'],
             'preload_bgcolor'    => $settings['preload_bgcolor'],
             'image_size'         => $settings['image_size'],
             'img_shape'          => $settings['img_shape'],
-            'icon_border_width'  => '',
             'image_position'     => $settings['image_position'],
             'icon_svg_inline'    => $settings['svg_inline'],
 

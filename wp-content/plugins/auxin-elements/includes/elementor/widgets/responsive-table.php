@@ -120,10 +120,105 @@ class ResponsiveTable extends Widget_Base {
         /*-----------------------------------------------------------------------------------*/
 
         $this->start_controls_section(
+            'table_body_section',
+            array(
+                'label' => __( 'Table Body', 'auxin-elements' ),
+                'tab' => Controls_Manager::TAB_STYLE
+            )
+        );
+
+        $this->add_responsive_control(
+            'table_body_alignment',
+            array(
+                'label'       => __('Alignment','auxin-elements' ),
+                'type'        => Controls_Manager::CHOOSE,
+                'options'     => array(
+                    'left' => array(
+                        'title' => __( 'Left', 'auxin-elements' ),
+                        'icon' => 'fa fa-align-left',
+                    ),
+                    'center' => array(
+                        'title' => __( 'Center', 'auxin-elements' ),
+                        'icon' => 'fa fa-align-center',
+                    ),
+                    'right' => array(
+                        'title' => __( 'Right', 'auxin-elements' ),
+                        'icon' => 'fa fa-align-right',
+                    )
+                ),
+                'default'     => '',
+                'toggle'      => true,
+                'selectors'   => array(
+                    '{{WRAPPER}} td' => 'text-align:{{VALUE}};',
+                ),
+                'separator'   => 'after'
+            )
+        );
+
+        $this->add_group_control(
+            Group_Control_Background::get_type(),
+            array(
+                'name'      => 'table_body_background_normal',
+                'selector'  => '{{WRAPPER}} td',
+                'separator' => 'none'
+            )
+        );
+
+        $this->add_group_control(
+            Group_Control_Typography::get_type(),
+            array(
+                'name'      => 'table_body_typography',
+                'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
+                'selector'  => '{{WRAPPER}} td'
+            )
+        );
+
+        $this->add_control(
+            'table_body_color',
+            array(
+                'label'     => __( 'Color', 'auxin-elements' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => array(
+                    '{{WRAPPER}} td' => 'color:{{VALUE}};'
+                )
+            )
+        );
+
+        $this->end_controls_section();
+
+        $this->start_controls_section(
             'table_head_section',
             array(
                 'label' => __( 'Table Heading', 'auxin-elements' ),
                 'tab' => Controls_Manager::TAB_STYLE
+            )
+        );
+
+        $this->add_responsive_control(
+            'table_head_alignment',
+            array(
+                'label'       => __('Alignment','auxin-elements' ),
+                'type'        => Controls_Manager::CHOOSE,
+                'options'     => array(
+                    'left' => array(
+                        'title' => __( 'Left', 'auxin-elements' ),
+                        'icon' => 'fa fa-align-left',
+                    ),
+                    'center' => array(
+                        'title' => __( 'Center', 'auxin-elements' ),
+                        'icon' => 'fa fa-align-center',
+                    ),
+                    'right' => array(
+                        'title' => __( 'Right', 'auxin-elements' ),
+                        'icon' => 'fa fa-align-right',
+                    )
+                ),
+                'default'     => '',
+                'toggle'      => true,
+                'selectors'   => array(
+                    '{{WRAPPER}} th' => 'text-align:{{VALUE}};',
+                ),
+                'separator'   => 'after'
             )
         );
 
@@ -145,31 +240,14 @@ class ResponsiveTable extends Widget_Base {
             )
         );
 
-        $this->end_controls_section();
-
-        $this->start_controls_section(
-            'table_body_section',
+        $this->add_control(
+            'table_head_color',
             array(
-                'label' => __( 'Table Body', 'auxin-elements' ),
-                'tab' => Controls_Manager::TAB_STYLE
-            )
-        );
-
-        $this->add_group_control(
-            Group_Control_Background::get_type(),
-            array(
-                'name'      => 'table_body_background_normal',
-                'selector'  => '{{WRAPPER}} td',
-                'separator' => 'none'
-            )
-        );
-
-        $this->add_group_control(
-            Group_Control_Typography::get_type(),
-            array(
-                'name'      => 'table_body_typography',
-                'scheme'    => Scheme_Typography::TYPOGRAPHY_1,
-                'selector'  => '{{WRAPPER}} td'
+                'label'     => __( 'Color', 'auxin-elements' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => array(
+                    '{{WRAPPER}} th' => 'color:{{VALUE}};'
+                )
             )
         );
 
@@ -192,6 +270,17 @@ class ResponsiveTable extends Widget_Base {
             )
         );
 
+        $this->add_control(
+            'table_odd_row_color',
+            array(
+                'label'     => __( 'Color', 'auxin-elements' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => array(
+                    '{{WRAPPER}} {{WRAPPER}} tr:nth-child(2n+1)' => 'color:{{VALUE}};'
+                )
+            )
+        );
+
         $this->end_controls_section();
 
         $this->start_controls_section(
@@ -208,6 +297,17 @@ class ResponsiveTable extends Widget_Base {
                 'name'      => 'table_even_row_background_normal',
                 'selector'  => '{{WRAPPER}} tr:nth-child(2n)',
                 'separator' => 'none'
+            )
+        );
+
+        $this->add_control(
+            'table_even_row_color',
+            array(
+                'label'     => __( 'Color', 'auxin-elements' ),
+                'type'      => Controls_Manager::COLOR,
+                'selectors' => array(
+                    '{{WRAPPER}} {{WRAPPER}} tr:nth-child(2n)' => 'color:{{VALUE}};'
+                )
             )
         );
 

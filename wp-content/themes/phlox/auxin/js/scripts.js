@@ -1,8 +1,8 @@
-/*! Auxin WordPress Framework - v2.6.12 - 2020-08-31
+/*! Auxin WordPress Framework - v2.7.6 - 2021-01-12
  *  Scripts for initializing admin plugins 
 
  *  http://averta.net
- *  (c) 2014-2020 averta;
+ *  (c) 2014-2021 averta;
  */
 
 
@@ -736,8 +736,6 @@
 
             var styleTag = wp.customize.previewer.preview.iframe[0].contentDocument.getElementById(optionName);
 
-
-
             if ( cssValue ) {
                 styleTag.innerHTML = cssValue;
             } else {
@@ -799,8 +797,38 @@
             });
         }
 
-        // Auxin Responsive Slider Controller
+        // Auxin Global Color Controller
         // =====================================================================
+        if( wp.customize ){
+            wp.customize.controlConstructor['auxin_group_global_colors'] = wp.customize.AuxinControl.extend({
+
+                ready: function() {
+                    // call superclass
+                    wp.customize.AuxinControl.prototype.ready.apply( this, arguments );
+
+                    var control = this,
+                        jsonInput = this.container.eq(0).find('.aux-global-colors-controller-json-input')[0],
+                        container = this.container.eq(0).find('.aux-global-colors-controller-container')[0],
+                        input = this.container.eq(0).find('.aux-global-colors-controller-input')[0]
+
+                    OptionControls.inputAdapter( jsonInput, container,
+                        function( optionControl ){ // for onchange
+                            control.setting.set( optionControl.value.color );
+                            auxin_embed_controller_styles('auxin-customizer-css-', control.id, optionControl.toCSS() );
+                        },
+                        function( optionControl ) { // for init
+                            wp.customize.previewer.bind('ready', function(){
+                                auxin_embed_controller_styles('auxin-customizer-css-', control.id, optionControl.toCSS() );
+                            });
+                        }
+                    );
+
+                }
+
+            });
+        }
+
+
 
         if( wp.customize ){
             wp.customize.controlConstructor['auxin_responsive_slider'] = wp.customize.AuxinControl.extend({
@@ -859,7 +887,7 @@
             });
         }
 
-        // Auxin Pair Repeater 
+        // Auxin Pair Repeater
         // =====================================================================
         var pairRepeaterContainer = document.querySelector('.aux-pair-repeater-container'),
             pairRepeaterInput = document.querySelector('.aux-product-custom-fields');
@@ -1030,13 +1058,13 @@
 
                                 console.log('Successfully Done. '+response.data.message);
                             } else {
-                                console.log('Failed. '+response.data.message) 
+                                console.log('Failed. '+response.data.message)
                             };
                         })
                         .fail(function() {
                             console.log("error");
                         });
-                        
+
                     });
 
                     this.setting.bind( function ( value ) {
@@ -1066,7 +1094,7 @@
                         controlTitle = $( event.target ).find( 'option[selected]').text();
 
                     for ( var metaboxID in auxin.metabox ) {
-            
+
                         var metaboxRelatedControls = auxin.metabox[ metaboxID ].relatedControls,
                             relatedControls = metaboxRelatedControls[ event.target.id ];
 
@@ -1090,7 +1118,7 @@
                     control.picker.val( control.setting() ).avertaVisualSelect( selectiveListArgs );
 
                     control.picker.on( 'change', function( event, data ) {
-                        
+
                         // check if selective list option has url to open , open it in new tab
                         var _link = $('option:selected', this).attr('data-link');
                         if ( typeof _link != 'undefined' && _link != '' ) {
@@ -1135,7 +1163,7 @@
                     event.target.value = data.id;
             });
         }
-        
+
         if( wp.customize ){
             wp.customize.controlConstructor['auxin_edit_template'] = wp.customize.AuxinControl.extend({
                 ready: function() {
@@ -1273,7 +1301,7 @@
                 }
                 e.target.setAttribute( 'value', e.target.checked ? '1' : '0' );
             } ) ;
-                
+
 
             $(document).on('panelsopen', function(){
                 initSwitchary( $( switchery_picker ) );

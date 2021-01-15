@@ -1,4 +1,4 @@
-/*! Auxin WordPress Framework - v2.6.12 - 2020-08-31
+/*! Auxin WordPress Framework - v2.7.6 - 2021-01-12
  *  All required plugins 
  *  http://averta.net
  */
@@ -17188,11 +17188,13 @@ window.averta = {};
             // create sticky placeholder
             this.$containerPlaceHolder = $('<div></div>').addClass( this.settings.placeholder );
             this.$element.before( this.$containerPlaceHolder );
-            $window.on( 'scroll resize', $.proxy( this._update, this ) );
-            this._update();
-
             // is there wp admin bar?
             this._wpadminbarHeight = $('#wpadminbar').outerHeight() || 0;
+
+            this.isOverlay = window.getComputedStyle(this.element).position === 'absolute';
+
+            $window.on( 'scroll resize', $.proxy( this._update, this ) );
+            this._update();
         },
 
         _disable: function(){
@@ -17209,7 +17211,7 @@ window.averta = {};
 
         _update: function() {
             var wst = $window.scrollTop(),
-                etp = this.$containerPlaceHolder.offset().top - this.settings.stickyMargin - this._wpadminbarHeight;
+                etp = Math.round(this.$containerPlaceHolder.offset().top - this.settings.stickyMargin - this._wpadminbarHeight);
 
             if ( this.settings.disablePoint >= window.innerWidth ) {
                 this._disable();
@@ -17231,7 +17233,7 @@ window.averta = {};
                     }
                 }
 
-                if ( !this.settings.useTransform ) {
+                if ( !this.settings.useTransform && !this.isOverlay ) {
                     this.$containerPlaceHolder.height( this.containerHeight );
                 }
 
@@ -17239,7 +17241,7 @@ window.averta = {};
                     this._checkForRearrange( true );
                 }
 
-                if ( !this.useTransform && this.settings.stickyMargin ) {
+                if ( !this.useTransform && (this.settings.stickyMargin || this.settings.stickyMargin === 0) ) {
                     this.element.style.top = this.settings.stickyMargin + this._wpadminbarHeight + 'px';
                 }
 
@@ -17267,8 +17269,7 @@ window.averta = {};
                 if ( this.settings.rearrange ) {
                     this._checkForRearrange( false );
                 }
-
-                if ( !this.useTransform && this.settings.stickyMargin ) {
+                if ( !this.useTransform && (this.settings.stickyMargin || this.settings.stickyMargin === 0) ) {
                     this.element.style.top = '';
                 }
 
@@ -17791,9 +17792,10 @@ window.averta = {};
                     item.$element = $(item.element);
                 }
             }, this );
-
-            this._instantlyHideItems();
-            this._revealItems();
+            
+            // Unnessecery Hide and Reveal on adding items
+            // this._instantlyHideItems();
+            // this._revealItems();
         },
 
         remove: function( items ) {
@@ -18452,7 +18454,12 @@ window.averta = {};
                     if( response.success ) {
                         switch( type ){
                             case 'next-prev':
-                                this.ajaxView.AuxIsotope( 'removeAll' );
+                                if ( this._isotopeLayout) {
+                                    this.ajaxView.AuxIsotope( 'removeAll' );
+                                } else {
+                                    $(this.ajaxView).empty();
+                                }
+
                                 if( offset === this.defaultOffset ) {
                                     this.ajaxController.find('.np-prev-section').addClass('hidden');
                                 } else {
@@ -20046,7 +20053,8 @@ window.averta = {};
             yAxis            : -200,
             rotate           : 90,
             scale            : 1,
-            containerTarget  : '.elementor-widget-container'
+            containerTarget  : '.elementor-widget-container',
+            disableScrollAnims: 1 // disable scroll animation under specified with (px)
         },
 
         attributeDataMap = {
@@ -20059,6 +20067,7 @@ window.averta = {};
             'el-top'  : 'elementOrigin',
             'vp-bot'  : 'viewPortBotOrigin',
             'vp-top'  : 'viewPortTopOrigin',
+            'scroll-animation-off' : 'disableScrollAnims',
         },
 
         $window = $(window);
@@ -20223,8 +20232,11 @@ window.averta = {};
                 case 'rotateOut':
                     $target[0].style[this._prefix + 'Transform'] = 'rotate(' + styles.rotate + 'deg)';
                     break;
-                case 'scale':
+                case 'fadeScale':
                     $target[0].style.opacity                     = styles.opacity;
+                    $target[0].style[this._prefix + 'Transform'] = 'scale(' + styles.scale + ')';
+                    break;
+                case 'scale':
                     $target[0].style[this._prefix + 'Transform'] = 'scale(' + styles.scale + ')';
                     break;
                 default:
@@ -20239,7 +20251,11 @@ window.averta = {};
          * update the styles
          */
         update: function() {
-            this._setStyles( this.$element, $window.scrollTop() );
+            if ( $window.width() <= this.settings.disableScrollAnims ) {
+                this.disable();
+            } else {
+                this._setStyles( this.$element, $window.scrollTop() );
+            }
         },
 
         /**
@@ -29416,6 +29432,14 @@ S2.define('jquery.select2',[
                 item.inactive();
             }
         }
+        // remove all activeX classes
+        for ( var i = 0; i !== this.itemsCount; i++ ) {
+            this.items[i].inactive(i);
+        }
+        // add activeX class to active elements
+        for ( var i = 0; i !== this.activeItems.length; i++ ) {
+            this.activeItems[i].active(i);
+        }
     };
 
     /* ------------------------------------------------------------------------------ */
@@ -29673,15 +29697,19 @@ S2.define('jquery.select2',[
     /**
      * activates the item
      */
-    p.active = function () {
+    p.active = function (counter) {
         this.$element.addClass('mc-item-active');
+        if( counter )
+            this.$element.addClass('mc-item-active' + counter);
     };
 
     /**
      * deactivates the item
      */
-    p.inactive = function () {
+    p.inactive = function (counter) {
         this.$element.removeClass('mc-item-active');
+        if( counter )
+            this.$element.removeClass('mc-item-active' + counter);
     };
 
 
